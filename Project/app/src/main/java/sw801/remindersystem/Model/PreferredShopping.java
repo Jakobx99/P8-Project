@@ -1,1 +1,0 @@
-//Enum Existing shopping

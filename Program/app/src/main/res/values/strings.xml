@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Remindersystem</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_my_smart_device">MySmartDeviceActivity</string>
+</resources>
