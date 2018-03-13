@@ -1,5 +1,6 @@
 package sw801.remindersystem.ActivityView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,13 +21,14 @@ public class MySmartDeviceActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    Intent intent = new Intent(MySmartDeviceActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.navigation_myevents:
+                    // Intent intent = new Intent(HomeActivity.this, MyEventActivity.class);
+                    // startActivity(intent);
+                    break;
+                case R.id.navigation_mysmartdevices:
                     return true;
             }
             return false;
@@ -41,6 +43,10 @@ public class MySmartDeviceActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //Set active
+        navigation.setSelectedItemId(R.id.navigation_mysmartdevices);
+
     }
 
 }
