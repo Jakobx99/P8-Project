@@ -1,5 +1,6 @@
 package sw801.remindersystem.Model;
 import java.text.DecimalFormat;
+import static java.lang.Double.parseDouble;
 
 /**
  * A class to represent a latitude and longitude
