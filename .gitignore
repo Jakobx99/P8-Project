@@ -7,3 +7,8 @@
 /build
 /captures
 .externalNativeBuild
+
+
+Program/local.properties
+Program/build/*
+Program/.idea/*
