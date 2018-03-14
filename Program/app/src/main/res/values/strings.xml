@@ -13,4 +13,8 @@
     <string name="title_menusettings">Settings</string>
     <string name="title_menuaboutus">About us</string>
     <string name="title_menucontactus">Contact us</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    
+    
 </resources>
