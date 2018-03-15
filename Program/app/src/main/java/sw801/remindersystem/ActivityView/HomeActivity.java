@@ -4,21 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
+import android.widget.Toast;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
-public class HomeActivity extends AppCompatActivity {
+//Implements Navigationviewlistener
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private HomeActivityViewModel viewModel = new HomeActivityViewModel();
 
-    private TextView mTextMessage;
-    private EditText testthingy;
+    //Setup of burger menu
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -27,12 +30,15 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText("Home");
                     return true;
-                case R.id.navigation_dashboard:
-                    return true;
-                case R.id.navigation_notifications:
-                    return true;
+                case R.id.navigation_myevents:
+                    Intent intent2 = new Intent(HomeActivity.this, MyEventsActivity.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.navigation_mysmartdevices:
+                    Intent intent3 = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
+                    startActivity(intent3);
+                    break;
             }
             return false;
         }
@@ -41,38 +47,101 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Notify Me - Home");
         setContentView(R.layout.activity_home);
 
+        //--------------------------Navigation bar----------------------------------
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        mTextMessage = findViewById(R.id.TestText);
-        testthingy = findViewById(R.id.TestNumber);
+        //--------------------------Navigation bar----------------------------------
+
+        //--------------------------Burger menu-------------------------------------
+        drawerLayout = findViewById(R.id.homeactivity);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView nv = findViewById(R.id.burgermenu);
+        nv.setNavigationItemSelectedListener(this);
+        //--------------------------Burger menu-------------------------------------
 
         final Button buttonCreate = findViewById(R.id.button_Create);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-
-                //Bind values from user input
-                String a = testthingy.getText().toString();
-                Integer b = Integer.parseInt(a);
-
-                //Call method in viewmodel and render result from viewmodel
-                mTextMessage.setText(viewModel.onClickCreate(b).toString());
+                // Intent intent = new Intent(HomeActivity.this, MyCreateActivity.class);
+                // startActivity(intent);
             }
         });
 
+        //----------------Rest of the code
 
+        final Button buttonMyEvents = findViewById(R.id.button_MyEvents);
+        buttonMyEvents.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent = new Intent(HomeActivity.this, MyEventsActivity.class);
+               startActivity(intent);
+            }
+        }));
 
-        final Button button = findViewById(R.id.button_MySmartDevices);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button buttonMySmartDevices = findViewById(R.id.button_MySmartDevices);
+        buttonMySmartDevices.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
                 startActivity(intent);
             }
         });
-        //viewModel.onCreate();  Kalder intet lige pt.
+
+        final Button buttonSettings = findViewById(R.id.button_settings);
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
+    //--------------------------Burger menu-------------------------------------
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        Intent intent = null;
+        switch (id){
+            case R.id.menumyevent:
+                intent = new Intent(HomeActivity.this, MyEventsActivity.class);
+                break;
+            case R.id.menumysmartdevices:
+                intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
+                break;
+            case R.id.menuaddsmartdevies:
+                Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menusettings:
+                intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                break;
+            case R.id.menuaboutus:
+                break;
+            case R.id.menucontactus:
+                break;
+        }
+        if (intent == null){
+            return false;
+        }
+        startActivity(intent);
+        return false;
+    }
+    //--------------------------Burger menu-------------------------------------
 }
