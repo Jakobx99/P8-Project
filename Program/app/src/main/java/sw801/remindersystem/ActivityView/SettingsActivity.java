@@ -1,5 +1,8 @@
 package sw801.remindersystem.ActivityView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -99,8 +102,30 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
             case R.id.menusettings:
                 break;
             case R.id.menuaboutus:
+                AlertDialog alertDialogabout = new AlertDialog.Builder(SettingsActivity.this).create();
+                alertDialogabout.setTitle("About us");
+                alertDialogabout.setMessage("This application have been created by group SW801f18 at Aalborg University");
+                alertDialogabout.setIcon(R.drawable.ic_dashboard_black_24dp);
+
+                alertDialogabout.setButton(Dialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                alertDialogabout.show();
                 break;
             case R.id.menucontactus:
+                AlertDialog alertDialogcontact = new AlertDialog.Builder(SettingsActivity.this).create();
+                alertDialogcontact.setTitle("Contact us");
+                alertDialogcontact.setMessage("We can be contacted on email: sw801f18@cs.aau.dk");
+                alertDialogcontact.setIcon(R.drawable.ic_dashboard_black_24dp);
+
+                alertDialogcontact.setButton(Dialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                alertDialogcontact.show();
                 break;
         }
         if (intent == null){
