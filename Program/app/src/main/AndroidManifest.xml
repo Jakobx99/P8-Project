@@ -20,7 +20,10 @@
         </activity>
         <activity
             android:name=".ActivityView.MySmartDeviceActivity"
-            android:label="@string/title_activity_my_smart_device"></activity>
+            android:label="@string/title_activity_my_smart_device" />
+        <activity android:name=".ActivityView.MyEventsActivity" />
+        <activity android:name=".ActivityView.SettingsActivity" />
+        <activity android:name=".ActivityView.EditEventActivity"></activity>
     </application>
 
 </manifest>
