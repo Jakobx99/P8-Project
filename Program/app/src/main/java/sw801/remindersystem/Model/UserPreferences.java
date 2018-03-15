@@ -1,10 +1,10 @@
 package sw801.remindersystem.Model;
-
 import java.util.*;
 public class UserPreferences{
     private ArrayList<GlobalMute> GlobalMuteList;
     private ArrayList<PredefinedLocation> PredefList;
     private ArrayList<SmartDevice> SmartDeviceList;
+    private ArrayList<PreferredShopping> PrefShopList;
 
     public ArrayList<GlobalMute> getGlobalMuteList() {
         return GlobalMuteList;
@@ -18,15 +18,24 @@ public class UserPreferences{
         return SmartDeviceList;
     }
 
-    public void setGlobalMuteList(ArrayList<GlobalMute> globalMuteList) {
-        GlobalMuteList = globalMuteList;
+    public void setGlobalMuteList(GlobalMute globalMuteList) {
+        GlobalMuteList.add(globalMuteList);
     }
 
     public void setPredefList(ArrayList<PredefinedLocation> predefList) {
         PredefList = predefList;
     }
 
-    public void setSmartDeviceList(SmartDevice smartDevice) {
-        //SmartDeviceList.Add(smartDevice);     Udkommenteret for at teste kompilering
+    public void setSmartDeviceList(SmartDevice smartDevice)
+    {
+        SmartDeviceList.add(smartDevice);
+    }
+
+    public ArrayList<PreferredShopping> getPrefShopList() {
+        return PrefShopList;
+    }
+
+    public void setPrefShopList(PreferredShopping prefShop) {
+        PrefShopList.add(prefShop);
     }
 }
