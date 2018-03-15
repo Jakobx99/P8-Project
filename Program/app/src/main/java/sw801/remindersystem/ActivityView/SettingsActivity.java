@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import sw801.remindersystem.R;
@@ -45,6 +47,29 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
 
         //----------------Rest of the code
 
+        EditText globalmute = findViewById(R.id.editText_globalmute);
+        globalmute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SettingsActivity.this, "Global mute pressed",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        EditText predefinedlocation = findViewById(R.id.editText_predefinedlocationsettings);
+        predefinedlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SettingsActivity.this, "Predefined locations pressed",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        EditText preferredshopping = findViewById(R.id.editText_preferredshoppingsettings);
+        preferredshopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SettingsActivity.this, "Preferred shopping pressed",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
