@@ -1,19 +1,19 @@
 package sw801.remindersystem.ActivityView;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import sw801.remindersystem.R;
 
-public class MySmartDeviceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class SettingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Implement viewmodel here
 
     //Setup of burger menu
@@ -25,17 +25,16 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Notify Me - My Smart Devices");
-        setContentView(R.layout.activity_my_smart_device);
+        setTitle("Notify Me - Settings");
+        setContentView(R.layout.activity_settings);
 
         //--------------------------Navigation bar----------------------------------
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_mysmartdevices);
         //--------------------------Navigation bar----------------------------------
 
         //--------------------------Burger menu-------------------------------------
-        drawerLayout = findViewById(R.id.mysmartdeviceactivity);
+        drawerLayout = findViewById(R.id.settingsactivity);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -64,15 +63,15 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
         Intent intent = null;
         switch (id){
             case R.id.menumyevent:
-                intent = new Intent(MySmartDeviceActivity.this, MyEventsActivity.class);
+                intent = new Intent(SettingsActivity.this, MyEventsActivity.class);
                 break;
             case R.id.menumysmartdevices:
+                intent = new Intent(SettingsActivity.this, MySmartDeviceActivity.class);
                 break;
             case R.id.menuaddsmartdevies:
                 Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menusettings:
-                intent = new Intent(MySmartDeviceActivity.this, SettingsActivity.class);
                 break;
             case R.id.menuaboutus:
                 break;
@@ -94,18 +93,20 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent intent1 = new Intent(MySmartDeviceActivity.this, HomeActivity.class);
+                    Intent intent1 = new Intent(SettingsActivity.this, HomeActivity.class);
                     startActivity(intent1);
                     break;
                 case R.id.navigation_myevents:
-                    Intent intent2 = new Intent(MySmartDeviceActivity.this, MyEventsActivity.class);
+                    Intent intent2 = new Intent(SettingsActivity.this, MyEventsActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.navigation_mysmartdevices:
-                    return true;
+                    Intent intent3 = new Intent(SettingsActivity.this, MySmartDeviceActivity.class);
+                    startActivity(intent3);
+                    break;
             }
             return false;
         }
     };
-
 }
+

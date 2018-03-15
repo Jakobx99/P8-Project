@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
@@ -33,12 +32,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.navigation_home:
                     return true;
                 case R.id.navigation_myevents:
-                    // Intent intent = new Intent(HomeActivity.this, MyEventActivity.class);
-                    // startActivity(intent);
+                    Intent intent2 = new Intent(HomeActivity.this, MyEventsActivity.class);
+                    startActivity(intent2);
                     break;
                 case R.id.navigation_mysmartdevices:
-                    Intent intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
-                    startActivity(intent);
+                    Intent intent3 = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
+                    startActivity(intent3);
                     break;
             }
             return false;
@@ -48,11 +47,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Notify Me - Home");
         setContentView(R.layout.activity_home);
 
         //--------------------------Navigation bar----------------------------------
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         //--------------------------Navigation bar----------------------------------
 
         //--------------------------Burger menu-------------------------------------
@@ -74,12 +75,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        //----------------Rest of the code
+
         final Button buttonMyEvents = findViewById(R.id.button_MyEvents);
         buttonMyEvents.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = new Intent(HomeActivity.this, MyEventActivity.class);
-               // startActivity(intent);
+               Intent intent = new Intent(HomeActivity.this, MyEventsActivity.class);
+               startActivity(intent);
             }
         }));
 
@@ -96,8 +99,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -118,14 +121,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = null;
         switch (id){
             case R.id.menumyevent:
-                Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
+                intent = new Intent(HomeActivity.this, MyEventsActivity.class);
                 break;
             case R.id.menumysmartdevices:
                 intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
                 break;
             case R.id.menuaddsmartdevies:
+                Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menusettings:
+                intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 break;
             case R.id.menuaboutus:
                 break;
