@@ -19,8 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityView.MySmartDeviceActivity"
-            android:label="@string/title_activity_my_smart_device" />
+            android:name=".ActivityView.MySmartDeviceActivity"   />
         <activity android:name=".ActivityView.MyEventsActivity" />
         <activity android:name=".ActivityView.SettingsActivity" />
         <activity android:name=".ActivityView.EditEventActivity"></activity>
