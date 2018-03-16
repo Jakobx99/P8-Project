@@ -12,7 +12,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import sw801.remindersystem.R;
 
@@ -22,7 +29,8 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
     //Setup of burger menu
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-
+    private ListView listview;
+    ArrayList<String> smartDevices;
 
 
     @Override
@@ -48,9 +56,30 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
         //--------------------------Burger menu-------------------------------------
 
         //----------------Rest of the code
+        listview = (ListView) findViewById(R.id.listView_mysmartdevices);
+
+        //------Creation of list of smart devices
+        smartDevices = new ArrayList<String>();
+        smartDevices.add("Hue");
+        smartDevices.add("Nest");
+
+        MySmartDeviceAdapter myAdapter = new MySmartDeviceAdapter(this, smartDevices);
+        listview.setAdapter(myAdapter);
+        //------Creation of list of smart devices
 
 
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            // argument position gives the index of item which is clicked
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
+            {
+                String selectedDevice=smartDevices.get(position);
+                Toast.makeText(getApplicationContext(), "Smart device Selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
 
     //--------------------------Burger menu-------------------------------------
     @Override
