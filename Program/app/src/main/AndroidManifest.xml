@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityView.HomeActivity"
+            android:name=".ActivityView.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityView.MySmartDeviceActivity"   />
-        <activity android:name=".ActivityView.MyEventsActivity" />
+
         <activity android:name=".ActivityView.SettingsActivity" />
         <activity android:name=".ActivityView.EditEventActivity"></activity>
     </application>
