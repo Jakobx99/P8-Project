@@ -2,6 +2,7 @@ package sw801.remindersystem.ActivityView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.arch.lifecycle.LiveData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +17,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.List;
+
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
+import sw801.remindersystem.Model.Persistence.Entity.User;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
@@ -76,12 +80,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LiveData<List<User>> tester = AppDatabase.getInstance(HomeActivity.this).userDao().getAll();
+
                 System.out.println(
-                        "KAGE: " + AppDatabase.getInstance(HomeActivity.this).userDao().countUsers()
+                        "LiveData: " + tester
                 );
-
-                System.out.println("TESTER!!!");
-
+                
                 // Intent intent = new Intent(HomeActivity.this, MyCreateActivity.class);
                 // startActivity(intent);
             }
