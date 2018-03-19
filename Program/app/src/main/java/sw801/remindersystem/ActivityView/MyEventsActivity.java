@@ -54,8 +54,7 @@ public class MyEventsActivity extends AppCompatActivity implements NavigationVie
         buttontest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MyEventsActivity.this, EditEventActivity.class);
-                startActivity(intent);
+            //Edit event fragment
             }
         });
     }

@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -43,14 +45,33 @@ public class MySmartDeviceAdapter extends BaseAdapter{
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View row;
         row = inflater.inflate(R.layout.mysmartdeviceslistlayout, parent, false);
-        TextView title;
+        final TextView title;
         title = (TextView) row.findViewById(R.id.row_textview);
         title.setText(Title.get(position));
+
+        //Click event for delete buttons
+        ImageView delete = row.findViewById(R.id.imageView_mysmartdevicedelete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Delete: " + Title.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Click event for edit buttons
+        ImageView edit = row.findViewById(R.id.imageView_mysmartdeviceedit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Edit: " + Title.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         return (row);

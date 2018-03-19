@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -74,10 +75,24 @@ public class MySmartDeviceActivity extends AppCompatActivity implements Navigati
             // argument position gives the index of item which is clicked
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
             {
+                //Click for entire box
                 String selectedDevice=smartDevices.get(position);
                 Toast.makeText(getApplicationContext(), "Smart device Selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
             }
         });
+
+
+        //Add new smart device
+
+        ImageView add = findViewById(R.id.imageView_mysmartdeviceadd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Start new fragment
+            }
+        });
+
+
     }
 
 

@@ -22,7 +22,6 @@
             android:name=".ActivityView.MySmartDeviceActivity"   />
         <activity android:name=".ActivityView.MyEventsActivity" />
         <activity android:name=".ActivityView.SettingsActivity" />
-        <activity android:name=".ActivityView.EditEventActivity"></activity>
     </application>
 
 </manifest>
