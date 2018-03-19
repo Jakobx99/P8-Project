@@ -16,19 +16,23 @@ import sw801.remindersystem.Model.Persistence.Entity.User;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "db-name";
-    private static AppDatabase DATABASE_INSTANCE = null;
 
-    public static AppDatabase getDatabase(Context context) {
-        if (DATABASE_INSTANCE == null)
-            DATABASE_INSTANCE = Room.databaseBuilder(
-                    context.getApplicationContext(),
-                    AppDatabase.class,
-                    DATABASE_NAME
-            ).build();
+    private static volatile AppDatabase instance;
 
-
-        return DATABASE_INSTANCE;
+    public static AppDatabase getInstance(Context context) {
+        if (instance == null)
+            instance = create(context);
+        return instance;
     }
 
+    private static AppDatabase create(final Context context) {
+        return Room.databaseBuilder(
+                context,
+                AppDatabase.class,
+                DATABASE_NAME).build();
+    }
+
+
     public abstract UserDao userDao();
+
 }

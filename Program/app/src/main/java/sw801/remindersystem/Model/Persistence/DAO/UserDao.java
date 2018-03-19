@@ -1,5 +1,6 @@
 package sw801.remindersystem.Model.Persistence.DAO;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -17,19 +18,19 @@ import sw801.remindersystem.Model.Persistence.Entity.User;
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM user")
-    List<User> getAll();
+    LiveData<List<User>> getAll();
 
     @Query("SELECT * FROM user WHERE id IN (:userIds)")
-    List<User> loadAllByIds(Integer[] userIds);
+    LiveData<List<User>> loadAllByIds(Integer[] userIds);
 
     @Query("SELECT * FROM user WHERE first_name LIKE :first AND last_name LIKE :last LIMIT 1")
-    User findByName(String first, String last);
+    LiveData<User> findByName(String first, String last);
 
     @Query("SELECT * FROM user WHERE id == :userId LIMIT 1")
-    List<User> loadById(Integer userId);
+    LiveData<List<User>> loadById(Integer userId);
 
     @Query("SELECT COUNT(*) from user")
-    Integer countUsers();
+    LiveData<Integer> countUsers();
 
     @Insert
     void insertAll(User... users);

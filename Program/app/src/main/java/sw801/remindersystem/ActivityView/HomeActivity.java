@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
@@ -69,23 +71,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         nv.setNavigationItemSelectedListener(this);
         //--------------------------Burger menu-------------------------------------
 
+        //----------------Rest of the code
         final Button buttonCreate = findViewById(R.id.button_Create);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(
+                        "KAGE: " + AppDatabase.getInstance(HomeActivity.this).userDao().countUsers()
+                );
+
+                System.out.println("TESTER!!!");
+
                 // Intent intent = new Intent(HomeActivity.this, MyCreateActivity.class);
                 // startActivity(intent);
             }
         });
 
-        //----------------Rest of the code
-
         final Button buttonMyEvents = findViewById(R.id.button_MyEvents);
         buttonMyEvents.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent = new Intent(HomeActivity.this, MyEventsActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, MyEventsActivity.class);
+                startActivity(intent);
             }
         }));
 
@@ -111,8 +118,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //--------------------------Burger menu-------------------------------------
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -122,7 +129,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Intent intent = null;
-        switch (id){
+        switch (id) {
             case R.id.menumyevent:
                 intent = new Intent(HomeActivity.this, MyEventsActivity.class);
                 break;
@@ -130,7 +137,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
                 break;
             case R.id.menuaddsmartdevies:
-                Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "TESRE", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menusettings:
                 intent = new Intent(HomeActivity.this, SettingsActivity.class);
@@ -141,7 +148,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 alertDialogabout.setMessage("This application have been created by group SW801f18 at Aalborg University");
                 alertDialogabout.setIcon(R.drawable.ic_dashboard_black_24dp);
 
-                alertDialogabout.setButton(Dialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+                alertDialogabout.setButton(Dialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
                     }
@@ -154,7 +161,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 alertDialogcontact.setMessage("We can be contacted on email: sw801f18@cs.aau.dk");
                 alertDialogcontact.setIcon(R.drawable.ic_dashboard_black_24dp);
 
-                alertDialogcontact.setButton(Dialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+                alertDialogcontact.setButton(Dialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
                     }
@@ -162,7 +169,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 alertDialogcontact.show();
                 break;
         }
-        if (intent == null){
+        if (intent == null) {
             return false;
         }
         startActivity(intent);
