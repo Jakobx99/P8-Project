@@ -90,10 +90,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = null;
         switch (id){
             case R.id.menumyevent:
-                //intent = new Intent(SettingsActivity.this, MyEventsActivity.class);
+                //intent = new Intent(SettingsActivity.this, MyEventsFragment.class);
                 break;
             case R.id.menumysmartdevices:
-                //intent = new Intent(SettingsActivity.this, MySmartDeviceActivity.class);
+                //intent = new Intent(SettingsActivity.this, MySmartDeviceFragment.class);
                 break;
             case R.id.menuaddsmartdevies:
                 Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
@@ -150,17 +150,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             switch (position){
                 case 0:
-                    //Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    //Intent intent = new Intent(MainActivity.this, HomeFragment.class);
                     //startActivity(intent);
-                    HomeActivity home = new HomeActivity();
+                    HomeFragment home = new HomeFragment();
                     return home;
                 case 1:
                     //Intent intent2 = new Intent(MainActivity.this, SettingsActivity.class);
                     //startActivity(intent2);
-                    MyEventsActivity events = new MyEventsActivity();
+                    MyEventsFragment events = new MyEventsFragment();
                     return events;
                 case 2:
-                    MySmartDeviceActivity SmartDevice = new MySmartDeviceActivity();
+                    MySmartDeviceFragment SmartDevice = new MySmartDeviceFragment();
                     return SmartDevice;
                 default:
                     return null;
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     void ChangeToEvents(){
         // Create fragment and give it an argument specifying the article it should show
-        MyEventsActivity newFragment = new MyEventsActivity();
+        MyEventsFragment newFragment = new MyEventsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         // Replace whatever is in the fragment_container view with this fragment,
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     void ChangeToSmartDevice(){
         // Create fragment and give it an argument specifying the article it should show
-        MySmartDeviceActivity newFragment = new MySmartDeviceActivity();
+        MySmartDeviceFragment newFragment = new MySmartDeviceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         // Replace whatever is in the fragment_container view with this fragment,
@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     void changetomyevents(){
 
         android.support.v4.app.FragmentTransaction fm;
-        MyEventsActivity hm1 = new MyEventsActivity();
+        MyEventsFragment hm1 = new MyEventsFragment();
         fm = getSupportFragmentManager().beginTransaction();
         fm.replace(R.id.homeactivity,hm1, "");
         fm.commit();

@@ -18,9 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ActivityView.SettingsActivity" />
-        <activity android:name=".ActivityView.EditEventActivity"></activity>
+        <activity android:name=".ActivityView.AddEventActivity" />
+        <activity android:name=".ActivityView.EditEventActivity" />
+        <activity android:name=".ActivityView.AddSmartDeviceActivity" />
+        <activity android:name=".ActivityView.EditSmartDeviceActivity" />
+        <activity android:name=".ActivityView.GlobalMuteSettingActivity" />
+        <activity android:name=".ActivityView.LocationSettingActivity" />
+        <activity android:name=".ActivityView.ShoppingSettingActivity"></activity>
     </application>
 
 </manifest>

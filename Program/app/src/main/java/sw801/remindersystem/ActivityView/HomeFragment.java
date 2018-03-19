@@ -17,7 +17,7 @@ import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
 
 //Implements Navigationviewlistener
-public class HomeActivity extends Fragment{
+public class HomeFragment extends Fragment{
     private HomeActivityViewModel viewModel = new HomeActivityViewModel();
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -37,7 +37,7 @@ public class HomeActivity extends Fragment{
                 //((MainActivity)getActivity()).mViewPager.setCurrentItem(1);
                 //((MainActivity)getActivity()).mSectionsPagerAdapter.notifyDataSetChanged();
                 //((MainActivity)getActivity()).getSupportFragmentManager().findFragmentByTag("Events");
-                // Intent intent = new Intent(HomeActivity.this, MyCreateActivity.class);
+                // Intent intent = new Intent(HomeFragment.this, MyCreateActivity.class);
                 // startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class HomeActivity extends Fragment{
             public void onClick(View view) {
                 ((MainActivity)getActivity()).ChangeToEvents();
                 //((MainActivity)getActivity()).changetomyevents();
-                //Intent intent = new Intent(HomeActivity.this, MyEventsActivity.class);
+                //Intent intent = new Intent(HomeFragment.this, MyEventsFragment.class);
                 //startActivity(intent);
             }
         }));
@@ -60,7 +60,7 @@ public class HomeActivity extends Fragment{
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).ChangeToSmartDevice();
-                //Intent intent = new Intent(HomeActivity.this, MySmartDeviceActivity.class);
+                //Intent intent = new Intent(HomeFragment.this, MySmartDeviceFragment.class);
                 //startActivity(intent);
             }
         });
@@ -69,9 +69,9 @@ public class HomeActivity extends Fragment{
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                Intent intent = new Intent();
-                intent.setClass(HomeActivity.this.getContext(), SettingsActivity.class);
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                //Intent intent = new Intent();
+                //intent.setClass(HomeFragment.this.getContext(), SettingsActivity.class);
                 startActivity(intent);
             }
         });

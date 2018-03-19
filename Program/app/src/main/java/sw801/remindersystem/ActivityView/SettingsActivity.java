@@ -31,7 +31,7 @@ public class SettingsActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setTitle("Notify Me - Settings");
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings);
 
 
         //--------------------------Navigation bar----------------------------------

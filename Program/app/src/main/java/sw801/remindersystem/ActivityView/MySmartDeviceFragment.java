@@ -21,7 +21,7 @@ import android.support.v4.app.Fragment;
 
 import sw801.remindersystem.R;
 
-public class MySmartDeviceActivity extends Fragment{
+public class MySmartDeviceFragment extends Fragment{
     //Implement viewmodel here
 
     //Setup of burger menu

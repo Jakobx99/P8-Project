@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import sw801.remindersystem.R;
 
-public class MyEventsActivity extends Fragment{
+public class MyEventsFragment extends Fragment{
     //Implement viewmodel here
 
     //Setup of burger menu
