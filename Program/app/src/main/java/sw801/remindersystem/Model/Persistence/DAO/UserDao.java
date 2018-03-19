@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -18,15 +19,23 @@ public interface UserDao {
     @Query("SELECT * FROM user")
     List<User> getAll();
 
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-    List<User> loadAllByIds(int[] userIds);
+    @Query("SELECT * FROM user WHERE id IN (:userIds)")
+    List<User> loadAllByIds(Integer[] userIds);
 
-    @Query("SELECT * FROM user WHERE first_name LIKE :first AND "
-            + "last_name LIKE :last LIMIT 1")
+    @Query("SELECT * FROM user WHERE first_name LIKE :first AND last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
+
+    @Query("SELECT * FROM user WHERE id == :userId LIMIT 1")
+    List<User> loadById(Integer userId);
+
+    @Query("SELECT COUNT(*) from user")
+    Integer countUsers();
 
     @Insert
     void insertAll(User... users);
+
+    @Update
+    void udpate(User user);
 
     @Delete
     void delete(User user);

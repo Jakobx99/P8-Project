@@ -10,8 +10,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class User {
-    @PrimaryKey
-    private int uid;
+    @PrimaryKey(autoGenerate = true)
+    private Integer id;
 
     @ColumnInfo(name = "first_name")
     private String firstName;
@@ -19,12 +19,12 @@ public class User {
     @ColumnInfo(name = "last_name")
     private String lastName;
 
-    public int getUid() {
-        return uid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
