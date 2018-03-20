@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.HomeActivity">
+    tools:context="sw801.remindersystem.ActivityView.HomeFragment">
 
     <!--Burger menu -->
     <android.support.design.widget.NavigationView
