@@ -1,6 +1,7 @@
 package sw801.remindersystem.ActivityView;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,27 +45,14 @@ public class MySmartDeviceFragment extends Fragment{
         listview.setAdapter(myAdapter);
         //------Creation of list of smart devices
 
-
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            // argument position gives the index of item which is clicked
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
-            {
-                //Click for entire box
-                String selectedDevice=smartDevices.get(position);
-                Toast.makeText(rootView.getContext(), "Smart device Selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
-            }
-        });
-
-
         //Add new smart device
 
         ImageView add = rootView.findViewById(R.id.imageView_mysmartdeviceadd);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Start new fragment
+                Intent intent = new Intent(rootView.getContext(), AddEventActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -72,4 +60,5 @@ public class MySmartDeviceFragment extends Fragment{
         return rootView;
     }
 
+    //TODO add onResume to redraw list after edit
 }
