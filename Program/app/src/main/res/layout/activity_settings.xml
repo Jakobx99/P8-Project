@@ -11,23 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--Nav bar -->
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/colorBackground"
-            app:itemIconTint="@drawable/navbar_color_change"
-            app:itemTextColor="@drawable/navbar_color_change"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/navigation">
-
-        </android.support.design.widget.BottomNavigationView>
-
         <EditText
             android:id="@+id/editText_predefinedlocationsettings"
             android:layout_width="357dp"
@@ -80,20 +63,6 @@
             app:layout_constraintTop_toBottomOf="@+id/editText_predefinedlocationsettings" />
 
     </android.support.constraint.ConstraintLayout>
-
-    <!--Burger menu -->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/burgermenu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white"
-        app:headerLayout="@layout/burgerheader"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        app:menu="@menu/drawermenu">
-
-    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
 

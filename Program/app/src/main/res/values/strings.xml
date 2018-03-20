@@ -15,6 +15,11 @@
     <string name="title_menucontactus">Contact us</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">My Events</string>
+    <string name="tab_text_3">My Smart Devices</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
