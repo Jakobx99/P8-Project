@@ -1,6 +1,6 @@
 package sw801.remindersystem.Model;
 
-public class SmartDevice{
+public class SmartDevice {
     private String DeviceId;
 
     public String getDeviceId() {
