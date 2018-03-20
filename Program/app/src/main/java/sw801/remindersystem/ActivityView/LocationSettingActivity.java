@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import sw801.remindersystem.R;
 
-public class EditEventActivity extends AppCompatActivity {
+public class LocationSettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_event);
+        setContentView(R.layout.activity_location_setting);
     }
 }
