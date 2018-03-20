@@ -1,19 +1,20 @@
 package sw801.remindersystem.Model;
 
 import java.util.Date;
-public class GlobalMute{
+
+public class GlobalMute {
     private String name;
     private Date StartTime;
     private Date EndTime;
     private Coordinate Coords;
     private String Note;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Coordinate getCoords() {
@@ -28,23 +29,23 @@ public class GlobalMute{
         return EndTime;
     }
 
-    public Date getStartTime() {
-        return StartTime;
-    }
-
     public void setEndTime(Date endTime) {
         EndTime = endTime;
+    }
+
+    public Date getStartTime() {
+        return StartTime;
     }
 
     public void setStartTime(Date startTime) {
         StartTime = startTime;
     }
 
-    public void setNote(String note) {
-        Note = note;
-    }
-
     public String getNote() {
         return Note;
+    }
+
+    public void setNote(String note) {
+        Note = note;
     }
 }
