@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment{
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                Intent intent = new Intent(getActivity(), AddEventActivity.class);
                 //Intent intent = new Intent();
                 //intent.setClass(HomeFragment.this.getContext(), SettingsActivity.class);
                 startActivity(intent);
