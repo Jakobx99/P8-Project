@@ -21,8 +21,6 @@ public class GlobalMuteSettingActivity extends AppCompatActivity {
 
     private ListView listview;
     ArrayList<String> globalMuteSettings;
-    private Context mContext;
-    public View view;
 
 
     @Override
@@ -42,6 +40,15 @@ public class GlobalMuteSettingActivity extends AppCompatActivity {
 
         listview.setAdapter(myAdapter);
         //------Creation of list of smart devices
+
+        ImageView add = findViewById(R.id.imageView_globalmuteadd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GlobalMuteSettingActivity.this, AddGlobalMuteSettingActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
