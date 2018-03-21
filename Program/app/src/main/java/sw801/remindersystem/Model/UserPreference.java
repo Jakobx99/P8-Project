@@ -124,7 +124,7 @@ public abstract class UserPreference {
         }.execute(smartDevice);
     }
 
-    
+
 
     /*
     private ArrayList<PreferredShopping> PrefShopList;
