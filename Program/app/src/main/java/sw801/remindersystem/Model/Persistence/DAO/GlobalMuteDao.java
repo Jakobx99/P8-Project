@@ -25,7 +25,7 @@ public interface GlobalMuteDao {
     LiveData<List<GlobalMute>> loadAllByIds(Integer[] globalMuteIds);
 
     @Query("SELECT * FROM globalmute WHERE id == :globalMuteId LIMIT 1")
-    LiveData<List<GlobalMute>> loadById(Integer globalMuteId);
+    LiveData<GlobalMute> loadById(Integer globalMuteId);
 
     @Query("SELECT COUNT(*) from globalmute")
     LiveData<Integer> countGlobalMutes();

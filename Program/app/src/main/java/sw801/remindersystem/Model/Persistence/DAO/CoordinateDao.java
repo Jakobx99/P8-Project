@@ -24,7 +24,7 @@ public interface CoordinateDao {
     LiveData<List<Coordinate>> loadAllByIds(Integer[] coordinateIds);
 
     @Query("SELECT * FROM coordinate WHERE id == :coordinateId LIMIT 1")
-    LiveData<List<Coordinate>> loadById(Integer coordinateId);
+    LiveData<Coordinate> loadById(Integer coordinateId);
 
     @Query("SELECT COUNT(*) from coordinate")
     LiveData<Integer> countCoordinates();

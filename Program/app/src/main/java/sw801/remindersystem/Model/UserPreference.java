@@ -92,6 +92,28 @@ public abstract class UserPreference {
         return AppDatabase.getInstance(currentContext).smartDeviceDao().getAll();
     }
 
+    public static LiveData<SmartDevice> getSmartDeviceById(Context currentContext, Integer id) {
+        return AppDatabase.getInstance(currentContext).smartDeviceDao().loadById(id);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public static void updateSmartDevice(Context currentContext, SmartDevice smartDevice) {
+        final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(currentContext).smartDeviceDao();
+
+        new AsyncTask<SmartDevice, Void, Void>() {
+            @Override
+            protected Void doInBackground(SmartDevice... smartDevices) {
+                for (SmartDevice smartDevice : smartDevices) {
+                    smartDeviceDao.update(smartDevice);
+                }
+
+                return null;
+            }
+
+        }.execute(smartDevice);
+    }
+
+
     @SuppressLint("StaticFieldLeak")
     public static void addToSmartDeviceList(Context currentContext, SmartDevice smartDevice) {
         final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(currentContext).smartDeviceDao();

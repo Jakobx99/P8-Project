@@ -15,6 +15,9 @@ public class SmartDevice {
     @ColumnInfo(name = "deviceName")
     private String deviceName;
 
+    @ColumnInfo(name = "active")
+    private Boolean active;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +32,19 @@ public class SmartDevice {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public Boolean getActive() {
+        if(active == null)
+            return false;
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String toString() {
+        return id + ": " + deviceName;
     }
 }

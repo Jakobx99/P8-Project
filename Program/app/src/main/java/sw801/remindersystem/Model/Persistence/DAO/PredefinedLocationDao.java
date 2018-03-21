@@ -7,7 +7,6 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
@@ -25,7 +24,7 @@ public interface PredefinedLocationDao {
     LiveData<List<PredefinedLocation>> loadAllByIds(Integer[] predefinedLocationIds);
 
     @Query("SELECT * FROM predefinedlocation WHERE id == :predefinedLocationId LIMIT 1")
-    LiveData<List<PredefinedLocation>> loadById(Integer predefinedLocationId);
+    LiveData<PredefinedLocation> loadById(Integer predefinedLocationId);
 
     @Query("SELECT COUNT(*) from predefinedlocation")
     LiveData<Integer> countPredefinedLocations();

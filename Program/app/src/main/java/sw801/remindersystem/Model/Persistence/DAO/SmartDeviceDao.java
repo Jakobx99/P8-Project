@@ -24,7 +24,7 @@ public interface SmartDeviceDao {
     LiveData<List<SmartDevice>> loadAllByIds(Integer[] smartDeviceIds);
 
     @Query("SELECT * FROM smartdevice WHERE id == :smartDeviceId LIMIT 1")
-    LiveData<List<SmartDevice>> loadById(Integer smartDeviceId);
+    LiveData<SmartDevice> loadById(Integer smartDeviceId);
 
     @Query("SELECT COUNT(*) from smartdevice")
     LiveData<Integer> countSmartDevices();
@@ -36,7 +36,7 @@ public interface SmartDeviceDao {
     void insert(SmartDevice smartDevice);
 
     @Update
-    void udpate(SmartDevice smartDevice);
+    void update(SmartDevice smartDevice);
 
     @Delete
     void delete(SmartDevice smartDevice);

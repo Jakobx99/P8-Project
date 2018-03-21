@@ -24,7 +24,7 @@ public interface EventDao {
     LiveData<List<Event>> loadAllByIds(Integer[] eventIds);
 
     @Query("SELECT * FROM event WHERE id == :eventId LIMIT 1")
-    LiveData<List<Event>> loadById(Integer eventId);
+    LiveData<Event> loadById(Integer eventId);
 
     @Query("SELECT COUNT(*) from event")
     LiveData<Integer> countEvents();
