@@ -36,7 +36,7 @@ public interface PredefinedLocationDao {
     void insert(PredefinedLocation predefinedLocation);
 
     @Update
-    void udpate(PredefinedLocation predefinedLocation);
+    void update(PredefinedLocation predefinedLocation);
 
     @Delete
     void delete(PredefinedLocation predefinedLocation);

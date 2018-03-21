@@ -36,7 +36,7 @@ public interface CoordinateDao {
     void insert(Coordinate coordinate);
 
     @Update
-    void udpate(Coordinate coordinate);
+    void update(Coordinate coordinate);
 
     @Delete
     void delete(Coordinate coordinate);

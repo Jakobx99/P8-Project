@@ -36,7 +36,7 @@ public interface EventDao {
     void insert(Event event);
 
     @Update
-    void udpate(Event event);
+    void update(Event event);
 
     @Delete
     void delete(Event event);

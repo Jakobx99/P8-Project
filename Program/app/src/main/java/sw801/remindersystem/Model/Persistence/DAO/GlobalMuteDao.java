@@ -7,7 +7,6 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
@@ -37,7 +36,7 @@ public interface GlobalMuteDao {
     void insert(GlobalMute globalMute);
 
     @Update
-    void udpate(GlobalMute globalMute);
+    void update(GlobalMute globalMute);
 
     @Delete
     void delete(GlobalMute globalMute);
