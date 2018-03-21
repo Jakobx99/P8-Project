@@ -3,19 +3,26 @@ package sw801.remindersystem.Model.Persistence.Database;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
-import sw801.remindersystem.Model.Persistence.DAO.UserDao;
-import sw801.remindersystem.Model.Persistence.Entity.User;
+import sw801.remindersystem.Model.Persistence.Converter.DateTypeConverter;
+import sw801.remindersystem.Model.Persistence.DAO.CoordinateDao;
+import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
+import sw801.remindersystem.Model.Persistence.Entity.Event;
+import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
+import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
 /**
  * Created by Kasper Helsted on 3/15/2018.
  */
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {Coordinate.class, Event.class, GlobalMute.class, PredefinedLocation.class, SmartDevice.class}, version = 1)
+@TypeConverters({DateTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "db-name";
+    private static final String DATABASE_NAME = "database";
 
     private static volatile AppDatabase instance;
 
@@ -33,6 +40,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
 
-    public abstract UserDao userDao();
+    public abstract CoordinateDao coordinateDao();
 
 }
