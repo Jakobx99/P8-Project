@@ -1,8 +1,7 @@
 package sw801.remindersystem.Model;
 
-import java.util.ArrayList;
-
 public class UserPreferences {
+    /*
     private ArrayList<GlobalMute> GlobalMuteList;
     private ArrayList<PredefinedLocation> PredefList;
     private ArrayList<SmartDevice> SmartDeviceList;
@@ -39,4 +38,5 @@ public class UserPreferences {
     public void setPrefShopList(PreferredShopping prefShop) {
         PrefShopList.add(prefShop);
     }
+    */
 }
