@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -65,7 +66,14 @@ public class MyEventsFragment extends Fragment{
         });
 
 
-
+        ImageView add = rootView.findViewById(R.id.imageView_myeventadd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(rootView.getContext(), AddEventActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
