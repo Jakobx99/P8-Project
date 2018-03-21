@@ -12,6 +12,8 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 /**
  * Created by Kasper Helsted on 3/21/2018.
  */
+
+//TODO: Look at https://android.jlelse.eu/android-architecture-components-room-relationships-bf473510c14a for relation
 @Entity(foreignKeys = @ForeignKey(
         entity = SmartDevice.class, parentColumns = "id", childColumns = "device_id", onDelete = CASCADE
 ))

@@ -8,6 +8,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 
@@ -18,13 +19,13 @@ import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 @Dao
 public interface GlobalMuteDao {
     @Query("SELECT * FROM globalmute")
-    LiveData<ArrayList<GlobalMute>> getAll();
+    LiveData<List<GlobalMute>> getAll();
 
     @Query("SELECT * FROM globalmute WHERE id IN (:globalMuteIds)")
-    LiveData<ArrayList<GlobalMute>> loadAllByIds(Integer[] globalMuteIds);
+    LiveData<List<GlobalMute>> loadAllByIds(Integer[] globalMuteIds);
 
     @Query("SELECT * FROM globalmute WHERE id == :globalMuteId LIMIT 1")
-    LiveData<ArrayList<GlobalMute>> loadById(Integer globalMuteId);
+    LiveData<List<GlobalMute>> loadById(Integer globalMuteId);
 
     @Query("SELECT COUNT(*) from globalmute")
     LiveData<Integer> countGlobalMutes();

@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.view.View;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.DAO.GlobalMuteDao;
 import sw801.remindersystem.Model.Persistence.DAO.PredefinedLocationDao;
@@ -16,7 +16,7 @@ import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
 public abstract class UserPreference {
-    public LiveData<ArrayList<GlobalMute>> getGlobalMuteList(View rootView) {
+    public LiveData<List<GlobalMute>> getGlobalMuteList(View rootView) {
         return AppDatabase.getInstance(rootView.getContext()).globalMuteDao().getAll();
     }
 
@@ -52,7 +52,7 @@ public abstract class UserPreference {
         }.execute(globalMute);
     }
 
-    public LiveData<ArrayList<PredefinedLocation>> getPredefinedLocationList(View rootView) {
+    public LiveData<List<PredefinedLocation>> getPredefinedLocationList(View rootView) {
         return AppDatabase.getInstance(rootView.getContext()).predefinedLocationDao().getAll();
     }
 
@@ -88,7 +88,7 @@ public abstract class UserPreference {
         }.execute(predefinedLocation);
     }
 
-    public LiveData<ArrayList<SmartDevice>> getSmartDeviceList(View rootView) {
+    public LiveData<List<SmartDevice>> getSmartDeviceList(View rootView) {
         return AppDatabase.getInstance(rootView.getContext()).smartDeviceDao().getAll();
     }
 

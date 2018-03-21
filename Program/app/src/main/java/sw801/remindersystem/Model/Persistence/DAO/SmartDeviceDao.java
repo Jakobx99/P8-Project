@@ -7,7 +7,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
@@ -18,13 +18,13 @@ import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 @Dao
 public interface SmartDeviceDao {
     @Query("SELECT * FROM smartdevice")
-    LiveData<ArrayList<SmartDevice>> getAll();
+    LiveData<List<SmartDevice>> getAll();
 
     @Query("SELECT * FROM smartdevice WHERE id IN (:smartDeviceIds)")
-    LiveData<ArrayList<SmartDevice>> loadAllByIds(Integer[] smartDeviceIds);
+    LiveData<List<SmartDevice>> loadAllByIds(Integer[] smartDeviceIds);
 
     @Query("SELECT * FROM smartdevice WHERE id == :smartDeviceId LIMIT 1")
-    LiveData<ArrayList<SmartDevice>> loadById(Integer smartDeviceId);
+    LiveData<List<SmartDevice>> loadById(Integer smartDeviceId);
 
     @Query("SELECT COUNT(*) from smartdevice")
     LiveData<Integer> countSmartDevices();

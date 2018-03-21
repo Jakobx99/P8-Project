@@ -7,7 +7,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import sw801.remindersystem.Model.Persistence.Entity.Event;
 
@@ -18,13 +18,13 @@ import sw801.remindersystem.Model.Persistence.Entity.Event;
 @Dao
 public interface EventDao {
     @Query("SELECT * FROM event")
-    LiveData<ArrayList<Event>> getAll();
+    LiveData<List<Event>> getAll();
 
     @Query("SELECT * FROM event WHERE id IN (:eventIds)")
-    LiveData<ArrayList<Event>> loadAllByIds(Integer[] eventIds);
+    LiveData<List<Event>> loadAllByIds(Integer[] eventIds);
 
     @Query("SELECT * FROM event WHERE id == :eventId LIMIT 1")
-    LiveData<ArrayList<Event>> loadById(Integer eventId);
+    LiveData<List<Event>> loadById(Integer eventId);
 
     @Query("SELECT COUNT(*) from event")
     LiveData<Integer> countEvents();
