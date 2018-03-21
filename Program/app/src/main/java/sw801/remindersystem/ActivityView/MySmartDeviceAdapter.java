@@ -2,6 +2,7 @@ package sw801.remindersystem.ActivityView;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class MySmartDeviceAdapter extends BaseAdapter{
 
     private Context mContext;
     private ArrayList<String> Title;
+    private String deviceName;
 
 
     public MySmartDeviceAdapter(Context context, ArrayList<String> text1) {
@@ -59,7 +61,10 @@ public class MySmartDeviceAdapter extends BaseAdapter{
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "Delete: " + Title.get(position), Toast.LENGTH_SHORT).show();
+                    Title.remove(position);
+                    notifyDataSetChanged();
+
+                    //TODO Remove from database
             }
         });
 
@@ -68,7 +73,10 @@ public class MySmartDeviceAdapter extends BaseAdapter{
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "Edit: " + Title.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, EditSmartDeviceActivity.class);
+                intent.putExtra(deviceName, Title.get(position));
+
+                mContext.startActivity(intent);
             }
         });
 
