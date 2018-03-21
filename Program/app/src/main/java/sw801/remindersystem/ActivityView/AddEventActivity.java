@@ -1,5 +1,6 @@
 package sw801.remindersystem.ActivityView;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,6 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
 
         markButton();
-
-
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
 
@@ -52,6 +51,7 @@ public class AddEventActivity extends AppCompatActivity {
         categories.add("Before this time");
         categories.add("At this time");
         categories.add("After this time");
+        categories.add("Between these times");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -62,7 +62,10 @@ public class AddEventActivity extends AppCompatActivity {
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
     }
-
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
 
 
 
