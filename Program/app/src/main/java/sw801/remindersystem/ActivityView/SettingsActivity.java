@@ -74,7 +74,8 @@ public class SettingsActivity extends AppCompatActivity  {
         preferredshopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SettingsActivity.this, "Preferred shopping pressed",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, ShoppingSettingActivity.class);
+                startActivity(intent);
             }
         });
 
