@@ -25,7 +25,12 @@
         <activity android:name=".ActivityView.EditSmartDeviceActivity" />
         <activity android:name=".ActivityView.GlobalMuteSettingActivity" />
         <activity android:name=".ActivityView.LocationSettingActivity" />
-        <activity android:name=".ActivityView.ShoppingSettingActivity"></activity>
+        <activity android:name=".ActivityView.ShoppingSettingActivity" />
+
+        <service
+            android:name=".ViewModel.NotificationService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

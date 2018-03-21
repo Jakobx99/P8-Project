@@ -51,7 +51,7 @@ public class MySmartDeviceFragment extends Fragment{
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(rootView.getContext(), AddEventActivity.class);
+                Intent intent = new Intent(rootView.getContext(), AddSmartDeviceActivity.class);
                 startActivity(intent);
             }
         });
