@@ -54,12 +54,12 @@ public class AccessPointListAdapter extends BaseAdapter {
         BridgeListItem item;
 
         if (convertView == null) {
-            //convertView = mInflater.inflate(R.layout.selectbridge_item, null);
+            convertView = mInflater.inflate(R.layout.selectbridge_item, null);
 
 
             item = new BridgeListItem();
-            //item.bridgeMac = (TextView) convertView.findViewById(R.id.bridge_mac);
-            //item.bridgeIp = (TextView) convertView.findViewById(R.id.bridge_ip);
+            item.bridgeMac = (TextView) convertView.findViewById(R.id.bridge_mac);
+            item.bridgeIp = (TextView) convertView.findViewById(R.id.bridge_ip);
 
             convertView.setTag(item);
         } else {
