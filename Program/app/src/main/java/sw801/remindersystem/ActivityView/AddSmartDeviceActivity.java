@@ -11,5 +11,9 @@ public class AddSmartDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_smart_device);
+
+
+
+        //TODO PROGRAM WHEN WE KNOW HOW TO ADD SMART DEVICES
     }
 }
