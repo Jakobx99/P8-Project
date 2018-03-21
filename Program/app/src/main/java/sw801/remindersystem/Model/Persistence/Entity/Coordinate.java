@@ -46,16 +46,16 @@ public class Coordinate {
         this.latitude = latitude;
     }
 
-    @Override
-    public String toString() {
-        return (longitude + ", " + latitude);
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return (longitude + ", " + latitude);
     }
 }

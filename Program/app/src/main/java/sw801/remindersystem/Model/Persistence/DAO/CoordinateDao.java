@@ -7,7 +7,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 
@@ -17,13 +17,13 @@ import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 @Dao
 public interface CoordinateDao {
     @Query("SELECT * FROM coordinate")
-    LiveData<List<Coordinate>> getAll();
+    LiveData<ArrayList<Coordinate>> getAll();
 
     @Query("SELECT * FROM coordinate WHERE id IN (:coordinateIds)")
-    LiveData<List<Coordinate>> loadAllByIds(Integer[] coordinateIds);
+    LiveData<ArrayList<Coordinate>> loadAllByIds(Integer[] coordinateIds);
 
     @Query("SELECT * FROM coordinate WHERE id == :coordinateId LIMIT 1")
-    LiveData<List<Coordinate>> loadById(Integer coordinateId);
+    LiveData<ArrayList<Coordinate>> loadById(Integer coordinateId);
 
     @Query("SELECT COUNT(*) from coordinate")
     LiveData<Integer> countCoordinates();
@@ -31,10 +31,12 @@ public interface CoordinateDao {
     @Insert
     void insertAll(Coordinate... coordinates);
 
+    @Insert
+    void insert(Coordinate coordinate);
+
     @Update
     void udpate(Coordinate coordinate);
 
     @Delete
     void delete(Coordinate coordinate);
-
 }

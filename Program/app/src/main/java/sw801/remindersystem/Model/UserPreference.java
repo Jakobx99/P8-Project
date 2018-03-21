@@ -1,6 +1,6 @@
 package sw801.remindersystem.Model;
 
-public class UserPreferences {
+public class UserPreference {
     /*
     private ArrayList<GlobalMute> GlobalMuteList;
     private ArrayList<PredefinedLocation> PredefList;
