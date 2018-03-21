@@ -2,8 +2,8 @@ package sw801.remindersystem.Model;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
+import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
 public abstract class UserPreference {
-    public LiveData<List<GlobalMute>> getGlobalMuteList(View rootView) {
-        return AppDatabase.getInstance(rootView.getContext()).globalMuteDao().getAll();
+    public static LiveData<List<GlobalMute>> getGlobalMuteList(Context currentContext) {
+        return AppDatabase.getInstance(currentContext).globalMuteDao().getAll();
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void addToGlobalMuteList(View rootView, GlobalMute globalMute) {
-        final GlobalMuteDao globalMuteDao = AppDatabase.getInstance(rootView.getContext()).globalMuteDao();
+    public static void addToGlobalMuteList(Context currentContext, GlobalMute globalMute) {
+        final GlobalMuteDao globalMuteDao = AppDatabase.getInstance(currentContext).globalMuteDao();
 
         new AsyncTask<GlobalMute, Void, Void>() {
             @Override
@@ -36,8 +36,8 @@ public abstract class UserPreference {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void removeFromGlobalMuteList(View rootView, GlobalMute globalMute) {
-        final GlobalMuteDao globalMuteDao = AppDatabase.getInstance(rootView.getContext()).globalMuteDao();
+    public static void removeFromGlobalMuteList(Context currentContext, GlobalMute globalMute) {
+        final GlobalMuteDao globalMuteDao = AppDatabase.getInstance(currentContext).globalMuteDao();
 
         new AsyncTask<GlobalMute, Void, Void>() {
             @Override
@@ -52,13 +52,13 @@ public abstract class UserPreference {
         }.execute(globalMute);
     }
 
-    public LiveData<List<PredefinedLocation>> getPredefinedLocationList(View rootView) {
-        return AppDatabase.getInstance(rootView.getContext()).predefinedLocationDao().getAll();
+    public static LiveData<List<PredefinedLocation>> getPredefinedLocationList(Context currentContext) {
+        return AppDatabase.getInstance(currentContext).predefinedLocationDao().getAll();
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void addToPredefinedLocationList(View rootView, PredefinedLocation predefinedLocation) {
-        final PredefinedLocationDao predefinedLocationDao = AppDatabase.getInstance(rootView.getContext()).predefinedLocationDao();
+    public static void addToPredefinedLocationList(Context currentContext, PredefinedLocation predefinedLocation) {
+        final PredefinedLocationDao predefinedLocationDao = AppDatabase.getInstance(currentContext).predefinedLocationDao();
 
         new AsyncTask<PredefinedLocation, Void, Void>() {
             @Override
@@ -72,8 +72,8 @@ public abstract class UserPreference {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void removeFromPredefinedLocationList(View rootView, PredefinedLocation predefinedLocation) {
-        final PredefinedLocationDao predefinedLocationDao = AppDatabase.getInstance(rootView.getContext()).predefinedLocationDao();
+    public static void removeFromPredefinedLocationList(Context currentContext, PredefinedLocation predefinedLocation) {
+        final PredefinedLocationDao predefinedLocationDao = AppDatabase.getInstance(currentContext).predefinedLocationDao();
 
         new AsyncTask<PredefinedLocation, Void, Void>() {
             @Override
@@ -88,13 +88,13 @@ public abstract class UserPreference {
         }.execute(predefinedLocation);
     }
 
-    public LiveData<List<SmartDevice>> getSmartDeviceList(View rootView) {
-        return AppDatabase.getInstance(rootView.getContext()).smartDeviceDao().getAll();
+    public static LiveData<List<SmartDevice>> getSmartDeviceList(Context currentContext) {
+        return AppDatabase.getInstance(currentContext).smartDeviceDao().getAll();
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void addToGlobalMuteList(View rootView, SmartDevice smartDevice) {
-        final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(rootView.getContext()).smartDeviceDao();
+    public static void addToSmartDeviceList(Context currentContext, SmartDevice smartDevice) {
+        final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(currentContext).smartDeviceDao();
 
         new AsyncTask<SmartDevice, Void, Void>() {
             @Override
@@ -108,8 +108,8 @@ public abstract class UserPreference {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void removeFromGlobalMuteList(View rootView, SmartDevice smartDevice) {
-        final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(rootView.getContext()).smartDeviceDao();
+    public static void removeFromSmartDeviceList(Context currentContext, SmartDevice smartDevice) {
+        final SmartDeviceDao smartDeviceDao = AppDatabase.getInstance(currentContext).smartDeviceDao();
 
         new AsyncTask<SmartDevice, Void, Void>() {
             @Override
