@@ -29,7 +29,7 @@ public class LocationSettingActivity extends AppCompatActivity {
         locationSettings = new ArrayList<String>();
         locationSettings.add("Home sweet home");
 
-        MySmartDeviceAdapter myAdapter = new MySmartDeviceAdapter(this, locationSettings);
+        LocationSettingAdapter myAdapter = new LocationSettingAdapter(this, locationSettings);
 
 
         listview.setAdapter(myAdapter);
@@ -47,4 +47,5 @@ public class LocationSettingActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Predefined location selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
             }
         });
-    }}
+    }
+}

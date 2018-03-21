@@ -25,6 +25,7 @@
         <activity android:name=".ActivityView.EditSmartDeviceActivity" />
         <activity android:name=".ActivityView.GlobalMuteSettingActivity" />
         <activity android:name=".ActivityView.LocationSettingActivity" />
+        <activity android:name=".ActivityView.EditGlobalMuteSettingActivity"/>
         <activity android:name=".ActivityView.ShoppingSettingActivity"></activity>
     </application>
 

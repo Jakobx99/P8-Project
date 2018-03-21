@@ -1,9 +1,15 @@
 package sw801.remindersystem.ActivityView;
 
+import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +21,8 @@ public class GlobalMuteSettingActivity extends AppCompatActivity {
 
     private ListView listview;
     ArrayList<String> globalMuteSettings;
+    private Context mContext;
+    public View view;
 
 
     @Override
@@ -23,28 +31,17 @@ public class GlobalMuteSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_global_mute);
 
 
-    listview = (ListView) this.findViewById(R.id.listView_myglobalmutesettings);
+        listview = (ListView) this.findViewById(R.id.listView_myglobalmutesettings);
 
-    //------Creation of list of smart devices
-    globalMuteSettings = new ArrayList<String>();
-        globalMuteSettings.add("Off at night");
+        //------Creation of list of smart devices
+        globalMuteSettings = new ArrayList<String>();
+        globalMuteSettings.add("Off at home");
 
-    GlobalMuteSettingAdapter myAdapter = new GlobalMuteSettingAdapter(this, globalMuteSettings);
+        GlobalMuteSettingAdapter myAdapter = new GlobalMuteSettingAdapter(this, globalMuteSettings);
 
 
         listview.setAdapter(myAdapter);
-    //------Creation of list of smart devices
+        //------Creation of list of smart devices
 
-
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-        // argument position gives the index of item which is clicked
-        public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
-        {
-            //Click for entire box
-            String selectedDevice=globalMuteSettings.get(position);
-            Toast.makeText(getApplicationContext(), "Global mute setting selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
-        }
-    });
-}}
+    }
+}
