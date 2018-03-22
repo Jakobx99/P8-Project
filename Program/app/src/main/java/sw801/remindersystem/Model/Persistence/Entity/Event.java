@@ -25,8 +25,8 @@ public class Event {
     @ColumnInfo(name = "IntentId")
     private String IntentId;
 
-    @ColumnInfo(name = "AlarmID")
-    private String AlarmID;
+    @ColumnInfo(name = "AlarmId")
+    private String AlarmId;
 
     public Integer getId() {
         return id;
@@ -52,11 +52,11 @@ public class Event {
         IntentId = intentId;
     }
 
-    public String getAlarmID() {
-        return AlarmID;
+    public String getAlarmId() {
+        return AlarmId;
     }
 
-    public void setAlarmID(String alarmID) {
-        AlarmID = alarmID;
+    public void setAlarmId(String alarmID) {
+        AlarmId = alarmID;
     }
 }
