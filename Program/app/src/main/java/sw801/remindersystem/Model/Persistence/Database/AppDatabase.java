@@ -9,6 +9,7 @@ import android.content.Context;
 import sw801.remindersystem.Model.Persistence.Converter.DateTypeConverter;
 import sw801.remindersystem.Model.Persistence.DAO.CoordinateDao;
 import sw801.remindersystem.Model.Persistence.DAO.EventDao;
+import sw801.remindersystem.Model.Persistence.DAO.EventWithDataDao;
 import sw801.remindersystem.Model.Persistence.DAO.GlobalMuteDao;
 import sw801.remindersystem.Model.Persistence.DAO.PredefinedLocationDao;
 import sw801.remindersystem.Model.Persistence.DAO.SmartDeviceDao;
@@ -74,4 +75,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PredefinedLocationDao predefinedLocationDao();
 
     public abstract SmartDeviceDao smartDeviceDao();
+
+    public abstract EventWithDataDao eventWithDataDao();
 }
