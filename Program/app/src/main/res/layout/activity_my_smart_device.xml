@@ -5,7 +5,7 @@
     android:id="@+id/mysmartdeviceactivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.MySmartDeviceFragment">
+    tools:context="sw801.remindersystem.ActivityView.Fragment.MySmartDeviceFragment">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

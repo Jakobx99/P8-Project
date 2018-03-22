@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Adapter;
 
 
 import android.content.Context;
@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Activity.EditSmartDeviceActivity;
 import sw801.remindersystem.R;
 
 /**
