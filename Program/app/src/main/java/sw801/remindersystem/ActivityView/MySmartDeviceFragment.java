@@ -1,42 +1,34 @@
 package sw801.remindersystem.ActivityView;
 
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-import android.support.v4.app.Fragment;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import sw801.remindersystem.ActivityView.Adapter.SmartDeviceAdapter;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.Model.UserPreference;
 import sw801.remindersystem.R;
 
 
-public class MySmartDeviceFragment extends Fragment{
+public class MySmartDeviceFragment extends Fragment {
     //Import viewmodel here
 
+    ArrayList<String> smartDevices;
     //Setup of burger menu
     private ListView listview;
-    ArrayList<String> smartDevices;
-	
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,14 +39,19 @@ public class MySmartDeviceFragment extends Fragment{
         listview = (ListView) rootView.findViewById(R.id.listView_mysmartdevices);
 
         //------Creation of list of smart devices
-        smartDevices = new ArrayList<String>();
-        smartDevices.add("Hue");
-        smartDevices.add("Nest");
+        LiveData<List<SmartDevice>> smartDevices = UserPreference.getSmartDeviceList(rootView.getContext());
+        smartDevices.observe(this, new Observer<List<SmartDevice>>() {
+            @Override
+            public void onChanged(@Nullable List<SmartDevice> smartDevices) {
+                SmartDeviceAdapter smartDeviceAdapter = new SmartDeviceAdapter(
+                        rootView.getContext(),
+                        smartDevices
+                );
 
-        MySmartDeviceAdapter myAdapter = new MySmartDeviceAdapter(rootView.getContext(), smartDevices);
+                listview.setAdapter(smartDeviceAdapter);
 
-
-        listview.setAdapter(myAdapter);
+            }
+        });
         //------Creation of list of smart devices
 
         //Add new smart device
@@ -63,8 +60,14 @@ public class MySmartDeviceFragment extends Fragment{
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(rootView.getContext(), AddEventActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(rootView.getContext(), AddSmartDeviceActivity.class);
+                //startActivity(intent);
+
+                SmartDevice smartDevice = new SmartDevice();
+                smartDevice.setDeviceName("HEEEY");
+                smartDevice.setActive(false);
+
+                UserPreference.addToSmartDeviceList(getContext(),smartDevice);
             }
         });
         return rootView;

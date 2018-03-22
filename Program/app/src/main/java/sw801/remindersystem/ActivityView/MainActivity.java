@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //intent = new Intent(SettingsActivity.this, MySmartDeviceFragment.class);
                 break;
             case R.id.menuaddsmartdevies:
-                Toast.makeText(this, "TESRE",Toast.LENGTH_SHORT).show();
+                Intent ac = new Intent(MainActivity.this,AddSmartDeviceActivity.class);
+                startActivity(ac);
                 break;
             case R.id.menusettings:
                 break;
