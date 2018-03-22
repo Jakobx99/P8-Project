@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.Activity;
 import android.arch.lifecycle.LiveData;

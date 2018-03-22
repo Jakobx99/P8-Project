@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Fragment;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
+import sw801.remindersystem.ActivityView.Activity.MainActivity;
+import sw801.remindersystem.ActivityView.Activity.SettingsActivity;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 

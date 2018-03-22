@@ -1,9 +1,8 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +13,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import sw801.remindersystem.ActivityView.Fragment.TimePickerFragment;
 import sw801.remindersystem.R;
 
 public class AddEventActivity extends AppCompatActivity {
