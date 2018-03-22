@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import sw801.remindersystem.Model.GlobalMute;
 import sw801.remindersystem.R;
 
 public class SettingsActivity extends AppCompatActivity  {
@@ -45,7 +46,8 @@ public class SettingsActivity extends AppCompatActivity  {
         globalmute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SettingsActivity.this, "Global mute pressed",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, GlobalMuteSettingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -53,7 +55,8 @@ public class SettingsActivity extends AppCompatActivity  {
         predefinedlocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SettingsActivity.this, "Predefined locations pressed",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, LocationSettingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -61,7 +64,8 @@ public class SettingsActivity extends AppCompatActivity  {
         preferredshopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SettingsActivity.this, "Preferred shopping pressed",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, ShoppingSettingActivity.class);
+                startActivity(intent);
             }
         });
 
