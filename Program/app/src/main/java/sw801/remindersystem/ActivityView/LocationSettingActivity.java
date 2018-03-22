@@ -1,11 +1,11 @@
 package sw801.remindersystem.ActivityView;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,17 +35,15 @@ public class LocationSettingActivity extends AppCompatActivity {
         listview.setAdapter(myAdapter);
         //------Creation of list of smart devices
 
-
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            // argument position gives the index of item which is clicked
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
-            {
-                //Click for entire box
-                String selectedDevice=locationSettings.get(position);
-                Toast.makeText(getApplicationContext(), "Predefined location selected : "+selectedDevice,   Toast.LENGTH_LONG).show();
+        ImageView add = findViewById(R.id.imageView_mysmartdeviceadd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LocationSettingActivity.this, AddLocationSettingActivity.class);
+                startActivity(intent);
             }
         });
+
+
     }
 }

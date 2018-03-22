@@ -1,6 +1,7 @@
 package sw801.remindersystem.ActivityView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class LocationSettingAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<String> Title;
+    private String locationSettingName;
 
 
     public LocationSettingAdapter(Context context, ArrayList<String> text1) {
@@ -57,7 +59,10 @@ public class LocationSettingAdapter extends BaseAdapter {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "Delete: " + Title.get(position), Toast.LENGTH_SHORT).show();
+                Title.remove(position);
+                notifyDataSetChanged();
+
+                //TODO Remove from database
             }
         });
 
@@ -66,7 +71,10 @@ public class LocationSettingAdapter extends BaseAdapter {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "Edit: " + Title.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, EditLocationSettingActivity.class);
+                intent.putExtra(locationSettingName, Title.get(position));
+
+                mContext.startActivity(intent);
             }
         });
 

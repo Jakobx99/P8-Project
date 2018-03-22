@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.content.Context;
+
+import sw801.remindersystem.MapsActivity;
 import sw801.remindersystem.Model.Events;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
@@ -32,13 +34,13 @@ public class HomeFragment extends Fragment{
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //((MainActivity)getActivity()).ChangeToEvents();
+                Intent intent = new Intent(getActivity(), AddEventActivity.class);
 
                 //((MainActivity)getActivity()).mViewPager.setCurrentItem(1);
                 //((MainActivity)getActivity()).mSectionsPagerAdapter.notifyDataSetChanged();
                 //((MainActivity)getActivity()).getSupportFragmentManager().findFragmentByTag("Events");
                 // Intent intent = new Intent(HomeFragment.this, MyCreateActivity.class);
-                // startActivity(intent);
+                startActivity(intent);
             }
         });
 

@@ -14,8 +14,8 @@ public class AddGlobalMuteSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
-        setTitle("Notify me - Add event");
+        setContentView(R.layout.activity_add_global_mute);
+        setTitle("Notify me - Add global mute");
 
 
     }
