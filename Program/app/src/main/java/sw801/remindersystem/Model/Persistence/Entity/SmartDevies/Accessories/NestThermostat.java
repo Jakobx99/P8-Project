@@ -13,20 +13,20 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Kasper Helsted on 3/21/2018.
  */
 @Entity(foreignKeys = @ForeignKey(
-        entity = NestHub.class, parentColumns = "id", childColumns = "nest_hub_id", onDelete = CASCADE
+        entity = NestHub.class, parentColumns = "id", childColumns = "nestHubId", onDelete = CASCADE
 ))
 public class NestThermostat {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
-    @ColumnInfo(name = "nest_hub_id")
+    @ColumnInfo(name = "nestHubId")
     private Integer nestHubId;
 
     @ColumnInfo(name = "name")
     private String name;
 
     @ColumnInfo(name = "deviceId")
-    private Integer deviceId;
+    private String deviceId;
 
     public Integer getId() {
         return id;
@@ -52,11 +52,11 @@ public class NestThermostat {
         this.name = name;
     }
 
-    public Integer getDeviceId() {
+    public String getDeviceId() {
         return deviceId;
     }
 
-    public void setDeviceId(Integer deviceId) {
+    public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
 }

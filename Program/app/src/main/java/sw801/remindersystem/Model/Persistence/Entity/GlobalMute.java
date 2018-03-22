@@ -18,10 +18,10 @@ public class GlobalMute {
     @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo(name = "start_time")
+    @ColumnInfo(name = "startTime")
     private Date startTime;
 
-    @ColumnInfo(name = "end_time")
+    @ColumnInfo(name = "endTime")
     private Date endTime;
 
     @ColumnInfo(name = "note")
