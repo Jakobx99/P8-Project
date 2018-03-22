@@ -1,7 +1,6 @@
 package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.Activity;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,13 +30,14 @@ public class EditSmartDeviceActivity extends AppCompatActivity {
 
         deviceId = i.getIntExtra("device_id", 0);
 
-        LiveData<SmartDevice> smartDevice = UserPreference.getSmartDeviceById(getApplicationContext(), deviceId);
-
-        smartDevice.observe(this, new Observer<SmartDevice>() {
+        UserPreference.getSmartDeviceById(getApplicationContext(), deviceId).observe(this, new Observer<SmartDevice>() {
             @Override
             public void onChanged(@Nullable final SmartDevice smartDevice) {
-                if (smartDevice == null)
+                if (smartDevice == null) {
                     finish();
+
+                }
+
 
                 final TextView textView = findViewById(R.id.textView_editdeviceName);
                 textView.setText(smartDevice.getDeviceName());
