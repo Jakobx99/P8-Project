@@ -1,6 +1,6 @@
 package sw801.remindersystem.ActivityView.Adapter;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,31 +10,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+
+import java.util.ArrayList;
 
 import sw801.remindersystem.ActivityView.Activity.EditSmartDeviceActivity;
-import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
-import sw801.remindersystem.Model.UserPreference;
 import sw801.remindersystem.R;
 
 /**
- * Created by Kasper Helsted on 3/21/2018.
+ * Created by Jakob on 16-03-2018.
  */
 
-public class SmartDeviceAdapter extends BaseAdapter {
+public class MySmartDeviceAdapter extends BaseAdapter{
+
     private Context mContext;
-    private List<SmartDevice> smartDevices;
+    private ArrayList<String> Title;
     private String deviceName;
 
 
-    public SmartDeviceAdapter(Context context, List<SmartDevice> smartDevices_) {
+    public MySmartDeviceAdapter(Context context, ArrayList<String> text1) {
         mContext = context;
-        smartDevices = smartDevices_;
+        Title = text1;
     }
 
     public int getCount() {
         // TODO Auto-generated method stub
-        return smartDevices.size();
+        return Title.size();
     }
 
     public Object getItem(int arg0) {
@@ -47,27 +47,24 @@ public class SmartDeviceAdapter extends BaseAdapter {
         return position;
     }
 
-    @SuppressLint({"ViewHolder", "SetTextI18n"})
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = LayoutInflater.from(mContext);
-
-        View row = inflater.inflate(R.layout.mysmartdeviceslistlayout, parent, false);
-        final TextView title = (TextView) row.findViewById(R.id.row_textview);
-
-        final SmartDevice smartDevice = smartDevices.get(position);
-
-        title.setText(smartDevice.toString());
+        View row;
+        row = inflater.inflate(R.layout.mysmartdeviceslistlayout, parent, false);
+        final TextView title;
+        title = (TextView) row.findViewById(R.id.row_textview);
+        title.setText(Title.get(position));
 
         //Click event for delete buttons
         ImageView delete = row.findViewById(R.id.imageView_mysmartdevicedelete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserPreference.removeFromSmartDeviceList(
-                        mContext,
-                        smartDevice
-                );
-                notifyDataSetChanged();
+                    Title.remove(position);
+                    notifyDataSetChanged();
+
+                    //TODO Remove from database
             }
         });
 
@@ -77,14 +74,13 @@ public class SmartDeviceAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, EditSmartDeviceActivity.class);
-                intent.putExtra(
-                        "device_id",
-                        smartDevice.getId()
-                );
+                intent.putExtra(deviceName, Title.get(position));
 
                 mContext.startActivity(intent);
             }
         });
+
+
 
         return (row);
     }

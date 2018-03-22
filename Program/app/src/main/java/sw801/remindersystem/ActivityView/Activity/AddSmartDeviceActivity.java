@@ -1,6 +1,5 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +21,8 @@ import com.philips.lighting.model.PHHueParsingError;
 
 import java.util.List;
 
+import sw801.remindersystem.ActivityView.Adapter.AccessPointListAdapter;
+import sw801.remindersystem.ActivityView.Fragment.PHWizardAlertDialog;
 import sw801.remindersystem.Library.HueSharedPreferences;
 import sw801.remindersystem.R;
 

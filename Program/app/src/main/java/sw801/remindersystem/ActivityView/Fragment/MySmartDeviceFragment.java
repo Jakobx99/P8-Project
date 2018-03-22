@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Fragment;
 
 
 import android.arch.lifecycle.Observer;

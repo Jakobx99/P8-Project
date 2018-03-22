@@ -9,8 +9,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
-import sw801.remindersystem.ActivityView.AddEventActivity;
-import sw801.remindersystem.ActivityView.MyEventsFragment;
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
 import sw801.remindersystem.R;
 
 public class NotificationService extends Service {

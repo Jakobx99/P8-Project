@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

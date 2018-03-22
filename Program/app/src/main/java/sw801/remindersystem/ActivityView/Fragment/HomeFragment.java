@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Fragment;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
+import sw801.remindersystem.ActivityView.Activity.MainActivity;
+import sw801.remindersystem.ActivityView.Activity.SettingsActivity;
 import sw801.remindersystem.R;
 import sw801.remindersystem.ViewModel.HomeActivityViewModel;
 
@@ -28,13 +31,13 @@ public class HomeFragment extends Fragment{
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //((MainActivity)getActivity()).ChangeToEvents();
+                Intent intent = new Intent(getActivity(), AddEventActivity.class);
 
                 //((MainActivity)getActivity()).mViewPager.setCurrentItem(1);
                 //((MainActivity)getActivity()).mSectionsPagerAdapter.notifyDataSetChanged();
                 //((MainActivity)getActivity()).getSupportFragmentManager().findFragmentByTag("Events");
                 // Intent intent = new Intent(HomeFragment.this, MyCreateActivity.class);
-                // startActivity(intent);
+                startActivity(intent);
             }
         });
 

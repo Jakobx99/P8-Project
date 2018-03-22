@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Adapter;
 
 import java.util.List;
 import android.content.Context;

@@ -1,5 +1,4 @@
-package sw801.remindersystem.ActivityView;
-
+package sw801.remindersystem.ActivityView.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,25 +8,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Activity.EditGlobalMuteSettingActivity;
 import sw801.remindersystem.R;
 
 /**
- * Created by Jakob on 16-03-2018.
+ * Created by clubd on 20-03-2018.
  */
 
-public class MySmartDeviceAdapter extends BaseAdapter{
+public class GlobalMuteSettingAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<String> Title;
-    private String deviceName;
+    private String globalSettingName;
 
 
-    public MySmartDeviceAdapter(Context context, ArrayList<String> text1) {
+    public GlobalMuteSettingAdapter(Context context, ArrayList<String> text1) {
         mContext = context;
         Title = text1;
     }
@@ -51,30 +49,30 @@ public class MySmartDeviceAdapter extends BaseAdapter{
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View row;
-        row = inflater.inflate(R.layout.mysmartdeviceslistlayout, parent, false);
+        row = inflater.inflate(R.layout.globalmutelistlayout, parent, false);
         final TextView title;
         title = (TextView) row.findViewById(R.id.row_textview);
         title.setText(Title.get(position));
 
         //Click event for delete buttons
-        ImageView delete = row.findViewById(R.id.imageView_mysmartdevicedelete);
+        ImageView delete = row.findViewById(R.id.imageView_globalmutedelete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Title.remove(position);
-                    notifyDataSetChanged();
+                Title.remove(position);
+                notifyDataSetChanged();
 
-                    //TODO Remove from database
+                //TODO Remove from database
             }
         });
 
         //Click event for edit buttons
-        ImageView edit = row.findViewById(R.id.imageView_mysmartdeviceedit);
+        ImageView edit = row.findViewById(R.id.imageView_globalmuteedit);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, EditSmartDeviceActivity.class);
-                intent.putExtra(deviceName, Title.get(position));
+                Intent intent = new Intent(mContext, EditGlobalMuteSettingActivity.class);
+                intent.putExtra(globalSettingName, Title.get(position));
 
                 mContext.startActivity(intent);
             }

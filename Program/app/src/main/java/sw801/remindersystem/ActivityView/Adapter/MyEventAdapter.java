@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Activity.EditEventActivity;
 import sw801.remindersystem.R;
 
 /**
