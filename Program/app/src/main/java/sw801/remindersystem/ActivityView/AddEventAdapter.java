@@ -53,16 +53,16 @@ public class AddEventAdapter extends BaseAdapter {
         TextView title;
         title = (TextView) row.findViewById(R.id.addEventDoThis);
         title.setText(Title.get(position));
-        ImageButton add = row.findViewById(R.id.addEventAddCondition);
+        //ImageButton add = row.findViewById(R.id.addEventAddCondition);
 
 
-        add.setOnClickListener(new View.OnClickListener() {
+        /*add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
             }
-        });
+        });*/
 
 
 

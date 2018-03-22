@@ -1,5 +1,6 @@
 package sw801.remindersystem.ActivityView;
 
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -32,32 +34,25 @@ public class AddEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
+        //---Calls the mark functions to mark a day in the day picker.
         markButton();
-        // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
-        //listview = (ListView) findViewById(R.id.addEventListview);
 
-        //------Creation of list of smart devices
+        //------Creation of list of "do this"
         addMyEvents = new ArrayList<String>();
-        addMyEvents.add("Do this:");
-
-
-
-
+        addMyEvents.add("Choose what the event should trigger");
 
         LinearLayout doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
         ListAdapter myAdapter = new AddEventAdapter(this, addMyEvents);
 
-
-
         final int adapterCount = myAdapter.getCount();
-
         for (int i = 0; i < adapterCount; i++) {
             View item = myAdapter.getView(i, null, null);
-
             doThis.addView(item);
         }
-
+        //TextView textView = (TextView) findViewById(R.id.addEventDoThis);
+       // textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_black_18dp, 0, 0, 0);
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
 
         //------Creation of list of smart devices
         // Spinner click listener
@@ -80,9 +75,9 @@ public class AddEventActivity extends AppCompatActivity {
         });
 
 
-
         final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
         final Button betweenClock = findViewById(R.id.timePickButton2);
+
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("Before this time");
@@ -127,13 +122,10 @@ public class AddEventActivity extends AppCompatActivity {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
-
     public void showNotificationOrSmartdevice(View v){
         DialogFragment newFragment = new NotificationOrSmartdeviceFragment();
         newFragment.show(getSupportFragmentManager(), "notificationOrSmartdevice");
     }
-
-
 
     private void markButton(){
         //Day buttons
@@ -181,6 +173,5 @@ public class AddEventActivity extends AppCompatActivity {
 
 
     }
-
 
 }
