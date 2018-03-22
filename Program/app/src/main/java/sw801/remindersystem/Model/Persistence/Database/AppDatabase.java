@@ -13,6 +13,8 @@ import sw801.remindersystem.Model.Persistence.DAO.EventWithDataDao;
 import sw801.remindersystem.Model.Persistence.DAO.GlobalMuteDao;
 import sw801.remindersystem.Model.Persistence.DAO.PredefinedLocationDao;
 import sw801.remindersystem.Model.Persistence.DAO.SmartDeviceDao;
+import sw801.remindersystem.Model.Persistence.DAO.TriggerDao;
+import sw801.remindersystem.Model.Persistence.DAO.WhenDao;
 import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 import sw801.remindersystem.Model.Persistence.Entity.Event;
 import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
@@ -77,4 +79,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SmartDeviceDao smartDeviceDao();
 
     public abstract EventWithDataDao eventWithDataDao();
+
+    public abstract TriggerDao triggerDao();
+
+    public abstract WhenDao whenDao();
 }
