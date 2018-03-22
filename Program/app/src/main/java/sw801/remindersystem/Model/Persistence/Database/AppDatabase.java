@@ -9,20 +9,43 @@ import android.content.Context;
 import sw801.remindersystem.Model.Persistence.Converter.DateTypeConverter;
 import sw801.remindersystem.Model.Persistence.DAO.CoordinateDao;
 import sw801.remindersystem.Model.Persistence.DAO.EventDao;
+import sw801.remindersystem.Model.Persistence.DAO.EventWithDataDao;
 import sw801.remindersystem.Model.Persistence.DAO.GlobalMuteDao;
 import sw801.remindersystem.Model.Persistence.DAO.PredefinedLocationDao;
 import sw801.remindersystem.Model.Persistence.DAO.SmartDeviceDao;
+import sw801.remindersystem.Model.Persistence.DAO.TriggerDao;
+import sw801.remindersystem.Model.Persistence.DAO.WhenDao;
 import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 import sw801.remindersystem.Model.Persistence.Entity.Event;
 import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.HueLightbulbRGB;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.HueLightbulbWhite;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.NestThermostat;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.HueBridge;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.NestHub;
+import sw801.remindersystem.Model.Persistence.Entity.Trigger;
+import sw801.remindersystem.Model.Persistence.Entity.When;
 
 /**
  * Created by Kasper Helsted on 3/15/2018.
  */
 
-@Database(entities = {Coordinate.class, Event.class, GlobalMute.class, PredefinedLocation.class, SmartDevice.class}, version = 1, exportSchema = false)
+@Database(entities = {
+        Coordinate.class,
+        Event.class,
+        When.class,
+        Trigger.class,
+        GlobalMute.class,
+        PredefinedLocation.class,
+        SmartDevice.class,
+        HueBridge.class,
+        NestHub.class,
+        NestThermostat.class,
+        HueLightbulbRGB.class,
+        HueLightbulbWhite.class
+}, version = 1)
 @TypeConverters({DateTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -40,7 +63,8 @@ public abstract class AppDatabase extends RoomDatabase {
         return Room.databaseBuilder(
                 context,
                 AppDatabase.class,
-                DATABASE_NAME).build();
+                DATABASE_NAME
+        ).fallbackToDestructiveMigration().build();
     }
 
 
@@ -53,4 +77,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PredefinedLocationDao predefinedLocationDao();
 
     public abstract SmartDeviceDao smartDeviceDao();
+
+    public abstract EventWithDataDao eventWithDataDao();
+
+    public abstract TriggerDao triggerDao();
+
+    public abstract WhenDao whenDao();
 }
