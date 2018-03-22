@@ -17,12 +17,30 @@ import sw801.remindersystem.Model.Persistence.Entity.Event;
 import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.HueLightbulbRGB;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.HueLightbulbWhite;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.NestThermostat;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.HueBridge;
+import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.NestHub;
+import sw801.remindersystem.Model.Persistence.Entity.When;
 
 /**
  * Created by Kasper Helsted on 3/15/2018.
  */
 
-@Database(entities = {Coordinate.class, Event.class, GlobalMute.class, PredefinedLocation.class, SmartDevice.class}, version = 1, exportSchema = false)
+@Database(entities = {
+        Coordinate.class,
+        Event.class,
+        When.class,
+        GlobalMute.class,
+        PredefinedLocation.class,
+        SmartDevice.class,
+        HueBridge.class,
+        NestHub.class,
+        NestThermostat.class,
+        HueLightbulbRGB.class,
+        HueLightbulbWhite.class
+}, version = 1, exportSchema = false)
 @TypeConverters({DateTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -40,7 +58,8 @@ public abstract class AppDatabase extends RoomDatabase {
         return Room.databaseBuilder(
                 context,
                 AppDatabase.class,
-                DATABASE_NAME).build();
+                DATABASE_NAME
+        ).fallbackToDestructiveMigration().build();
     }
 
 

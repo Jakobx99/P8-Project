@@ -35,8 +35,6 @@ public class SmartDevice {
     }
 
     public Boolean getActive() {
-        if(active == null)
-            return false;
         return active;
     }
 

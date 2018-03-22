@@ -21,8 +21,8 @@ public class PredefinedLocation {
     @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo(name = "coordinate_id")
-    private Integer coordinate_id;
+    @ColumnInfo(name = "coordinateId")
+    private Integer coordinateId;
 
     public Integer getId() {
         return id;
@@ -40,11 +40,11 @@ public class PredefinedLocation {
         this.name = name;
     }
 
-    public Integer getCoordinate_id() {
-        return coordinate_id;
+    public Integer getCoordinateId() {
+        return coordinateId;
     }
 
-    public void setCoordinate_id(Integer coordinate_id) {
-        this.coordinate_id = coordinate_id;
+    public void setCoordinateId(Integer coordinateId) {
+        this.coordinateId = coordinateId;
     }
 }

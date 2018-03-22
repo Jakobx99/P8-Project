@@ -24,9 +24,6 @@ public class GlobalMute {
     @ColumnInfo(name = "end_time")
     private Date endTime;
 
-    @ColumnInfo(name = "coordinate_id")
-    private Integer coordinate_id;
-
     @ColumnInfo(name = "note")
     private String note;
 
@@ -68,13 +65,5 @@ public class GlobalMute {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCoordinate_id() {
-        return coordinate_id;
-    }
-
-    public void setCoordinate_id(Integer coordinate_id) {
-        this.coordinate_id = coordinate_id;
     }
 }

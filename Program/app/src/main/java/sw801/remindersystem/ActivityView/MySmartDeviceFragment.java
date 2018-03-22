@@ -1,7 +1,6 @@
 package sw801.remindersystem.ActivityView;
 
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,8 +38,7 @@ public class MySmartDeviceFragment extends Fragment {
         listview = (ListView) rootView.findViewById(R.id.listView_mysmartdevices);
 
         //------Creation of list of smart devices
-        LiveData<List<SmartDevice>> smartDevices = UserPreference.getSmartDeviceList(rootView.getContext());
-        smartDevices.observe(this, new Observer<List<SmartDevice>>() {
+        UserPreference.getSmartDeviceList(rootView.getContext()).observe(this, new Observer<List<SmartDevice>>() {
             @Override
             public void onChanged(@Nullable List<SmartDevice> smartDevices) {
                 SmartDeviceAdapter smartDeviceAdapter = new SmartDeviceAdapter(
@@ -60,14 +58,16 @@ public class MySmartDeviceFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(rootView.getContext(), AddSmartDeviceActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(rootView.getContext(), AddSmartDeviceActivity.class);
+                startActivity(intent);
 
+                /*
                 SmartDevice smartDevice = new SmartDevice();
                 smartDevice.setDeviceName("HEEEY");
                 smartDevice.setActive(false);
 
                 UserPreference.addToSmartDeviceList(getContext(),smartDevice);
+                */
             }
         });
         return rootView;
