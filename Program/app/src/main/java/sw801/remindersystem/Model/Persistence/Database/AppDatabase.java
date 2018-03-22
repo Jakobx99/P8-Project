@@ -22,6 +22,7 @@ import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.Hue
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories.NestThermostat;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.HueBridge;
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.NestHub;
+import sw801.remindersystem.Model.Persistence.Entity.Trigger;
 import sw801.remindersystem.Model.Persistence.Entity.When;
 
 /**
@@ -32,6 +33,7 @@ import sw801.remindersystem.Model.Persistence.Entity.When;
         Coordinate.class,
         Event.class,
         When.class,
+        Trigger.class,
         GlobalMute.class,
         PredefinedLocation.class,
         SmartDevice.class,
