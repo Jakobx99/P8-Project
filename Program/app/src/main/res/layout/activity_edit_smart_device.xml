@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context="sw801.remindersystem.ActivityView.EditSmartDeviceActivity">
+    tools:context="sw801.remindersystem.ActivityView.Activity.EditSmartDeviceActivity">
 
     <TextView
         android:id="@+id/textView_EditsmartdeviceTitle"

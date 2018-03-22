@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,31 +10,30 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import sw801.remindersystem.R;
 
 /**
- * Created by clubd on 21-03-2018.
+ * Created by clubd on 22-03-2018.
  */
 
-public class EditGlobalMuteSettingActivity extends AppCompatActivity {
+public class EditLocationSettingActivity extends AppCompatActivity {
 
-    private String globalSettingName;
+    private String locationSettingName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_global_mute);
+        setContentView(R.layout.activity_edit_location_setting);
         Intent i = getIntent();
-        globalSettingName = i.getStringExtra(globalSettingName);
+        locationSettingName = i.getStringExtra(locationSettingName);
 
-        final TextView textView = findViewById(R.id.textView_editglobalmutename);
-        textView.setText(globalSettingName);
+        final TextView textView = findViewById(R.id.textView_editlocationsettingname);
+        textView.setText(locationSettingName);
 
         final EditText editTextName = findViewById(R.id.editText_editname);
-        editTextName.setText(globalSettingName);
+        editTextName.setText(locationSettingName);
 
         editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -44,7 +43,7 @@ public class EditGlobalMuteSettingActivity extends AppCompatActivity {
                     //Remove focus and hide keyboard
 
                     textView.setText(editTextName.getText());
-                    findViewById(R.id.editGlobalMuteLayout).requestFocus();
+                    findViewById(R.id.editLocationSettingLayout).requestFocus();
 
                     //Hide keyboard
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -56,7 +55,7 @@ public class EditGlobalMuteSettingActivity extends AppCompatActivity {
             }
         });
 
-        Button confirmButton = findViewById(R.id.button_editGlobalMuteConfirm);
+        Button confirmButton = findViewById(R.id.button_editLocationSettingConfirm);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

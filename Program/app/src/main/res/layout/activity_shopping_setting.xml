@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.ShoppingSettingActivity">
+    tools:context="sw801.remindersystem.ActivityView.Activity.ShoppingSettingActivity">
 
     <TextView
         android:id="@+id/textViewCreateEvent"

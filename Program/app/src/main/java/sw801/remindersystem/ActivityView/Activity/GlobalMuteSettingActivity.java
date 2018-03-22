@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Adapter.GlobalMuteSettingAdapter;
 import sw801.remindersystem.R;
 
 public class GlobalMuteSettingActivity extends AppCompatActivity {

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sw801.remindersystem">
-<<<<<<< HEAD
-
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -17,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityView.MainActivity"
+            android:name=".ActivityView.Activity.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,27 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityView.SettingsActivity" />
-        <activity android:name=".ActivityView.AddEventActivity" />
-        <activity android:name=".ActivityView.EditEventActivity" />
-        <activity android:name=".ActivityView.AddSmartDeviceActivity" />
-        <activity android:name=".ActivityView.EditSmartDeviceActivity" />
-        <activity android:name=".ActivityView.GlobalMuteSettingActivity" />
-        <activity android:name=".ActivityView.AddGlobalMuteSettingActivity" />
-        <activity android:name=".ActivityView.LocationSettingActivity" />
-<<<<<<< HEAD
-        <activity android:name=".ActivityView.EditGlobalMuteSettingActivity" />
-        <activity android:name=".ActivityView.EditLocationSettingActivity" />
-        <activity android:name=".ActivityView.AddLocationSettingActivity"/>
-        <activity android:name=".ActivityView.ShoppingSettingActivity" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
+        <activity android:name=".ActivityView.Activity.SettingsActivity" />
+        <activity android:name=".ActivityView.Activity.AddEventActivity" />
+        <activity android:name=".ActivityView.Activity.EditEventActivity" />
+        <activity android:name=".ActivityView.Activity.AddSmartDeviceActivity" />
+        <activity android:name=".ActivityView.Activity.EditSmartDeviceActivity" />
+        <activity android:name=".ActivityView.Activity.GlobalMuteSettingActivity" />
+        <activity android:name=".ActivityView.Activity.LocationSettingActivity" />
+        <activity android:name=".ActivityView.Activity.ShoppingSettingActivity" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

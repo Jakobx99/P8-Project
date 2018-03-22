@@ -1,4 +1,4 @@
-package sw801.remindersystem.ActivityView;
+package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,8 +17,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+
+import sw801.remindersystem.ActivityView.Fragment.HomeFragment;
+import sw801.remindersystem.ActivityView.Fragment.MyEventsFragment;
+import sw801.remindersystem.ActivityView.Fragment.MySmartDeviceFragment;
 import sw801.remindersystem.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -189,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    void ChangeToEvents(){
+    public void ChangeToEvents(){
         // Create fragment and give it an argument specifying the article it should show
         MyEventsFragment newFragment = new MyEventsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -208,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    void ChangeToSmartDevice(){
+    public void ChangeToSmartDevice(){
         // Create fragment and give it an argument specifying the article it should show
         MySmartDeviceFragment newFragment = new MySmartDeviceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
