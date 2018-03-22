@@ -22,7 +22,9 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import sw801.remindersystem.ActivityView.AddEventAdapter;
 import sw801.remindersystem.ActivityView.Fragment.TimePickerFragment;
+import sw801.remindersystem.ActivityView.NotificationOrSmartdeviceFragment;
 import sw801.remindersystem.R;
 
 public class AddEventActivity extends AppCompatActivity {

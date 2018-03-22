@@ -1,5 +1,6 @@
 package sw801.remindersystem.ActivityView.Fragment;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
 import sw801.remindersystem.ActivityView.Adapter.MyEventAdapter;
 import sw801.remindersystem.R;
 
