@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
 import sw801.remindersystem.ActivityView.Activity.MainActivity;
 import sw801.remindersystem.ActivityView.Activity.SettingsActivity;
 import sw801.remindersystem.R;

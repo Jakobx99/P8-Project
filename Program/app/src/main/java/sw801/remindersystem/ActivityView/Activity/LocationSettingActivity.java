@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Adapter.LocationSettingAdapter;
 import sw801.remindersystem.R;
 
 public class LocationSettingActivity extends AppCompatActivity {
