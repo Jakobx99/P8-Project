@@ -5,7 +5,7 @@
     android:id="@+id/settingsactivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.SettingsActivity">
+    tools:context="sw801.remindersystem.ActivityView.Activity.SettingsActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
