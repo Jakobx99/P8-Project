@@ -69,12 +69,11 @@ public class AddEventActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
             }
-
-
-
         });
 
-
+        //final TextView AddLocation = findViewById(R.id.addLocation);
+        final EditText AtTime = findViewById(R.id.editTextTime);
+        final Button AtClock = findViewById(R.id.timePickButton);
         final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
         final Button betweenClock = findViewById(R.id.timePickButton2);
 
@@ -84,6 +83,7 @@ public class AddEventActivity extends AppCompatActivity {
         categories.add("At this time");
         categories.add("After this time");
         categories.add("Between these times");
+        categories.add("At location only");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -97,15 +97,20 @@ public class AddEventActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position==3)
-                {
-
-
+                if(position==3) {
                     betweenTime.setEnabled(true);
                     betweenClock.setEnabled(true);
                 }
+                else if(position==4) {
+                    AtTime.setEnabled(false);
+                    AtClock.setEnabled(false);
+                    betweenTime.setEnabled(false);
+                    betweenClock.setEnabled(false);
+                }
                 else
                 {
+                    AtTime.setEnabled(true);
+                    AtClock.setEnabled(true);
                     betweenTime.setEnabled(false);
                     betweenClock.setEnabled(false);
                 }
@@ -125,6 +130,10 @@ public class AddEventActivity extends AppCompatActivity {
     public void showNotificationOrSmartdevice(View v){
         DialogFragment newFragment = new NotificationOrSmartdeviceFragment();
         newFragment.show(getSupportFragmentManager(), "notificationOrSmartdevice");
+    }
+
+    public void closeAddEvent(View v){
+        finish();
     }
 
     private void markButton(){

@@ -14,7 +14,6 @@
         android:focusableInTouchMode="true"
         tools:context="sw801.remindersystem.ActivityView.AddEventActivity">
 
-
         <TextView
             android:id="@+id/textViewCreateEvent"
             android:layout_width="0dp"
@@ -47,7 +46,6 @@
                 layout="@layout/daypicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"></include>
-
         </LinearLayout>
 
         <TextView
@@ -97,6 +95,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/daypicker_layout" />
 
+        <TextView
+            android:id="@+id/addLocation"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_border"
+            android:drawableEnd="@android:drawable/ic_menu_mapmode"
+            android:gravity="center_vertical"
+            android:onClick="showNotificationOrSmartdevice"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:text="At Location (Default - At no specific location)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWhen" />
+
         <Spinner
             android:id="@+id/spinnerWhen"
             android:layout_width="0dp"
@@ -107,7 +124,7 @@
             android:fadingEdge="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWhen" />
+            app:layout_constraintTop_toBottomOf="@+id/addLocation" />
 
         <TextView
             android:id="@+id/textViewTime"
@@ -188,11 +205,11 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="8dp"
             android:text="Cancel"
+            android:onClick="closeAddEvent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonCreateEvent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutAddEvent" />
-
 
         <Button
             android:id="@+id/buttonCreateEvent"
@@ -210,7 +227,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutAddEvent"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
