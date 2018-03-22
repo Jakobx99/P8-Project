@@ -42,7 +42,7 @@ import sw801.remindersystem.Model.Persistence.Entity.When;
         NestThermostat.class,
         HueLightbulbRGB.class,
         HueLightbulbWhite.class
-}, version = 1, exportSchema = false)
+}, version = 1)
 @TypeConverters({DateTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

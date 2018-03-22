@@ -12,7 +12,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  */
 
 @Entity(foreignKeys = @ForeignKey(
-        entity = Coordinate.class, parentColumns = "id", childColumns = "coordinate_id", onDelete = CASCADE
+        entity = Coordinate.class, parentColumns = "id", childColumns = "coordinateId", onDelete = CASCADE
 ))
 public class PredefinedLocation {
     @PrimaryKey(autoGenerate = true)

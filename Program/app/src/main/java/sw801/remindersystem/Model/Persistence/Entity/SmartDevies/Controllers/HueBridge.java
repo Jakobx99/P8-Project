@@ -2,7 +2,6 @@ package sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
@@ -12,12 +11,6 @@ import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
 @Entity
 public class HueBridge extends SmartDevice {
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
-
-    @ColumnInfo(name = "deviceName")
-    private String deviceName;
-
     @ColumnInfo(name = "deviceIP")
     private String deviceIP;
 
@@ -26,4 +19,28 @@ public class HueBridge extends SmartDevice {
 
     @ColumnInfo(name = "deviceMac")
     private String deviceMac;
+
+    public String getDeviceIP() {
+        return deviceIP;
+    }
+
+    public void setDeviceIP(String deviceIP) {
+        this.deviceIP = deviceIP;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
+
+    public String getDeviceMac() {
+        return deviceMac;
+    }
+
+    public void setDeviceMac(String deviceMac) {
+        this.deviceMac = deviceMac;
+    }
 }

@@ -27,4 +27,36 @@ public class NestThermostat {
 
     @ColumnInfo(name = "deviceId")
     private Integer deviceId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getNestHubId() {
+        return nestHubId;
+    }
+
+    public void setNestHubId(Integer nestHubId) {
+        this.nestHubId = nestHubId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
+    }
 }

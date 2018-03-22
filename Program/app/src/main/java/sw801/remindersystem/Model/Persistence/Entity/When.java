@@ -3,12 +3,8 @@ package sw801.remindersystem.Model.Persistence.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
 
 import java.util.Date;
-
-import sw801.remindersystem.Model.Persistence.Converter.ConditionTypeConverter;
-import sw801.remindersystem.Model.Persistence.Converter.WeekdayTypeConverter;
 
 /**
  * Created by Kasper Helsted on 3/22/2018.
@@ -28,13 +24,11 @@ public class When {
     @ColumnInfo(name = "radius")
     private Integer radius;
 
-    @ColumnInfo(name = "condition")
-    @TypeConverters(ConditionTypeConverter.class)
-    private Condition condition;
+    @ColumnInfo(name = "intCondition")
+    private Integer intCondition;
 
     @ColumnInfo(name = "weekday")
-    @TypeConverters(WeekdayTypeConverter.class)
-    private Weekday weekday;
+    private Integer weekday;
 
     @ColumnInfo(name = "date")
     private Date date;
@@ -61,6 +55,14 @@ public class When {
         this.coordinateId = coordinateId;
     }
 
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
+    }
+
     public Integer getRadius() {
         return radius;
     }
@@ -70,18 +72,19 @@ public class When {
     }
 
     public Condition getCondition() {
-        return condition;
+        return Condition.values()[intCondition];
     }
 
     public void setCondition(Condition condition) {
-        this.condition = condition;
+        this.intCondition = condition.ordinal();
     }
 
-    public Weekday getWeekday() {
+
+    public Integer getWeekday() {
         return weekday;
     }
 
-    public void setWeekday(Weekday weekday) {
+    public void setWeekday(Integer weekday) {
         this.weekday = weekday;
     }
 
@@ -109,48 +112,24 @@ public class When {
         this.endTime = endTime;
     }
 
-    public Boolean getRecurring() {
-        return weekday != null;
+    public Integer getIntCondition() {
+        return intCondition;
     }
 
-    public Integer getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Integer eventId) {
-        this.eventId = eventId;
+    public void setIntCondition(Integer intCondition) {
+        this.intCondition = intCondition;
     }
 
     public enum Condition {
-        I_ARRIVE(0),
-        I_LEAVE(1),
-        I_AM_NEAR(2),
-        I_AM_AT(3),
-        NOT_AT_LOCATION(4);
+        I_ARRIVE(1),
+        I_LEAVE(2),
+        I_AM_NEAR(3),
+        I_AM_AT(4),
+        NOT_AT_LOCATION(5);
 
         private int code;
 
         Condition(int code) {
-            this.code = code;
-        }
-
-        public int getCode() {
-            return code;
-        }
-    }
-
-    public enum Weekday {
-        MONDAY(2),
-        TUESDAY(3),
-        WEDNESDAY(4),
-        THURSDAY(5),
-        FRIDAY(6),
-        SATURDAY(7),
-        SUNDAY(1);
-
-        private int code;
-
-        Weekday(int code) {
             this.code = code;
         }
 

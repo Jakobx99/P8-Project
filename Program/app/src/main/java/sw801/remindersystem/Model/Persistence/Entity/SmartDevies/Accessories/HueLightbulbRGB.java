@@ -21,4 +21,36 @@ public class HueLightbulbRGB {
 
     @ColumnInfo(name = "deviceId")
     private Integer deviceId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getHueBridgeId() {
+        return hueBridgeId;
+    }
+
+    public void setHueBridgeId(Integer hueBridgeId) {
+        this.hueBridgeId = hueBridgeId;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
+    }
 }
