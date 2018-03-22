@@ -4,10 +4,18 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -17,7 +25,8 @@ import java.util.List;
 import sw801.remindersystem.R;
 
 public class AddEventActivity extends AppCompatActivity {
-
+    private ListView listview;
+    ArrayList<String> addMyEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +35,31 @@ public class AddEventActivity extends AppCompatActivity {
         markButton();
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
+        //listview = (ListView) findViewById(R.id.addEventListview);
 
+        //------Creation of list of smart devices
+        addMyEvents = new ArrayList<String>();
+        addMyEvents.add("Do this:");
+
+
+
+
+
+        LinearLayout doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
+        ListAdapter myAdapter = new AddEventAdapter(this, addMyEvents);
+
+
+
+        final int adapterCount = myAdapter.getCount();
+
+        for (int i = 0; i < adapterCount; i++) {
+            View item = myAdapter.getView(i, null, null);
+
+            doThis.addView(item);
+        }
+
+
+        //------Creation of list of smart devices
         // Spinner click listener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -46,6 +79,10 @@ public class AddEventActivity extends AppCompatActivity {
 
         });
 
+
+
+        final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
+        final Button betweenClock = findViewById(R.id.timePickButton2);
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("Before this time");
@@ -61,12 +98,40 @@ public class AddEventActivity extends AppCompatActivity {
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(position==3)
+                {
+
+
+                    betweenTime.setEnabled(true);
+                    betweenClock.setEnabled(true);
+                }
+                else
+                {
+                    betweenTime.setEnabled(false);
+                    betweenClock.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
+    public void showNotificationOrSmartdevice(View v){
+        DialogFragment newFragment = new NotificationOrSmartdeviceFragment();
+        newFragment.show(getSupportFragmentManager(), "notificationOrSmartdevice");
+    }
 
 
 
@@ -109,7 +174,7 @@ public class AddEventActivity extends AppCompatActivity {
             markedButtons +="S,";
         }
         if(tSun.isChecked()){
-            markedButtons +="S";
+            markedButtons +="S,";
         }
         //Toast.makeText(this, markedButtons, Toast.LENGTH_SHORT).show();
 

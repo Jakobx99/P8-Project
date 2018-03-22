@@ -9,10 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
-
-
 import java.util.ArrayList;
-
 import sw801.remindersystem.R;
 
 
@@ -53,8 +50,6 @@ public class MySmartDeviceFragment extends Fragment{
                 startActivity(intent);
             }
         });
-
-
         return rootView;
     }
 
