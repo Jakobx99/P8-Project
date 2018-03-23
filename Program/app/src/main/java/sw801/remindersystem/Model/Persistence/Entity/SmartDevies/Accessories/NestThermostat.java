@@ -3,6 +3,7 @@ package sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Accessories;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevies.Controllers.NestHub;
@@ -12,7 +13,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 /**
  * Created by Kasper Helsted on 3/21/2018.
  */
-@Entity(foreignKeys = @ForeignKey(
+@Entity(indices = {
+        @Index("nestHubId"),
+}, foreignKeys = @ForeignKey(
         entity = NestHub.class, parentColumns = "id", childColumns = "nestHubId", onDelete = CASCADE
 ))
 public class NestThermostat {
