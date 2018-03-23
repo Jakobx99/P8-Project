@@ -27,6 +27,10 @@
         <activity android:name=".ActivityView.Activity.GlobalMuteSettingActivity" />
         <activity android:name=".ActivityView.Activity.LocationSettingActivity" />
         <activity android:name=".ActivityView.Activity.ShoppingSettingActivity" />
+        <activity android:name=".ActivityView.Activity.AddGlobalMuteSettingActivity"/>
+        <activity android:name=".ActivityView.Activity.AddLocationSettingActivity"/>
+        <activity android:name=".ActivityView.Activity.EditGlobalMuteSettingActivity"/>
+        <activity android:name=".ActivityView.Activity.EditLocationSettingActivity"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
