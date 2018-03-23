@@ -54,7 +54,7 @@ public class MyEventAdapter extends BaseAdapter{
         TextView title;
         title = (TextView) row.findViewById(R.id.textViewmyeventlist);
         title.setText(Title.get(position));
-        ImageButton edit = row.findViewById(R.id.MyEventEdit);
+        ImageButton edit = row.findViewById(R.id.addEventAddCondition);
         ImageButton delete = row.findViewById(R.id.MyEventDelete);
         Switch eventSwitch = row.findViewById(R.id.eventSwitch);
 
