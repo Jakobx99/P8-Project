@@ -3,7 +3,7 @@ package sw801.remindersystem.Model.Persistence.RelationEntity;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Relation;
 
-import java.util.List;
+import java.util.Set;
 
 import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 import sw801.remindersystem.Model.Persistence.Entity.When;
@@ -17,5 +17,5 @@ public class WhenWithCoordinate {
     public When when;
 
     @Relation(parentColumn = "coordinateId", entityColumn = "id", entity = Coordinate.class)
-    public List<Coordinate> coordinate;
+    public Set<Coordinate> coordinate;
 }

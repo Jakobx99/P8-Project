@@ -4,6 +4,7 @@ import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Relation;
 
 import java.util.List;
+import java.util.Set;
 
 import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 import sw801.remindersystem.Model.Persistence.Entity.Trigger;
@@ -17,5 +18,5 @@ public class TriggerWithSmartDevice {
     public Trigger trigger;
 
     @Relation(parentColumn = "smartDeviceId", entityColumn = "id", entity = SmartDevice.class)
-    public List<SmartDevice> smartDevice;
+    public Set<SmartDevice> smartDevice;
 }
