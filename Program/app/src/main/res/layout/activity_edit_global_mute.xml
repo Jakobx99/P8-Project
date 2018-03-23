@@ -11,23 +11,25 @@
 
     <TextView
         android:id="@+id/textView_editglobalmutetitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Global mute management"
         android:textColor="@android:color/black"
-        android:textSize="30dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_editglobalmutename"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:clickable="false"
         android:focusable="false"
@@ -35,18 +37,18 @@
         android:text="NAME"
         android:textSize="20dp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/editText_editname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_editglobalmutetitle" />
 
     <EditText
         android:id="@+id/editText_editname"
-        android:layout_width="386dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         android:drawableRight="@drawable/ic_border_color_black_18dp"
         android:ems="10"
@@ -57,16 +59,20 @@
         android:lines="1"
         android:singleLine="true"
         android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_editglobalmutename" />
 
     <Button
         android:id="@+id/button_editGlobalMuteConfirm"
-        android:layout_width="235dp"
+        android:layout_width="0dp"
         android:layout_height="46dp"
+        android:layout_marginEnd="88dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="32dp"
         android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_editname" />
 </android.support.constraint.ConstraintLayout>
