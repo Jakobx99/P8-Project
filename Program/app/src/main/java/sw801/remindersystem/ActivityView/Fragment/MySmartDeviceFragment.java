@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class MySmartDeviceFragment extends Fragment {
 
         //Add new smart device
 
-        ImageView add = rootView.findViewById(R.id.imageView_mysmartdeviceadd);
+        ImageView add = rootView.findViewById(R.id.imageView_myeventadd);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
