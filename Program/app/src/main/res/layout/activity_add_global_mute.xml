@@ -15,9 +15,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:text="Create global mute"
-        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -122,6 +123,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/edit_text_background"
+        android:padding="5dp"
         android:hint="Enter comment here"
         android:gravity="top|left"
         android:lines="10"
@@ -135,9 +137,11 @@
         android:id="@+id/buttonCreateGlobalMute"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Create global mute"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextComment" />
 
@@ -145,10 +149,12 @@
         android:id="@+id/buttonCancel"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="Cancel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCreateGlobalMute"
         app:layout_constraintTop_toBottomOf="@+id/editTextComment" />
 
 </android.support.constraint.ConstraintLayout>

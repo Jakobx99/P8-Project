@@ -13,9 +13,10 @@
 
         <EditText
             android:id="@+id/editText_predefinedlocationsettings"
-            android:layout_width="357dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="72dp"
             android:clickable="true"
             android:cursorVisible="false"
@@ -25,15 +26,17 @@
             android:focusableInTouchMode="false"
             android:inputType="textPersonName"
             android:text="Predefined location settings"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_globalmute" />
 
         <EditText
             android:id="@+id/editText_globalmute"
-            android:layout_width="357dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:clickable="true"
             android:cursorVisible="false"
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_18dp"
@@ -42,14 +45,16 @@
             android:focusableInTouchMode="false"
             android:inputType="textPersonName"
             android:text="Global mute setting"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/navigation" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editText_preferredshoppingsettings"
-            android:layout_width="357dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="72dp"
             android:clickable="true"
             android:cursorVisible="false"
@@ -59,6 +64,7 @@
             android:focusableInTouchMode="false"
             android:inputType="textPersonName"
             android:text="Preferred shopping settings"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_predefinedlocationsettings" />
 

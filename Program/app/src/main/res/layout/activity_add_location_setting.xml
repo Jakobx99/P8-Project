@@ -14,9 +14,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:text="Create predefined location"
-        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
