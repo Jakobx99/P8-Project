@@ -11,20 +11,24 @@
 
     <TextView
         android:id="@+id/textView_EditsmartdeviceTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Device Management"
         android:textColor="@android:color/black"
         android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_editdeviceName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:clickable="false"
@@ -33,15 +37,17 @@
         android:text="NAME"
         android:textSize="20dp"
         android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_EditsmartdeviceTitle" />
 
     <EditText
         android:id="@+id/editText_editname"
-        android:layout_width="386dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:clickable="true"
         android:drawableRight="@drawable/ic_border_color_black_18dp"
         android:ems="10"
@@ -52,15 +58,16 @@
         android:lines="1"
         android:singleLine="true"
         android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_editdeviceName" />
 
     <EditText
         android:id="@+id/editText_deviceEnable"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"
@@ -68,6 +75,7 @@
         android:inputType="textPersonName"
         android:text="Enable/Disable"
         android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/switch_deviceswitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_editname" />
 
@@ -75,20 +83,22 @@
         android:id="@+id/switch_deviceswitch"
         android:layout_width="59dp"
         android:layout_height="54dp"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginTop="16dp"
         android:scaleX="2"
         android:scaleY="2"
-        app:layout_constraintStart_toStartOf="@+id/editText_deviceEnable"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_editname" />
 
     <Button
         android:id="@+id/button_editSmartdeviceConfirm"
-        android:layout_width="235dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="180dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_deviceEnable" />
 </android.support.constraint.ConstraintLayout>
