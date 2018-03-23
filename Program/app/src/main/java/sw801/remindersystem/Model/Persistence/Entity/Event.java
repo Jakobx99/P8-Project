@@ -8,12 +8,6 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by Kasper Helsted on 3/21/2018.
  */
 
-//TODO: Look at https://android.jlelse.eu/android-architecture-components-room-relationships-bf473510c14a for relation
-//TODO: https://developer.android.com/reference/android/arch/persistence/room/Relation.html
-//@Entity(foreignKeys = @ForeignKey(
-//        entity = SmartDevice.class, parentColumns = "id", childColumns = "deviceId", onDelete = CASCADE
-//))
-
 @Entity
 public class Event {
     @PrimaryKey(autoGenerate = true)
