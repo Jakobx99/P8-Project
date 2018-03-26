@@ -25,6 +25,7 @@ import java.util.List;
 import sw801.remindersystem.ActivityView.AddEventAdapter;
 import sw801.remindersystem.ActivityView.Fragment.TimePickerFragment;
 import sw801.remindersystem.ActivityView.NotificationOrSmartdeviceFragment;
+import sw801.remindersystem.MapsActivity;
 import sw801.remindersystem.R;
 
 public class AddEventActivity extends AppCompatActivity {
@@ -50,12 +51,11 @@ public class AddEventActivity extends AppCompatActivity {
             View item = myAdapter.getView(i, null, null);
             doThis.addView(item);
         }
-        //TextView textView = (TextView) findViewById(R.id.addEventDoThis);
-       // textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_black_18dp, 0, 0, 0);
+
+
+        //------Creation of list of smart devices - Spinner menu
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
-
-        //------Creation of list of smart devices
         // Spinner click listener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -72,12 +72,6 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
 
-        //final TextView AddLocation = findViewById(R.id.addLocation);
-        final EditText AtTime = findViewById(R.id.editTextTime);
-        final Button AtClock = findViewById(R.id.timePickButton);
-        final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
-        final Button betweenClock = findViewById(R.id.timePickButton2);
-
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("Before this time");
@@ -88,12 +82,16 @@ public class AddEventActivity extends AppCompatActivity {
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+        //final TextView AddLocation = findViewById(R.id.addLocation);
+        final EditText AtTime = findViewById(R.id.editTextTime);
+        final Button AtClock = findViewById(R.id.timePickButton);
+        final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
+        final Button betweenClock = findViewById(R.id.timePickButton2);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -116,7 +114,6 @@ public class AddEventActivity extends AppCompatActivity {
                     betweenClock.setEnabled(false);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
@@ -124,13 +121,20 @@ public class AddEventActivity extends AppCompatActivity {
 
         });
     }
+
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
+
     public void showNotificationOrSmartdevice(View v){
         DialogFragment newFragment = new NotificationOrSmartdeviceFragment();
         newFragment.show(getSupportFragmentManager(), "notificationOrSmartdevice");
+    }
+
+    public void showMapActivity(View v){
+        Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMapActivity.class);
+        startActivity(mapIntent);
     }
 
     public void closeAddEvent(View v){
@@ -179,9 +183,6 @@ public class AddEventActivity extends AppCompatActivity {
             markedButtons +="S,";
         }
         //Toast.makeText(this, markedButtons, Toast.LENGTH_SHORT).show();
-
-
-
     }
 
 }
