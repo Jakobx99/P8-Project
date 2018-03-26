@@ -1,11 +1,12 @@
 package sw801.remindersystem.Model.Persistence.Helpers;
 
-import android.database.Observable;
-
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
 import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
 
@@ -13,6 +14,7 @@ import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
  * Created by Kasper Helsted on 3/26/2018.
  */
 
+@Singleton
 public class CoordinateHelper implements DbHelper<Coordinate> {
     private final AppDatabase mAppDatabase;
 
@@ -23,46 +25,95 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
 
     @Override
     public Observable<List<Coordinate>> getAll() {
-        return null;
+        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+            @Override
+            public List<Coordinate> call() throws Exception {
+                return mAppDatabase.coordinateDao().getAll();
+            }
+        });
     }
 
     @Override
-    public Observable<List<Coordinate>> getById(Integer id) {
-        return null;
+    public Observable<Coordinate> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<Coordinate>() {
+            @Override
+            public Coordinate call() throws Exception {
+                return mAppDatabase.coordinateDao().loadById(id);
+            }
+        });
     }
 
     @Override
-    public Observable<List<Coordinate>> getByIds(Integer[] ids) {
-        return null;
+    public Observable<List<Coordinate>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+            @Override
+            public List<Coordinate> call() throws Exception {
+                return mAppDatabase.coordinateDao().loadAllByIds(ids);
+            }
+        });
     }
 
     @Override
     public Observable<Integer> getCount() {
-        return null;
+        return Observable.fromCallable(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                return mAppDatabase.coordinateDao().countCoordinates();
+            }
+        });
     }
 
     @Override
     public Observable<Boolean> isEmpty() {
-        return null;
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return mAppDatabase.coordinateDao().countCoordinates() == 0;
+            }
+        });
     }
 
     @Override
-    public Observable<Boolean> insert(Coordinate obj) {
-        return null;
+    public Observable<Boolean> insert(final Coordinate obj) {
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                mAppDatabase.coordinateDao().insert(obj);
+                return true;
+            }
+        });
     }
 
     @Override
-    public Observable<Boolean> insertAll(Coordinate... obj) {
-        return null;
+    public Observable<Boolean> insertAll(final Coordinate... obj) {
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                mAppDatabase.coordinateDao().insertAll(obj);
+                return true;
+            }
+        });
     }
 
     @Override
-    public Observable<Boolean> update(Coordinate obj) {
-        return null;
+    public Observable<Boolean> update(final Coordinate obj) {
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                mAppDatabase.coordinateDao().update(obj);
+                return true;
+            }
+        });
     }
 
     @Override
-    public Observable<Boolean> delete(Coordinate obj) {
-        return null;
+    public Observable<Boolean> delete(final Coordinate obj) {
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                mAppDatabase.coordinateDao().delete(obj);
+                return true;
+            }
+        });
     }
 }

@@ -1,8 +1,8 @@
 package sw801.remindersystem.Model.Persistence.Helpers;
 
-import android.database.Observable;
-
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
@@ -11,9 +11,9 @@ import java.util.List;
 public interface DbHelper<T> {
     Observable<List<T>> getAll();
 
-    Observable<List<T>> getById(Integer id);
+    Observable<List<T>> getByIds(final Integer[] ids);
 
-    Observable<List<T>> getByIds(Integer[] ids);
+    Observable<T> getById(final Integer id);
 
     Observable<Integer> getCount();
 
