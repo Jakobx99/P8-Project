@@ -8,47 +8,47 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.Model.Persistence.Entity.Trigger;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
  */
 
 @Singleton
-public class SmartDeviceHelper implements DbHelper<SmartDevice> {
+public class TriggerHelper implements DbHelper<Trigger> {
     private final AppDatabase mAppDatabase;
 
     @Inject
-    public SmartDeviceHelper(AppDatabase appDatabase) {
+    public TriggerHelper(AppDatabase appDatabase) {
         this.mAppDatabase = appDatabase;
     }
 
     @Override
-    public Observable<List<SmartDevice>> getAll() {
-        return Observable.fromCallable(new Callable<List<SmartDevice>>() {
+    public Observable<List<Trigger>> getAll() {
+        return Observable.fromCallable(new Callable<List<Trigger>>() {
             @Override
-            public List<SmartDevice> call() throws Exception {
-                return mAppDatabase.smartDeviceDao().getAll();
+            public List<Trigger> call() throws Exception {
+                return mAppDatabase.triggerDao().getAll();
             }
         });
     }
 
     @Override
-    public Observable<List<SmartDevice>> getByIds(final Integer[] ids) {
-        return Observable.fromCallable(new Callable<List<SmartDevice>>() {
+    public Observable<List<Trigger>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<Trigger>>() {
             @Override
-            public List<SmartDevice> call() throws Exception {
-                return mAppDatabase.smartDeviceDao().loadAllByIds(ids);
+            public List<Trigger> call() throws Exception {
+                return mAppDatabase.triggerDao().loadAllByIds(ids);
             }
         });
     }
 
     @Override
-    public Observable<SmartDevice> getById(final Integer id) {
-        return Observable.fromCallable(new Callable<SmartDevice>() {
+    public Observable<Trigger> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<Trigger>() {
             @Override
-            public SmartDevice call() throws Exception {
-                return mAppDatabase.smartDeviceDao().loadById(id);
+            public Trigger call() throws Exception {
+                return mAppDatabase.triggerDao().loadById(id);
             }
         });
     }
@@ -58,7 +58,7 @@ public class SmartDeviceHelper implements DbHelper<SmartDevice> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.smartDeviceDao().count();
+                return mAppDatabase.triggerDao().count();
             }
         });
     }
@@ -68,50 +68,50 @@ public class SmartDeviceHelper implements DbHelper<SmartDevice> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.smartDeviceDao().count() == 0;
+                return mAppDatabase.triggerDao().count() == 0;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insert(final SmartDevice obj) {
+    public Observable<Boolean> insert(final Trigger obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().insert(obj);
+                mAppDatabase.triggerDao().insert(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insertAll(final SmartDevice... obj) {
+    public Observable<Boolean> insertAll(final Trigger... obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().insertAll(obj);
+                mAppDatabase.triggerDao().insertAll(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> update(final SmartDevice obj) {
+    public Observable<Boolean> update(final Trigger obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().update(obj);
+                mAppDatabase.triggerDao().update(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> delete(final SmartDevice obj) {
+    public Observable<Boolean> delete(final Trigger obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().delete(obj);
+                mAppDatabase.triggerDao().delete(obj);
                 return true;
             }
         });

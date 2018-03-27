@@ -26,7 +26,7 @@ public interface SmartDeviceDao {
     SmartDevice loadById(Integer smartDeviceId);
 
     @Query("SELECT COUNT(*) from smartdevice")
-    Integer countSmartDevices();
+    Integer count();
 
     @Insert
     void insertAll(SmartDevice... smartDevices);

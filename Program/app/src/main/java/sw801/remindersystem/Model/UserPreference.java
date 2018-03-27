@@ -88,11 +88,11 @@ public abstract class UserPreference {
         }.execute(predefinedLocation);
     }
 
-    public static LiveData<List<SmartDevice>> getSmartDeviceList(Context currentContext) {
+    public static List<SmartDevice> getSmartDeviceList(Context currentContext) {
         return AppDatabase.getInstance(currentContext).smartDeviceDao().getAll();
     }
 
-    public static LiveData<SmartDevice> getSmartDeviceById(Context currentContext, Integer id) {
+    public static SmartDevice getSmartDeviceById(Context currentContext, Integer id) {
         return AppDatabase.getInstance(currentContext).smartDeviceDao().loadById(id);
     }
 

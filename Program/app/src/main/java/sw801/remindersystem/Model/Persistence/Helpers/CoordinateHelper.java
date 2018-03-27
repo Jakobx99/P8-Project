@@ -58,7 +58,7 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.coordinateDao().countCoordinates();
+                return mAppDatabase.coordinateDao().count();
             }
         });
     }
@@ -68,7 +68,7 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.coordinateDao().countCoordinates() == 0;
+                return mAppDatabase.coordinateDao().count() == 0;
             }
         });
     }

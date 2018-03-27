@@ -8,47 +8,47 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
  */
 
 @Singleton
-public class SmartDeviceHelper implements DbHelper<SmartDevice> {
+public class PredefinedLocationHelper implements DbHelper<PredefinedLocation> {
     private final AppDatabase mAppDatabase;
 
     @Inject
-    public SmartDeviceHelper(AppDatabase appDatabase) {
+    public PredefinedLocationHelper(AppDatabase appDatabase) {
         this.mAppDatabase = appDatabase;
     }
 
     @Override
-    public Observable<List<SmartDevice>> getAll() {
-        return Observable.fromCallable(new Callable<List<SmartDevice>>() {
+    public Observable<List<PredefinedLocation>> getAll() {
+        return Observable.fromCallable(new Callable<List<PredefinedLocation>>() {
             @Override
-            public List<SmartDevice> call() throws Exception {
-                return mAppDatabase.smartDeviceDao().getAll();
+            public List<PredefinedLocation> call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().getAll();
             }
         });
     }
 
     @Override
-    public Observable<List<SmartDevice>> getByIds(final Integer[] ids) {
-        return Observable.fromCallable(new Callable<List<SmartDevice>>() {
+    public Observable<PredefinedLocation> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<PredefinedLocation>() {
             @Override
-            public List<SmartDevice> call() throws Exception {
-                return mAppDatabase.smartDeviceDao().loadAllByIds(ids);
+            public PredefinedLocation call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().loadById(id);
             }
         });
     }
 
     @Override
-    public Observable<SmartDevice> getById(final Integer id) {
-        return Observable.fromCallable(new Callable<SmartDevice>() {
+    public Observable<List<PredefinedLocation>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<PredefinedLocation>>() {
             @Override
-            public SmartDevice call() throws Exception {
-                return mAppDatabase.smartDeviceDao().loadById(id);
+            public List<PredefinedLocation> call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().loadAllByIds(ids);
             }
         });
     }
@@ -58,7 +58,7 @@ public class SmartDeviceHelper implements DbHelper<SmartDevice> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.smartDeviceDao().count();
+                return mAppDatabase.predefinedLocationDao().countPredefinedLocations();
             }
         });
     }
@@ -68,50 +68,50 @@ public class SmartDeviceHelper implements DbHelper<SmartDevice> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.smartDeviceDao().count() == 0;
+                return mAppDatabase.predefinedLocationDao().countPredefinedLocations() == 0;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insert(final SmartDevice obj) {
+    public Observable<Boolean> insert(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().insert(obj);
+                mAppDatabase.predefinedLocationDao().insert(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insertAll(final SmartDevice... obj) {
+    public Observable<Boolean> insertAll(final PredefinedLocation... obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().insertAll(obj);
+                mAppDatabase.predefinedLocationDao().insertAll(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> update(final SmartDevice obj) {
+    public Observable<Boolean> update(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().update(obj);
+                mAppDatabase.predefinedLocationDao().update(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> delete(final SmartDevice obj) {
+    public Observable<Boolean> delete(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.smartDeviceDao().delete(obj);
+                mAppDatabase.predefinedLocationDao().delete(obj);
                 return true;
             }
         });
