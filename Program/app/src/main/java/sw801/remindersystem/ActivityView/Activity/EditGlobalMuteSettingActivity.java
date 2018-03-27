@@ -33,7 +33,7 @@ public class EditGlobalMuteSettingActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.textView_editglobalmutename);
         textView.setText(globalSettingName);
 
-        final EditText editTextName = findViewById(R.id.editText_editname);
+        final EditText editTextName = findViewById(R.id.textInputGlobalMuteName);
         editTextName.setText(globalSettingName);
 
         editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {

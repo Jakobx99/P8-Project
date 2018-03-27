@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import sw801.remindersystem.MapsActivity;
 import sw801.remindersystem.R;
 
 /**
@@ -32,7 +33,7 @@ public class EditLocationSettingActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.textView_editlocationsettingname);
         textView.setText(locationSettingName);
 
-        final EditText editTextName = findViewById(R.id.editText_editname);
+        final EditText editTextName = findViewById(R.id.textInputLocationName);
         editTextName.setText(locationSettingName);
 
         editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -52,6 +53,15 @@ public class EditLocationSettingActivity extends AppCompatActivity {
                     handled = true;
                 }
                 return handled;
+            }
+        });
+
+        final Button buttonSettings = findViewById(R.id.button_MarkLocation);
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditLocationSettingActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
         });
 

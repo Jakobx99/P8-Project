@@ -17,9 +17,9 @@ public class EventWithData {
     @Embedded
     public Event event;
 
-    @Relation(parentColumn = "id", entityColumn = "eventId")
-    public List<When> whens;
+    @Relation(parentColumn = "id", entityColumn = "eventId", entity = When.class)
+    public List<WhenWithCoordinate> whens;
 
-    @Relation(parentColumn = "id", entityColumn = "eventId")
-    public List<Trigger> triggers;
+    @Relation(parentColumn = "id", entityColumn = "eventId", entity = Trigger.class)
+    public List<TriggerWithSmartDevice> triggers;
 }
