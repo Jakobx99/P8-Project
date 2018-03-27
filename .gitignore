@@ -8,4 +8,5 @@ Program/captures
 Program/build
 Program/.idea/
 .idea/
-Program/gradle/wrapper/*
+Program/gradle/
+Program/gradle.properties
