@@ -13,8 +13,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import sw801.remindersystem.ActivityView.Activity.EditSmartDeviceActivity;
-import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
-import sw801.remindersystem.Model.UserPreference;
+import sw801.remindersystem.data.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.data.Model.UserPreference;
 import sw801.remindersystem.R;
 
 /**

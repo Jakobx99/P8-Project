@@ -4,8 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
+
 import sw801.remindersystem.R;
 
 public class SettingsActivity extends AppCompatActivity  {

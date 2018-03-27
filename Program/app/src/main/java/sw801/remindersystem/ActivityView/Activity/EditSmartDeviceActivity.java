@@ -15,8 +15,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
-import sw801.remindersystem.Model.UserPreference;
+import sw801.remindersystem.data.Model.Persistence.Entity.SmartDevice;
+import sw801.remindersystem.data.Model.UserPreference;
 import sw801.remindersystem.R;
 
 public class EditSmartDeviceActivity extends AppCompatActivity {
