@@ -1,9 +1,14 @@
 package sw801.remindersystem.ActivityView.Activity;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.location.Address;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,14 +21,17 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import sw801.remindersystem.ActivityView.AddEventAdapter;
-import sw801.remindersystem.ActivityView.Fragment.TimePickerFragment;
+
 import sw801.remindersystem.ActivityView.NotificationOrSmartdeviceFragment;
 import sw801.remindersystem.MapsActivity;
 import sw801.remindersystem.R;
@@ -31,6 +39,19 @@ import sw801.remindersystem.R;
 public class AddEventActivity extends AppCompatActivity {
     private ListView listview;
     ArrayList<String> addMyEvents;
+    private Bundle addressBundle;
+    private Address address;
+    private TextView addressTextView;
+    private TextView textViewTime;
+    private TextView textViewBetweenTime;
+    static private EditText AtTime = null;
+    static private EditText betweenTime = null;
+    private TextView addLocation;
+    private Button confirm;
+    private TextView eventName;
+    private ArrayList<Integer> markedButtons;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +64,7 @@ public class AddEventActivity extends AppCompatActivity {
         addMyEvents = new ArrayList<String>();
         addMyEvents.add("Choose what the event should trigger");
 
-        LinearLayout doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
+        final LinearLayout doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
         ListAdapter myAdapter = new AddEventAdapter(this, addMyEvents);
 
         final int adapterCount = myAdapter.getCount();
@@ -55,7 +76,8 @@ public class AddEventActivity extends AppCompatActivity {
 
         //------Creation of list of smart devices - Spinner menu
         // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinnerWhen);
+        final Spinner spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
         // Spinner click listener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -71,47 +93,143 @@ public class AddEventActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // On selecting a spinner item
+                String item = parent.getItemAtPosition(position).toString();
+
+                // Showing selected spinner item
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
+
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
+        categories.add("No time condition chosen");
         categories.add("Before this time");
         categories.add("At this time");
         categories.add("After this time");
         categories.add("Between these times");
-        categories.add("At location only");
+
+        List<String> categoriesLocation = new ArrayList<String>();
+        categoriesLocation.add("No Location condition chosen");
+        categoriesLocation.add("At location");
+        categoriesLocation.add("Near Location");
+        categoriesLocation.add("Leaving Location");
+        categoriesLocation.add("Predefined Location");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapterLocation = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categoriesLocation);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+        spinnerLocation.setAdapter(dataAdapterLocation);
 
-        //final TextView AddLocation = findViewById(R.id.addLocation);
-        final EditText AtTime = findViewById(R.id.editTextTime);
-        final Button AtClock = findViewById(R.id.timePickButton);
-        final EditText betweenTime = findViewById(R.id.editTextTimeBetween);
-        final Button betweenClock = findViewById(R.id.timePickButton2);
+        AtTime = findViewById(R.id.editTextTime);
+        betweenTime = findViewById(R.id.editTextTimeBetween);
+        addressTextView = findViewById(R.id.addLocation);
+        textViewTime = findViewById(R.id.textViewTime);
+        textViewBetweenTime  = findViewById(R.id.textViewBetweenTime);
+        confirm = findViewById(R.id.buttonCreateEvent);
+        eventName = findViewById(R.id.textInputEventName);
+
+        // Click events
+        AtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog(v, 1);
+            }
+        });
+        betweenTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog(v, 2);
+            }
+        });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markButton();
+                String eName = eventName.getText().toString();
+                ArrayList<Integer> weekdays = markedButtons;
+                Integer locationCondition = spinnerLocation.getSelectedItemPosition();
+                Address confirmAddress = address;
+                Integer timeCondition = spinner.getSelectedItemPosition() ;
+                Long startTime = Long.parseLong(textViewTime.getText().toString());
+                Long endTime = Long.parseLong(textViewBetweenTime.getText().toString());
+                //TODO Connect with ViewModel
+                //List<TIGGER_TYPE>
+            }
+        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position==3) {
+                if(position==4) {
+                    textViewTime.setVisibility(View.VISIBLE);
+                    AtTime.setEnabled(true);
+                    AtTime.setVisibility(View.VISIBLE);
+                    //AtClock.setEnabled(true);
+                    //AtClock.setVisibility(View.VISIBLE);
+                    textViewBetweenTime.setVisibility(View.VISIBLE);
                     betweenTime.setEnabled(true);
-                    betweenClock.setEnabled(true);
+                    betweenTime.setVisibility(View.VISIBLE);
+                    //betweenClock.setEnabled(true);
+                    //betweenClock.setVisibility(View.VISIBLE);
                 }
-                else if(position==4) {
+                else if(position==0) {
+                    textViewTime.setVisibility(View.GONE);
                     AtTime.setEnabled(false);
-                    AtClock.setEnabled(false);
+                    AtTime.setVisibility(View.GONE);
+                    //AtClock.setEnabled(false);
+                     //AtClock.setVisibility(View.INVISIBLE);
+                    textViewBetweenTime.setVisibility(View.GONE);
                     betweenTime.setEnabled(false);
-                    betweenClock.setEnabled(false);
+                    betweenTime.setVisibility(View.GONE);
+                    //betweenClock.setEnabled(false);
+                    //betweenClock.setVisibility(View.INVISIBLE);
                 }
                 else
                 {
+                    textViewTime.setVisibility(View.VISIBLE);
                     AtTime.setEnabled(true);
-                    AtClock.setEnabled(true);
+                    AtTime.setVisibility(View.VISIBLE);
+                    //AtClock.setEnabled(true);
+                    //AtClock.setVisibility(View.VISIBLE);
+                    textViewBetweenTime.setVisibility(View.GONE);
                     betweenTime.setEnabled(false);
-                    betweenClock.setEnabled(false);
+                    betweenTime.setVisibility(View.GONE);
+                    //betweenClock.setEnabled(false);
+                    //betweenClock.setVisibility(View.INVISIBLE);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(position==0) {
+                    addressTextView.setVisibility(View.GONE);
+                }
+                else if(position ==4)
+                {
+                    //TODO OPEN NEW ACTIVITY/FRAGMENT/SPINNER AND CALL VIEWMODEL TO GET DATA
+                }
+                else{
+                    addressTextView.setVisibility(View.VISIBLE);
                 }
             }
             @Override
@@ -122,9 +240,58 @@ public class AddEventActivity extends AppCompatActivity {
         });
     }
 
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "timePicker");
+    public void showTimePickerDialog(View v, int i) {
+        if (i == 1){
+            DialogFragment newFragment = new TimePickerFragment1();
+            newFragment.show(getSupportFragmentManager(), "timePicker");
+        }
+        else{
+            DialogFragment newFragment = new TimePickerFragment2();
+            newFragment.show(getSupportFragmentManager(), "timePicker");
+        }
+
+    }
+
+    public static class TimePickerFragment1 extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current time as the default values for the picker
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            // Create a new instance of TimePickerDialog and return it
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            String time = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+            AtTime.setText(time);
+        }
+    }
+
+    public static class TimePickerFragment2 extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current time as the default values for the picker
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            // Create a new instance of TimePickerDialog and return it
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            String time = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+            betweenTime.setText(time);
+        }
     }
 
     public void showNotificationOrSmartdevice(View v){
@@ -134,14 +301,14 @@ public class AddEventActivity extends AppCompatActivity {
 
     public void showMapActivity(View v){
         Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMapActivity.class);
-        startActivity(mapIntent);
+        startActivityForResult(mapIntent, 0);
     }
 
-    public void closeAddEvent(View v){
-        finish();
-    }
+    public void closeAddEvent(View v){finish();}
 
     private void markButton(){
+        markedButtons = new ArrayList<Integer>();
+
         //Day buttons
         ToggleButton tMon;
         ToggleButton tThu;
@@ -159,30 +326,42 @@ public class AddEventActivity extends AppCompatActivity {
         tSat = (ToggleButton) findViewById(R.id.tV);
         tSun = (ToggleButton) findViewById(R.id.tS);
 
-        String markedButtons= "";
         //Check individual items.
         if(tMon.isChecked()){
-            markedButtons +="M,";
+            markedButtons.add(1);
         }
         if(tThu.isChecked()){
-            markedButtons +="T,";
+            markedButtons.add(2);
         }
         if(tWen.isChecked()){
-            markedButtons +="W,";
+            markedButtons.add(3);
         }
         if(tTue.isChecked()){
-            markedButtons +="T,";
+            markedButtons.add(4);
         }
         if(tFri.isChecked()){
-            markedButtons +="F,";
+            markedButtons.add(5);
         }
         if(tSat.isChecked()){
-            markedButtons +="S,";
+            markedButtons.add(6);
         }
         if(tSun.isChecked()){
-            markedButtons +="S,";
+            markedButtons.add(7);
         }
-        //Toast.makeText(this, markedButtons, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (0) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    addressBundle = data.getBundleExtra("address");
+                    address = addressBundle.getParcelable("address");
+                    addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
+                }
+                break;
+            }
+        }
+    }
 }
