@@ -3,10 +3,9 @@ package sw801.remindersystem;
 import android.app.Activity;
 import android.app.Application;
 import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.BuildConfig;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor;
-
 import javax.inject.Inject;
-
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import sw801.remindersystem.di.component.DaggerAppComponent;

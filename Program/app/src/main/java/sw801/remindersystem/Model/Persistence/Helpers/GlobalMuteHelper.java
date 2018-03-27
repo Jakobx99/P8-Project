@@ -7,8 +7,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
-import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
+
+import sw801.remindersystem.data.Model.Persistence.Database.AppDatabase;
+import sw801.remindersystem.data.Model.Persistence.Entity.GlobalMute;
+import sw801.remindersystem.data.Model.Persistence.Helpers.DbHelper;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.

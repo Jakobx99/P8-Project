@@ -12,7 +12,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import sw801.remindersystem.BuildConfig;
+import sw801.remindersystem.Model.Persistence.Helpers.AppDbHelper;
 import sw801.remindersystem.Utils.AppConstants;
 import sw801.remindersystem.Utils.Rx.AppSchedulerProvider;
 import sw801.remindersystem.Utils.Rx.SchedulerProvider;
@@ -20,8 +20,6 @@ import sw801.remindersystem.data.AppDataManager;
 import sw801.remindersystem.data.DataManager;
 import sw801.remindersystem.data.Model.Persistence.Database.AppDatabase;
 import sw801.remindersystem.data.Model.Persistence.Helpers.DbHelper;
-import sw801.remindersystem.data.local.db.AppDbHelper;
-import sw801.remindersystem.di.ApiInfo;
 import sw801.remindersystem.di.DatabaseInfo;
 import sw801.remindersystem.di.PreferenceInfo;
 
@@ -54,11 +52,11 @@ public class AppModule {
         return AppConstants.DB_NAME;
     }
 
-    //@Provides
-    //@Singleton
-    //DbHelper provideDbHelper(AppDbHelper appDbHelper) {
-     //   return appDbHelper;
-    //}
+    @Provides
+    @Singleton
+    AppDbHelper provideDbHelper(AppDbHelper appDbHelper) {
+       return appDbHelper;
+    }
 
     @Provides
     @Singleton
