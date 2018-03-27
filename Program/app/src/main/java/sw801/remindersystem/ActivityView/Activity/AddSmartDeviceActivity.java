@@ -25,6 +25,7 @@ import sw801.remindersystem.ActivityView.Adapter.AccessPointListAdapter;
 import sw801.remindersystem.ActivityView.Fragment.PHWizardAlertDialog;
 import sw801.remindersystem.Library.HueSharedPreferences;
 import sw801.remindersystem.R;
+import sw801.remindersystem.ui.main.MainActivity;
 
 public class AddSmartDeviceActivity extends AppCompatActivity {
 

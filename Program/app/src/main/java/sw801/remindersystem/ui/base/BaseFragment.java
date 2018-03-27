@@ -1,4 +1,4 @@
-package sw801.remindersystem.BaseClasses;
+package sw801.remindersystem.ui.base;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

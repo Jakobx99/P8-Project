@@ -16,7 +16,6 @@ public class MvvmApp extends Application implements HasActivityInjector {
     DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
     @Inject
-
     @Override
     public DispatchingAndroidInjector<Activity> activityInjector() {
         return activityDispatchingAndroidInjector;

@@ -13,7 +13,6 @@ import sw801.remindersystem.di.module.AppModule;
 public interface AppComponent {
 
     void inject(MvvmApp app);
-
     @Component.Builder
     interface Builder {
 

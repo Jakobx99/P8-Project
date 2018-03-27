@@ -1,4 +1,4 @@
-package sw801.remindersystem.BaseClasses;
+package sw801.remindersystem.ui.base;
 
 import android.app.Dialog;
 import android.content.Context;

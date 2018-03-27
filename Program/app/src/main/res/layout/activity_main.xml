@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="sw801.remindersystem.ActivityView.Fragment.HomeFragment">
+    tools:context="sw801.remindersystem.ui.home.HomeFragment">
 
 
 

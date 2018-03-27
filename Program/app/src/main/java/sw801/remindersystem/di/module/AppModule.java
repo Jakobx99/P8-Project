@@ -25,14 +25,12 @@ import sw801.remindersystem.di.PreferenceInfo;
 
 @Module
 public class AppModule {
-
     @Provides
     @Singleton
-    AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
-        return Room.databaseBuilder(context, AppDatabase.class, dbName).fallbackToDestructiveMigration()
-                .build();
+    AppDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context)
+    {
+        return Room.databaseBuilder(context, AppDatabase.class, dbName).fallbackToDestructiveMigration().build();
     }
-
 
     @Provides
     @Singleton

@@ -1,4 +1,4 @@
-package sw801.remindersystem.BaseClasses;
+package sw801.remindersystem.ui.base;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 import io.reactivex.disposables.CompositeDisposable;
