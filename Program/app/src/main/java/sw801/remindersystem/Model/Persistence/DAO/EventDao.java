@@ -18,16 +18,16 @@ import sw801.remindersystem.Model.Persistence.Entity.Event;
 @Dao
 public interface EventDao {
     @Query("SELECT * FROM event")
-    LiveData<List<Event>> getAll();
+    List<Event> getAll();
 
     @Query("SELECT * FROM event WHERE id IN (:eventIds)")
-    LiveData<List<Event>> loadAllByIds(Integer[] eventIds);
+    List<Event> loadAllByIds(Integer[] eventIds);
 
     @Query("SELECT * FROM event WHERE id == :eventId LIMIT 1")
-    LiveData<Event> loadById(Integer eventId);
+    Event loadById(Integer eventId);
 
     @Query("SELECT COUNT(*) from event")
-    LiveData<Integer> countEvents();
+    Integer count();
 
     @Insert
     void insertAll(Event... events);

@@ -8,47 +8,47 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
+import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
  */
 
 @Singleton
-public class CoordinateHelper implements DbHelper<Coordinate> {
+public class GlobalMuteHelper implements DbHelper<GlobalMute> {
     private final AppDatabase mAppDatabase;
 
     @Inject
-    public CoordinateHelper(AppDatabase appDatabase) {
+    public GlobalMuteHelper(AppDatabase appDatabase) {
         this.mAppDatabase = appDatabase;
     }
 
     @Override
-    public Observable<List<Coordinate>> getAll() {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<List<GlobalMute>> getAll() {
+        return Observable.fromCallable(new Callable<List<GlobalMute>>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().getAll();
+            public List<GlobalMute> call() throws Exception {
+                return mAppDatabase.globalMuteDao().getAll();
             }
         });
     }
 
     @Override
-    public Observable<Coordinate> getById(final Integer id) {
-        return Observable.fromCallable(new Callable<Coordinate>() {
+    public Observable<GlobalMute> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<GlobalMute>() {
             @Override
-            public Coordinate call() throws Exception {
-                return mAppDatabase.coordinateDao().loadById(id);
+            public GlobalMute call() throws Exception {
+                return mAppDatabase.globalMuteDao().loadById(id);
             }
         });
     }
 
     @Override
-    public Observable<List<Coordinate>> getByIds(final Integer[] ids) {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<List<GlobalMute>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<GlobalMute>>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().loadAllByIds(ids);
+            public List<GlobalMute> call() throws Exception {
+                return mAppDatabase.globalMuteDao().loadAllByIds(ids);
             }
         });
     }
@@ -58,7 +58,7 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.coordinateDao().count();
+                return mAppDatabase.globalMuteDao().count();
             }
         });
     }
@@ -68,50 +68,50 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.coordinateDao().count() == 0;
+                return mAppDatabase.globalMuteDao().count() == 0;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insert(final Coordinate obj) {
+    public Observable<Boolean> insert(final GlobalMute obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insert(obj);
+                mAppDatabase.globalMuteDao().insert(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insertAll(final Coordinate... obj) {
+    public Observable<Boolean> insertAll(final GlobalMute... obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insertAll(obj);
+                mAppDatabase.globalMuteDao().insertAll(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> update(final Coordinate obj) {
+    public Observable<Boolean> update(final GlobalMute obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().update(obj);
+                mAppDatabase.globalMuteDao().update(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> delete(final Coordinate obj) {
+    public Observable<Boolean> delete(final GlobalMute obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().delete(obj);
+                mAppDatabase.globalMuteDao().delete(obj);
                 return true;
             }
         });

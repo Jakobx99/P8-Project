@@ -8,47 +8,47 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
+import sw801.remindersystem.Model.Persistence.Entity.When;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
  */
 
 @Singleton
-public class CoordinateHelper implements DbHelper<Coordinate> {
+public class WhenHelper implements DbHelper<When> {
     private final AppDatabase mAppDatabase;
 
     @Inject
-    public CoordinateHelper(AppDatabase appDatabase) {
+    public WhenHelper(AppDatabase appDatabase) {
         this.mAppDatabase = appDatabase;
     }
 
     @Override
-    public Observable<List<Coordinate>> getAll() {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<List<When>> getAll() {
+        return Observable.fromCallable(new Callable<List<When>>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().getAll();
+            public List<When> call() throws Exception {
+                return mAppDatabase.whenDao().getAll();
             }
         });
     }
 
     @Override
-    public Observable<Coordinate> getById(final Integer id) {
-        return Observable.fromCallable(new Callable<Coordinate>() {
+    public Observable<List<When>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<When>>() {
             @Override
-            public Coordinate call() throws Exception {
-                return mAppDatabase.coordinateDao().loadById(id);
+            public List<When> call() throws Exception {
+                return mAppDatabase.whenDao().loadAllByIds(ids);
             }
         });
     }
 
     @Override
-    public Observable<List<Coordinate>> getByIds(final Integer[] ids) {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<When> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<When>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().loadAllByIds(ids);
+            public When call() throws Exception {
+                return mAppDatabase.whenDao().loadById(id);
             }
         });
     }
@@ -58,7 +58,7 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.coordinateDao().count();
+                return mAppDatabase.whenDao().count();
             }
         });
     }
@@ -68,50 +68,50 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.coordinateDao().count() == 0;
+                return mAppDatabase.whenDao().count() == 0;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insert(final Coordinate obj) {
+    public Observable<Boolean> insert(final When obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insert(obj);
+                mAppDatabase.whenDao().insert(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insertAll(final Coordinate... obj) {
+    public Observable<Boolean> insertAll(final When... obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insertAll(obj);
+                mAppDatabase.whenDao().insertAll(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> update(final Coordinate obj) {
+    public Observable<Boolean> update(final When obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().update(obj);
+                mAppDatabase.whenDao().update(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> delete(final Coordinate obj) {
+    public Observable<Boolean> delete(final When obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().delete(obj);
+                mAppDatabase.whenDao().delete(obj);
                 return true;
             }
         });

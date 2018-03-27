@@ -30,23 +30,22 @@ public class EditSmartDeviceActivity extends AppCompatActivity {
 
         deviceId = i.getIntExtra("device_id", 0);
 
-        UserPreference.getSmartDeviceById(getApplicationContext(), deviceId).observe(this, new Observer<SmartDevice>() {
-            @Override
-            public void onChanged(@Nullable final SmartDevice smartDevice) {
-                if (smartDevice == null) {
-                    finish();
-
-                }
+        //UserPreference.getSmartDeviceById(getApplicationContext(), deviceId).observe(this, new Observer<SmartDevice>() {
+        //    @Override
+        //    public void onChanged(@Nullable final SmartDevice smartDevice) {
+        //        if (smartDevice == null) {
+        //            finish();
+        //        }
 
 
                 final TextView textView = findViewById(R.id.textView_editdeviceName);
-                textView.setText(smartDevice.getDeviceName());
+        //textView.setText(smartDevice.getDeviceName());
 
                 final EditText editTextName = findViewById(R.id.editText_editname);
-                editTextName.setText(smartDevice.getDeviceName());
+        //editTextName.setText(smartDevice.getDeviceName());
 
                 final Switch enabledDisabled = findViewById(R.id.switch_deviceswitch);
-                enabledDisabled.setChecked(smartDevice.getActive());
+        //enabledDisabled.setChecked(smartDevice.getActive());
 
                 editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
@@ -75,16 +74,16 @@ public class EditSmartDeviceActivity extends AppCompatActivity {
                         String name = editTextName.getText().toString();
                         Boolean active = enabledDisabled.isChecked();
 
-                        smartDevice.setDeviceName(name);
-                        smartDevice.setActive(active);
+                        //smartDevice.setDeviceName(name);
+                        //smartDevice.setActive(active);
 
-                        UserPreference.updateSmartDevice(getApplicationContext(), smartDevice);
+                        //UserPreference.updateSmartDevice(getApplicationContext(), smartDevice);
 
                         finish();
                     }
                 });
 
-            }
-        });
+        //    }
+        //});
     }
 }

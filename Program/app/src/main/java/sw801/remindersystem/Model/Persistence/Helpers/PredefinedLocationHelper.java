@@ -8,47 +8,47 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import sw801.remindersystem.Model.Persistence.Database.AppDatabase;
-import sw801.remindersystem.Model.Persistence.Entity.Coordinate;
+import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 
 /**
  * Created by Kasper Helsted on 3/26/2018.
  */
 
 @Singleton
-public class CoordinateHelper implements DbHelper<Coordinate> {
+public class PredefinedLocationHelper implements DbHelper<PredefinedLocation> {
     private final AppDatabase mAppDatabase;
 
     @Inject
-    public CoordinateHelper(AppDatabase appDatabase) {
+    public PredefinedLocationHelper(AppDatabase appDatabase) {
         this.mAppDatabase = appDatabase;
     }
 
     @Override
-    public Observable<List<Coordinate>> getAll() {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<List<PredefinedLocation>> getAll() {
+        return Observable.fromCallable(new Callable<List<PredefinedLocation>>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().getAll();
+            public List<PredefinedLocation> call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().getAll();
             }
         });
     }
 
     @Override
-    public Observable<Coordinate> getById(final Integer id) {
-        return Observable.fromCallable(new Callable<Coordinate>() {
+    public Observable<PredefinedLocation> getById(final Integer id) {
+        return Observable.fromCallable(new Callable<PredefinedLocation>() {
             @Override
-            public Coordinate call() throws Exception {
-                return mAppDatabase.coordinateDao().loadById(id);
+            public PredefinedLocation call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().loadById(id);
             }
         });
     }
 
     @Override
-    public Observable<List<Coordinate>> getByIds(final Integer[] ids) {
-        return Observable.fromCallable(new Callable<List<Coordinate>>() {
+    public Observable<List<PredefinedLocation>> getByIds(final Integer[] ids) {
+        return Observable.fromCallable(new Callable<List<PredefinedLocation>>() {
             @Override
-            public List<Coordinate> call() throws Exception {
-                return mAppDatabase.coordinateDao().loadAllByIds(ids);
+            public List<PredefinedLocation> call() throws Exception {
+                return mAppDatabase.predefinedLocationDao().loadAllByIds(ids);
             }
         });
     }
@@ -58,7 +58,7 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
-                return mAppDatabase.coordinateDao().count();
+                return mAppDatabase.predefinedLocationDao().countPredefinedLocations();
             }
         });
     }
@@ -68,50 +68,50 @@ public class CoordinateHelper implements DbHelper<Coordinate> {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return mAppDatabase.coordinateDao().count() == 0;
+                return mAppDatabase.predefinedLocationDao().countPredefinedLocations() == 0;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insert(final Coordinate obj) {
+    public Observable<Boolean> insert(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insert(obj);
+                mAppDatabase.predefinedLocationDao().insert(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> insertAll(final Coordinate... obj) {
+    public Observable<Boolean> insertAll(final PredefinedLocation... obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().insertAll(obj);
+                mAppDatabase.predefinedLocationDao().insertAll(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> update(final Coordinate obj) {
+    public Observable<Boolean> update(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().update(obj);
+                mAppDatabase.predefinedLocationDao().update(obj);
                 return true;
             }
         });
     }
 
     @Override
-    public Observable<Boolean> delete(final Coordinate obj) {
+    public Observable<Boolean> delete(final PredefinedLocation obj) {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mAppDatabase.coordinateDao().delete(obj);
+                mAppDatabase.predefinedLocationDao().delete(obj);
                 return true;
             }
         });

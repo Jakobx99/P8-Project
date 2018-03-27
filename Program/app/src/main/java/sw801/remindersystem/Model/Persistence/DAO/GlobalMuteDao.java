@@ -1,6 +1,5 @@
 package sw801.remindersystem.Model.Persistence.DAO;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -18,16 +17,16 @@ import sw801.remindersystem.Model.Persistence.Entity.GlobalMute;
 @Dao
 public interface GlobalMuteDao {
     @Query("SELECT * FROM globalmute")
-    LiveData<List<GlobalMute>> getAll();
+    List<GlobalMute> getAll();
 
     @Query("SELECT * FROM globalmute WHERE id IN (:globalMuteIds)")
-    LiveData<List<GlobalMute>> loadAllByIds(Integer[] globalMuteIds);
+    List<GlobalMute> loadAllByIds(Integer[] globalMuteIds);
 
     @Query("SELECT * FROM globalmute WHERE id == :globalMuteId LIMIT 1")
-    LiveData<GlobalMute> loadById(Integer globalMuteId);
+    GlobalMute loadById(Integer globalMuteId);
 
     @Query("SELECT COUNT(*) from globalmute")
-    LiveData<Integer> countGlobalMutes();
+    Integer count();
 
     @Insert
     void insertAll(GlobalMute... globalMutes);
