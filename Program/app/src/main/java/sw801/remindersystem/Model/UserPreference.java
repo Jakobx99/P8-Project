@@ -17,7 +17,8 @@ import sw801.remindersystem.Model.Persistence.Entity.SmartDevice;
 
 public abstract class UserPreference {
     public static LiveData<List<GlobalMute>> getGlobalMuteList(Context currentContext) {
-        return AppDatabase.getInstance(currentContext).globalMuteDao().getAll();
+        //return AppDatabase.getInstance(currentContext).globalMuteDao().getAll();
+        return null;
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -53,7 +54,8 @@ public abstract class UserPreference {
     }
 
     public static LiveData<List<PredefinedLocation>> getPredefinedLocationList(Context currentContext) {
-        return AppDatabase.getInstance(currentContext).predefinedLocationDao().getAll();
+        return null;
+        //return AppDatabase.getInstance(currentContext).predefinedLocationDao().getAll();
     }
 
     @SuppressLint("StaticFieldLeak")

@@ -1,6 +1,7 @@
 *.iml
 .gradle
 Program/local.properties
+Program/gradle.properties
 .DS_Store
 Program/captures
 .externalNativeBuild
@@ -8,5 +9,3 @@ Program/captures
 Program/build
 Program/.idea/
 .idea/
-Program/gradle/
-Program/gradle.properties
