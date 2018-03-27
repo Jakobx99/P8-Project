@@ -91,18 +91,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Intent intent = null;
+        DrawerLayout drawerMenu = findViewById(R.id.maindrawermenu);
         switch (id){
             case R.id.menumyevent:
-                //intent = new Intent(SettingsActivity.this, MyEventsFragment.class);
+                ChangeToEvents();
+                drawerMenu.closeDrawers();
                 break;
             case R.id.menumysmartdevices:
-                //intent = new Intent(SettingsActivity.this, MySmartDeviceFragment.class);
+                ChangeToSmartDevice();
+                drawerMenu.closeDrawers();
                 break;
             case R.id.menuaddsmartdevies:
                 Intent ac = new Intent(MainActivity.this,AddSmartDeviceActivity.class);
                 startActivity(ac);
+                drawerMenu.closeDrawers();
                 break;
             case R.id.menusettings:
+                Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingIntent);
+                drawerMenu.closeDrawers();
                 break;
             case R.id.menuaboutus:
                 AlertDialog alertDialogabout = new AlertDialog.Builder(MainActivity.this).create();

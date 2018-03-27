@@ -98,6 +98,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/daypicker_layout" />
 
+        <Spinner
+            android:id="@+id/spinnerLocation"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fadingEdge="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWhen" />
+
+
         <TextView
             android:id="@+id/addLocation"
             android:layout_width="0dp"
@@ -108,14 +121,14 @@
             android:background="@drawable/spinner_border"
             android:drawableEnd="@android:drawable/ic_menu_mapmode"
             android:gravity="center_vertical"
-            android:onClick="showNotificationOrSmartdevice"
+            android:onClick="showMapActivity"
             android:paddingLeft="5dp"
             android:paddingRight="8dp"
             android:text="At Location (Default - At no specific location)"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWhen" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerLocation" />
 
         <Spinner
             android:id="@+id/spinnerWhen"
@@ -143,15 +156,18 @@
             android:id="@+id/editTextTime"
             android:layout_width="0dp"
             android:layout_height="61dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:drawableEnd="@android:drawable/ic_menu_recent_history"
             android:ems="10"
-            android:inputType="time"
-            app:layout_constraintEnd_toStartOf="@+id/timePickButton2"
+            android:inputType="text"
+            android:focusable="false"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
 
-        <Button
+        <!--<Button
             android:id="@+id/timePickButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -161,7 +177,7 @@
             android:onClick="showTimePickerDialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/editTextTime"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTime" />-->
 
         <TextView
             android:id="@+id/textViewBetweenTime"
@@ -177,16 +193,19 @@
             android:id="@+id/editTextTimeBetween"
             android:layout_width="0dp"
             android:layout_height="61dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:drawableEnd="@android:drawable/ic_menu_recent_history"
             android:ems="10"
             android:enabled="false"
-            android:inputType="time"
-            app:layout_constraintEnd_toStartOf="@+id/timePickButton2"
+            android:inputType="text"
+            android:focusable="false"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewBetweenTime" />
 
-        <Button
+        <!--<Button
             android:id="@+id/timePickButton2"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -197,21 +216,21 @@
             android:onClick="showTimePickerDialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/editTextTimeBetween"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBetweenTime" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewBetweenTime" />-->
 
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Cancel"
             android:onClick="closeAddEvent"
+            android:text="Cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonCreateEvent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCreateEvent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutAddEvent" />
 
         <Button
@@ -219,21 +238,21 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Create Event"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonCancel"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutAddEvent" />
 
         <LinearLayout
             android:id="@+id/linearLayoutAddEvent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"

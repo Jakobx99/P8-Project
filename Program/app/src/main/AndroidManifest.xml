@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sw801.remindersystem">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,17 +30,23 @@
         <activity android:name=".ActivityView.Activity.GlobalMuteSettingActivity" />
         <activity android:name=".ActivityView.Activity.LocationSettingActivity" />
         <activity android:name=".ActivityView.Activity.ShoppingSettingActivity" />
-        <activity android:name=".ActivityView.Activity.AddGlobalMuteSettingActivity"/>
-        <activity android:name=".ActivityView.Activity.AddLocationSettingActivity"/>
-        <activity android:name=".ActivityView.Activity.EditGlobalMuteSettingActivity"/>
-        <activity android:name=".ActivityView.Activity.EditLocationSettingActivity"/>
+        <activity android:name=".ActivityView.Activity.AddGlobalMuteSettingActivity" />
+        <activity android:name=".ActivityView.Activity.AddLocationSettingActivity" />
+        <activity android:name=".ActivityView.Activity.EditGlobalMuteSettingActivity" />
+        <activity android:name=".ActivityView.Activity.EditLocationSettingActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+
+
+        <activity android:name=".ActivityView.Activity.CreateEventMapActivity"></activity>
+
+
     </application>
 
 </manifest>
