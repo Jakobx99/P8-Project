@@ -25,7 +25,7 @@ public interface CoordinateDao {
     Coordinate loadById(Integer coordinateId);
 
     @Query("SELECT COUNT(*) from coordinate")
-    Integer countCoordinates();
+    Integer count();
 
     @Insert
     void insertAll(Coordinate... coordinates);

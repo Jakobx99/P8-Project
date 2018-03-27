@@ -38,18 +38,18 @@ public class MySmartDeviceFragment extends Fragment {
         listview = (ListView) rootView.findViewById(R.id.listView_mysmartdevices);
 
         //------Creation of list of smart devices
-        UserPreference.getSmartDeviceList(rootView.getContext()).observe(this, new Observer<List<SmartDevice>>() {
-            @Override
-            public void onChanged(@Nullable List<SmartDevice> smartDevices) {
-                SmartDeviceAdapter smartDeviceAdapter = new SmartDeviceAdapter(
-                        rootView.getContext(),
-                        smartDevices
-                );
-
-                listview.setAdapter(smartDeviceAdapter);
-
-            }
-        });
+//        UserPreference.getSmartDeviceList(rootView.getContext()).observe(this, new Observer<List<SmartDevice>>() {
+//            @Override
+//            public void onChanged(@Nullable List<SmartDevice> smartDevices) {
+//                SmartDeviceAdapter smartDeviceAdapter = new SmartDeviceAdapter(
+//                        rootView.getContext(),
+//                        smartDevices
+//                );
+//
+//                listview.setAdapter(smartDeviceAdapter);
+//
+//            }
+//        });
         //------Creation of list of smart devices
 
         //Add new smart device

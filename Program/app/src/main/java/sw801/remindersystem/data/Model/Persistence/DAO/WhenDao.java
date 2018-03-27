@@ -1,6 +1,5 @@
 package sw801.remindersystem.data.Model.Persistence.DAO;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -18,16 +17,16 @@ import sw801.remindersystem.data.Model.Persistence.Entity.When;
 @Dao
 public interface WhenDao {
     @Query("SELECT * FROM `when`")
-    LiveData<List<When>> getAll();
+    List<When> getAll();
 
     @Query("SELECT * FROM `when` WHERE id IN (:whenIds)")
-    LiveData<List<When>> loadAllByIds(Integer[] whenIds);
+    List<When> loadAllByIds(Integer[] whenIds);
 
     @Query("SELECT * FROM `when` WHERE id == :whenId LIMIT 1")
-    LiveData<When> loadById(Integer whenId);
+    When loadById(Integer whenId);
 
     @Query("SELECT COUNT(*) from `when`")
-    LiveData<Integer> countWhens();
+    Integer count();
 
     @Insert
     void insertAll(When... whens);
