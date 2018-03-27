@@ -18,16 +18,16 @@ import sw801.remindersystem.Model.Persistence.Entity.PredefinedLocation;
 @Dao
 public interface PredefinedLocationDao {
     @Query("SELECT * FROM predefinedlocation")
-    LiveData<List<PredefinedLocation>> getAll();
+    List<PredefinedLocation> getAll();
 
     @Query("SELECT * FROM predefinedlocation WHERE id IN (:predefinedLocationIds)")
-    LiveData<List<PredefinedLocation>> loadAllByIds(Integer[] predefinedLocationIds);
+    List<PredefinedLocation> loadAllByIds(Integer[] predefinedLocationIds);
 
     @Query("SELECT * FROM predefinedlocation WHERE id == :predefinedLocationId LIMIT 1")
-    LiveData<PredefinedLocation> loadById(Integer predefinedLocationId);
+    PredefinedLocation loadById(Integer predefinedLocationId);
 
     @Query("SELECT COUNT(*) from predefinedlocation")
-    LiveData<Integer> countPredefinedLocations();
+    Integer countPredefinedLocations();
 
     @Insert
     void insertAll(PredefinedLocation... predefinedLocations);
