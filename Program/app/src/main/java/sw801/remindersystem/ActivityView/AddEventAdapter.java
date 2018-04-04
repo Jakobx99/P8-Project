@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
 import sw801.remindersystem.R;
 
 /**
@@ -48,6 +49,16 @@ public class AddEventAdapter extends BaseAdapter {
         TextView title;
         title = (TextView) row.findViewById(R.id.addEventTrigger);
         title.setText(Title.get(position));
+
+        TextView delete = row.findViewById(R.id.addEventTrigger);
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AddEventActivity) mContext).deleteItem(position);
+
+            }
+        });
 
         //ImageButton add = row.findViewById(R.id.addEventAddCondition);
         /*add.setOnClickListener(new View.OnClickListener() {

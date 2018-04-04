@@ -38,19 +38,21 @@ import sw801.remindersystem.R;
 
 public class AddEventActivity extends AppCompatActivity {
     private ListView listview;
-    ArrayList<String> addMyEvents;
+    public ArrayList<String> addMyEvents;
+    public AddEventAdapter myAdapter;
     private Bundle addressBundle;
     private Address address;
     private TextView addressTextView;
     private TextView textViewTime;
     private TextView textViewBetweenTime;
+    private TextView addEvent;
     static private EditText AtTime = null;
     static private EditText betweenTime = null;
     private TextView addLocation;
     private Button confirm;
     private TextView eventName;
     private ArrayList<Integer> markedButtons;
-
+    private LinearLayout doThis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +64,8 @@ public class AddEventActivity extends AppCompatActivity {
 
         //------Creation of list of "do this"
         addMyEvents = new ArrayList<String>();
-        addMyEvents.add("Choose what the event should trigger");
 
-        final LinearLayout doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
-        ListAdapter myAdapter = new AddEventAdapter(this, addMyEvents);
-
-        final int adapterCount = myAdapter.getCount();
-        for (int i = 0; i < adapterCount; i++) {
-            View item = myAdapter.getView(i, null, null);
-            doThis.addView(item);
-        }
-
+        doThis = (LinearLayout) findViewById(R.id.linearLayoutAddEvent);
 
         //------Creation of list of smart devices - Spinner menu
         // Spinner element
@@ -141,6 +134,7 @@ public class AddEventActivity extends AppCompatActivity {
         textViewBetweenTime  = findViewById(R.id.textViewBetweenTime);
         confirm = findViewById(R.id.buttonCreateEvent);
         eventName = findViewById(R.id.textInputEventName);
+        addEvent = findViewById(R.id.addEventTriggerStatic);
 
         // Click events
         AtTime.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +164,13 @@ public class AddEventActivity extends AppCompatActivity {
                 //List<TIGGER_TYPE>
             }
         });
+        addEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNotificationOrSmartdevice(v);
+            }
+        });
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -364,4 +365,27 @@ public class AddEventActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void refreshData(){
+        ArrayList<String> a = new ArrayList<>();
+        a.clear();
+        a.addAll(addMyEvents);
+
+        doThis.removeAllViews();
+
+        myAdapter = new AddEventAdapter(this, a);
+
+        final int adapterCount = myAdapter.getCount();
+        for (int i = 0; i < adapterCount; i++) {
+            View item = myAdapter.getView(i, null, null);
+            doThis.addView(item);
+        }
+
+    }
+    public void deleteItem(int pos){
+        addMyEvents.remove(pos);
+        refreshData();
+    }
+
+
 }
