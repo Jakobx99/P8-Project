@@ -38,6 +38,8 @@ public class AddEventAccessory extends AppCompatActivity {
 
                 String accessory = arrayList.get(position);
                 if (accessory.equals("Hue - Smart Lights")){
+                    Intent intent = new Intent(AddEventAccessory.this, AddEventHue.class);
+                    startActivityForResult(intent, 1);
                     //OPEN HUE PAGE
                 }else if(accessory.equals("Nest - Termostat")){
                     //Open nest page

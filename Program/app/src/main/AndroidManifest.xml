@@ -44,7 +44,9 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".ActivityView.Activity.CreateEventMapActivity" />
         <activity android:name=".ActivityView.Activity.AddEventSmartDeviceList" />
-        <activity android:name=".ActivityView.Activity.AddEventAccessory"></activity>
+        <activity android:name=".ActivityView.Activity.AddEventAccessory" />
+        <activity android:name=".ActivityView.Activity.AddEventHue" />
+        <activity android:name=".ActivityView.Activity.AddEventNest"></activity>
     </application>
 
 </manifest>
