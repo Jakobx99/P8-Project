@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
 import sw801.remindersystem.R;
 
-/**
- * Created by cheec on 21-03-2018.
- */
 
 public class AddEventAdapter extends BaseAdapter {
     private Context mContext;

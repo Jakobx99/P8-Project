@@ -21,18 +21,18 @@ import android.widget.TimePicker;
 import java.util.Calendar;
 
 import sw801.remindersystem.ActivityView.Activity.AddEventActivity;
+import sw801.remindersystem.ActivityView.Activity.AddEventSmartDeviceList;
 import sw801.remindersystem.R;
 
 public class NotificationOrSmartdeviceFragment extends DialogFragment {
     private Button addNotitication;
+    private Button smartDeviceTrigger;
     private EditText notification;
     private AddEventActivity addEventActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +40,7 @@ public class NotificationOrSmartdeviceFragment extends DialogFragment {
         View v = inflater.inflate(R.layout.fragment_notification_or_smartdevice, container, false);
 
         addNotitication = v.findViewById(R.id.buttonAddNotification);
+        smartDeviceTrigger = v.findViewById(R.id.buttonSmartDevice);
         notification = v.findViewById(R.id.editTextNotification);
         addEventActivity = (AddEventActivity) getActivity();
 
@@ -53,7 +54,27 @@ public class NotificationOrSmartdeviceFragment extends DialogFragment {
 
             }
         });
-
+        smartDeviceTrigger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddEventSmartDeviceList.class);
+                startActivityForResult(intent,1);
+            }
+        });
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1){
+            //TODO CHANGE TO OBJECT
+            Bundle result = data.getBundleExtra("key");
+            String name = result.getString("name");
+            addEventActivity.addMyEvents.add(name);
+            addEventActivity.refreshData();
+            getActivity().getSupportFragmentManager().beginTransaction().remove(NotificationOrSmartdeviceFragment.this).commit();
+        }
+
+
     }
 }
