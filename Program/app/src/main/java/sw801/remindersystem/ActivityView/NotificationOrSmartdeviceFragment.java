@@ -66,7 +66,7 @@ public class NotificationOrSmartdeviceFragment extends DialogFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1){
+        if (data != null && requestCode == 1){
             //TODO CHANGE TO OBJECT
             Bundle result = data.getBundleExtra("key");
             String name = result.getString("name");

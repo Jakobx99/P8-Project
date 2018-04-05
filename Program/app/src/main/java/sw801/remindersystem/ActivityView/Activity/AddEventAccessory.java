@@ -42,6 +42,8 @@ public class AddEventAccessory extends AppCompatActivity {
                     startActivityForResult(intent, 1);
                     //OPEN HUE PAGE
                 }else if(accessory.equals("Nest - Termostat")){
+                    Intent intent = new Intent(AddEventAccessory.this, AddEventNest.class);
+                    startActivityForResult(intent, 1);
                     //Open nest page
                 }
                 //MORE DEVICES POSSIBLE
@@ -58,12 +60,12 @@ public class AddEventAccessory extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1){
+        if (data != null && requestCode == 1 ){
             Bundle result = data.getBundleExtra("key");
             Intent returnIntent = new Intent();
             returnIntent.putExtra("key", result);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
-        }
+        }else{}
     }
 }

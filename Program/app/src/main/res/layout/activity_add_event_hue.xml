@@ -7,7 +7,7 @@
     tools:context=".ActivityView.Activity.AddEventHue">
 
     <TextView
-        android:id="@+id/textViewOr2"
+        android:id="@+id/textViewOrHue2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonHueOn" />
 
     <TextView
-        android:id="@+id/textViewSmartDeviceName"
+        android:id="@+id/textViewSmartDeviceNameHue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewAccessoryName"
+        android:id="@+id/textViewAccessoryNameHue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -47,9 +47,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSmartDeviceName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSmartDeviceNameHue" />
     <TextView
-        android:id="@+id/textViewChooseTrigger"
+        android:id="@+id/textViewChooseTriggerHue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -58,48 +58,46 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAccessoryName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAccessoryNameHue" />
 
     <Button
         android:id="@+id/buttonHueOn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Turn on"
-        app:layout_constraintEnd_toStartOf="@+id/textViewOr1"
+        app:layout_constraintEnd_toStartOf="@+id/textViewOrHue1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTriggerHue" />
 
     <Button
         android:id="@+id/buttonHueOff"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Turn off"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewOr1"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintStart_toEndOf="@+id/textViewOrHue1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTriggerHue" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/seekBarHue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:max="100"
         android:progress="50"
-        app:layout_constraintEnd_toStartOf="@+id/textViewSeekBarPrecentage"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSeekBarPrecentageHue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOr2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOrHue2" />
 
     <TextView
-        android:id="@+id/textViewOr1"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewOrHue1"
+        android:layout_width="19dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -108,21 +106,21 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toStartOf="@+id/buttonHueOff"
         app:layout_constraintStart_toEndOf="@+id/buttonHueOn"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTriggerHue" />
 
     <TextView
-        android:id="@+id/textViewSeekBarPrecentage"
+        android:id="@+id/textViewSeekBarPrecentageHue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:text="num"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/seekBar2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOr2" />
+        app:layout_constraintStart_toEndOf="@+id/seekBarHue"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOrHue2" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonConfirmBrightnessHue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -134,7 +132,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarHue"
         app:layout_constraintVertical_bias="0.004" />
 
 

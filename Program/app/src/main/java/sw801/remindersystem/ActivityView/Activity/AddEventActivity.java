@@ -354,17 +354,12 @@ public class AddEventActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case (0) : {
-                if (resultCode == Activity.RESULT_OK) {
-                    addressBundle = data.getBundleExtra("address");
-                    address = addressBundle.getParcelable("address");
-                    addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
-                }
-                break;
-            }
+            if (data != null && resultCode == Activity.RESULT_OK) {
+                addressBundle = data.getBundleExtra("address");
+                address = addressBundle.getParcelable("address");
+                addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
+            }else{}
         }
-    }
 
     public void refreshData(){
         ArrayList<String> a = new ArrayList<>();
