@@ -2,6 +2,7 @@ package sw801.remindersystem.ActivityView.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -22,6 +23,9 @@ import sw801.remindersystem.R;
 public class EditLocationSettingActivity extends AppCompatActivity {
 
     private String locationSettingName;
+    private Bundle addressBundle;
+    private Address address;
+    private TextView addressTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,46 +40,26 @@ public class EditLocationSettingActivity extends AppCompatActivity {
         final EditText editTextName = findViewById(R.id.textInputLocationName);
         editTextName.setText(locationSettingName);
 
-        editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //Remove focus and hide keyboard
-
-                    textView.setText(editTextName.getText());
-                    findViewById(R.id.editLocationSettingLayout).requestFocus();
-
-                    //Hide keyboard
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-
-                    handled = true;
-                }
-                return handled;
-            }
-        });
-
-        final Button buttonSettings = findViewById(R.id.button_MarkLocation);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(EditLocationSettingActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button confirmButton = findViewById(R.id.button_editLocationSettingConfirm);
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = editTextName.getText().toString();
-
-                //TODO change in database
-
-                finish();
-            }
-        });
-
+        addressTextView = findViewById(R.id.addLocation);
     }
+
+    public void showMapActivity(View v){
+        Intent mapIntent = new Intent(EditLocationSettingActivity.this, CreateEventMapActivity.class);
+        startActivityForResult(mapIntent, 0);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (0) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    addressBundle = data.getBundleExtra("address");
+                    address = addressBundle.getParcelable("address");
+                    addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
+                }
+                break;
+            }
+        }
+    }
+
 }
