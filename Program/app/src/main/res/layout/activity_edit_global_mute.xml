@@ -74,11 +74,26 @@
         android:id="@+id/editTextTimeBetween"
         android:layout_width="0dp"
         android:layout_height="61dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:drawableEnd="@android:drawable/ic_menu_recent_history"
         android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toStartOf="@+id/timePickButton2"
+        android:focusable="false"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTimeBetween2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBetween" />
+
+    <EditText
+        android:id="@+id/editTextTimeBetween2"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="16dp"
+        android:drawableEnd="@android:drawable/ic_menu_recent_history"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTimeBetween"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBetween" />
 
@@ -114,18 +129,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
-    <Button
-        android:id="@+id/timePickButton2"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:drawable/ic_menu_recent_history"
-        android:onClick="showTimePickerDialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTimeBetween"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBetween" />
-
     <EditText
         android:id="@+id/editTextComment"
         android:layout_width="377dp"
@@ -145,7 +148,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
 
     <Button
-        android:id="@+id/button_editGlobalMuteConfirm"
+        android:id="@+id/buttonEditGlobalMuteConfirm"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
