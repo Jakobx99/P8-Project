@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ActivityView.Activity.AddEventHue">
 
+    tools:context="p8project.sw801.ui.SmartDevice.AddSmartDeviceActivity">
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="p8project.sw801.ui.AddEvent.AddEventViewModel" />
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/textViewOr2"
         android:layout_width="0dp"
@@ -18,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonHueOn" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonHueOn"
+        android:gravity="start" />
 
     <TextView
         android:id="@+id/textViewSmartDeviceName"
@@ -70,7 +79,9 @@
         android:text="Turn on"
         app:layout_constraintEnd_toStartOf="@+id/textViewOr1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp" />
 
     <Button
         android:id="@+id/buttonHueOff"
@@ -83,7 +94,9 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewOr1"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp" />
 
     <SeekBar
         android:id="@+id/seekBar2"
@@ -95,7 +108,8 @@
         android:progress="50"
         app:layout_constraintEnd_toStartOf="@+id/textViewSeekBarPrecentage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOr2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOr2"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:id="@+id/textViewOr1"
@@ -108,7 +122,8 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toStartOf="@+id/buttonHueOff"
         app:layout_constraintStart_toEndOf="@+id/buttonHueOn"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseTrigger"
+        android:gravity="start" />
 
     <TextView
         android:id="@+id/textViewSeekBarPrecentage"
@@ -119,7 +134,8 @@
         android:text="num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/seekBar2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOr2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOr2"
+        android:layout_marginRight="16dp" />
 
     <Button
         android:id="@+id/button4"
@@ -136,6 +152,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2"
         app:layout_constraintVertical_bias="0.004" />
-
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

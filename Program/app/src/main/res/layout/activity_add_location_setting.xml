@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.Activity.AddGlobalMuteSettingActivity">
-
+    tools:context="p8project.sw801.ui.Settings.GlobalMute.AddGlobalMuteSettingActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="p8project.sw801.ui.Settings.SettingsViewModel" />
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/textViewCreatePredefinedLocation"
         android:layout_width="0dp"
@@ -58,26 +64,51 @@
         android:layout_marginTop="32dp"
         android:text="Specify location:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:layout_marginLeft="16dp" />
 
-    <TextView
-        android:id="@+id/addLocation"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputAddressLayout"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/spinner_border"
-        android:drawableEnd="@android:drawable/ic_menu_mapmode"
-        android:gravity="center_vertical"
-        android:onClick="showMapActivity"
-        android:paddingLeft="5dp"
-        android:paddingRight="8dp"
-        android:text="At Location (Default - At no specific location)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSpecifyLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSpecifyLocation">
 
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter address" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewOr"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="OR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputAddressLayout"
+        android:layout_marginLeft="16dp" />
+
+    <Button
+        android:id="@+id/button_MarkLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Mark location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOr" />
 
     <Button
         android:id="@+id/button_savePredefinedLocation"
@@ -85,16 +116,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addLocation" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/button_MarkLocation" />
 
 
 </android.support.constraint.ConstraintLayout>
+</layout>
