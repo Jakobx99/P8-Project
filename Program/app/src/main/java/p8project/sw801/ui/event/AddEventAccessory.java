@@ -1,4 +1,4 @@
-package p8project.sw801.ui.AddEvent;
+package p8project.sw801.ui.event;
 
 import android.app.Activity;
 import android.content.Intent;

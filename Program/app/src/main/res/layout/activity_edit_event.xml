@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="p8project.sw801.ui.AddEvent.EditEventActivity" />
+            type="p8project.sw801.ui.event.EditEventActivity" />
     </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

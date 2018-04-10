@@ -1,36 +1,6 @@
-package p8project.sw801.ui.AddEvent;
-
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.location.Address;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
-import android.widget.ToggleButton;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import p8project.sw801.R;
-
-public class AddEventActivity extends AppCompatActivity {
     private ListView listview;
     public ArrayList<String> addMyEvents;
-    public AddEventAdapter myAdapter;
+    //public AddEventAdapter myAdapter;
     private Bundle addressBundle;
     private Address address;
     private TextView addressTextView;
@@ -292,7 +262,7 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     public void showMapActivity(View v){
-        Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMapActivity.class);
+        Intent mapIntent = new Intent(AddEvent.this, CreateEventMapActivity.class);
         startActivityForResult(mapIntent, 0);
     }
 
@@ -377,6 +347,3 @@ public class AddEventActivity extends AppCompatActivity {
         addMyEvents.remove(pos);
         refreshData();
     }
-
-
-}
