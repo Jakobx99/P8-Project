@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SmartDevice.EditSmartDeviceActivity" />
+        <activity android:name=".ui.Settings.Shopping.ShoppingSettingActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

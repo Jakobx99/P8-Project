@@ -3,6 +3,7 @@ package p8project.sw801.ui.SmartDevice;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,19 +22,40 @@ import com.philips.lighting.model.PHHueParsingError;
 
 import java.util.List;
 
+import dagger.android.AndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+import p8project.sw801.BR;
 import p8project.sw801.Library.HueSharedPreferences;
 import p8project.sw801.R;
+import p8project.sw801.databinding.ActivityAddSmartDeviceBinding;
+import p8project.sw801.ui.base.BaseActivity;
 import p8project.sw801.ui.custom.PHPushlinkActivity;
 import p8project.sw801.ui.custom.PHWizardAlertDialog;
 import p8project.sw801.ui.main.MainActivity;
 
-public class AddSmartDeviceActivity extends AppCompatActivity {
+public class AddSmartDeviceActivity extends BaseActivity<ActivityAddSmartDeviceBinding, AddSmartDeviceViewModel> implements AddSmartDeviceNavigator, HasSupportFragmentInjector {
 
     private PHHueSDK phHueSDK;
     public static final String TAG = "NotifyUs";
     private HueSharedPreferences prefs;
     private AccessPointListAdapter adapter;
     private boolean lastSearchWasIPScan = false;
+    private AddSmartDeviceViewModel mSmartDeviceViewModel;
+    private ActivityAddSmartDeviceBinding mActivityAddSmartDeviceBinding;
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_add_smart_device;
+    }
+
+    @Override
+    public AddSmartDeviceViewModel getViewModel() {
+        return mSmartDeviceViewModel;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +63,8 @@ public class AddSmartDeviceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_smart_device);
         setTitle("Notify me - Add event");
         phHueSDK = PHHueSDK.create();
+        mActivityAddSmartDeviceBinding = getViewDataBinding();
+        mSmartDeviceViewModel.setNavigator(this);
         phHueSDK.setAppName("NotifyUs");
         phHueSDK.setDeviceName(android.os.Build.MODEL);
         // Register the PHSDKListener to receive callbacks from the bridge.
@@ -270,5 +294,15 @@ public class AddSmartDeviceActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // equal to Intent.FLAG_ACTIVITY_CLEAR_TASK which is only available from API level 11
         startActivity(intent);
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return null;
+    }
+
+    @Override
+    public void handleError(Throwable throwable) {
+
     }
 }
