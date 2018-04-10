@@ -10,6 +10,7 @@ import p8project.sw801.R;
 import p8project.sw801.databinding.ActivityAddEventBinding;
 import p8project.sw801.ui.base.BaseActivity;
 import p8project.sw801.ui.event.createeventmap.CreateEventMap;
+import p8project.sw801.ui.event.notificationorsmartdevice.NotificationOrSmartdevice;
 
 
 public class AddEvent extends BaseActivity<ActivityAddEventBinding, AddEventViewModel> implements AddEventNavigator {
@@ -49,5 +50,15 @@ public class AddEvent extends BaseActivity<ActivityAddEventBinding, AddEventView
         Intent intent = CreateEventMap.newIntent(AddEvent.this);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void showNotificationOrSmartdevice() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .add(R.id.main_content, NotificationOrSmartdevice.newInstance(), NotificationOrSmartdevice.TAG)
+                .commit();
+
     }
 }

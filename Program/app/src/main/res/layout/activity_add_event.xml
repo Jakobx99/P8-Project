@@ -238,7 +238,7 @@
                 android:background="@drawable/spinner_border"
                 android:drawableEnd="@drawable/ic_add_black_18dp"
                 android:gravity="center_vertical"
-                android:onClick="showNotificationOrSmartdevice"
+                android:onClick="@{() -> viewModel.showNotificationOrSmartdevice()}"
                 android:paddingLeft="5dp"
                 android:paddingRight="-7dp"
                 android:text="Event trigger"

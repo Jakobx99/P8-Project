@@ -4,4 +4,6 @@ public interface AddEventNavigator {
     void handleError(Throwable throwable);
 
     void openCreateMapActivity();
+
+    void showNotificationOrSmartdevice();
 }

@@ -12,4 +12,8 @@ public class AddEventViewModel extends BaseViewModel<AddEventNavigator> {
     public void showMapActivity() {
         getNavigator().openCreateMapActivity();
     }
+
+    public void showNotificationOrSmartdevice() {
+        getNavigator().showNotificationOrSmartdevice();
+    }
 }
