@@ -1,4 +1,4 @@
-package p8project.sw801.ui.AddEvent;
+package p8project.sw801.ui.AddEvent.addevent.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,9 +1,8 @@
-package p8project.sw801.ui.AddEvent;
+package p8project.sw801.ui.AddEvent.addeventaccessory;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,11 +11,40 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import p8project.sw801.R;
+import javax.inject.Inject;
 
-public class AddEventAccessory extends AppCompatActivity {
+import p8project.sw801.BR;
+import p8project.sw801.R;
+import p8project.sw801.databinding.ActivityAddEventAccessoryBinding;
+import p8project.sw801.ui.AddEvent.addeventhue.AddEventHue;
+import p8project.sw801.ui.base.BaseActivity;
+
+public class AddEventAccessory extends BaseActivity<ActivityAddEventAccessoryBinding, AddEventAccessoryViewModel> implements AddEventAccessoryNavigator {
+    @Inject
+    AddEventAccessoryViewModel mAddEventAccessoryViewModel;
+
     private final ArrayList<String> arrayList = new ArrayList<>();
     private ListView listView;
+
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_add_event_accessory;
+    }
+
+    @Override
+    public AddEventAccessoryViewModel getViewModel() {
+        return mAddEventAccessoryViewModel;
+    }
+
+    @Override
+    public void handleError(Throwable throwable) {
+        //TODO: handle error
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +63,11 @@ public class AddEventAccessory extends AppCompatActivity {
                 //TODO REPLACE STRING WITH OBJECT AND REPLACE IF CONDITIONS WITH VALID CONDITIONS!!
 
                 String accessory = arrayList.get(position);
-                if (accessory.equals("Hue - Smart Lights")){
+                if (accessory.equals("Hue - Smart Lights")) {
                     Intent intent = new Intent(AddEventAccessory.this, AddEventHue.class);
                     startActivityForResult(intent, 1);
                     //OPEN HUE PAGE
-                }else if(accessory.equals("Nest - Termostat")){
+                } else if (accessory.equals("Nest - Termostat")) {
                     //Open nest page
                 }
                 //MORE DEVICES POSSIBLE
@@ -47,16 +75,17 @@ public class AddEventAccessory extends AppCompatActivity {
         });
     }
 
-    private void populateList(){
+    private void populateList() {
         //TODO Change to call to viewmodel
         arrayList.add("Hue - Smart Lights");
         arrayList.add("Nest - Termostat");
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.activity_add_event_list_layout, arrayList);
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_add_event_list_layout, arrayList);
         listView.setAdapter(adapter);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1){
+        if (requestCode == 1) {
             Bundle result = data.getBundleExtra("key");
             Intent returnIntent = new Intent();
             returnIntent.putExtra("key", result);

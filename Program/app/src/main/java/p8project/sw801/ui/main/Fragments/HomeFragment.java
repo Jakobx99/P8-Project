@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.AddEventActivity;
+import p8project.sw801.ui.AddEvent.addevent.AddEventActivity;
 import p8project.sw801.ui.Settings.SettingsActivity;
 import p8project.sw801.ui.main.MainActivity;
 

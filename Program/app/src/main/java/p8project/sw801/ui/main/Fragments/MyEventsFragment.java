@@ -3,7 +3,6 @@ package p8project.sw801.ui.main.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.AddEventActivity;
+import p8project.sw801.ui.AddEvent.addevent.AddEventActivity;
 import p8project.sw801.ui.AddEvent.MyEventAdapter;
 
 public class MyEventsFragment extends Fragment {
