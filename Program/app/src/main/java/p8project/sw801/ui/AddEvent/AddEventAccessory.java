@@ -2,17 +2,20 @@ package p8project.sw801.ui.AddEvent;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import p8project.sw801.R;
+
 
 public class AddEventAccessory extends AppCompatActivity {
     private final ArrayList<String> arrayList = new ArrayList<>();
@@ -40,6 +43,8 @@ public class AddEventAccessory extends AppCompatActivity {
                     startActivityForResult(intent, 1);
                     //OPEN HUE PAGE
                 }else if(accessory.equals("Nest - Termostat")){
+                    Intent intent = new Intent(AddEventAccessory.this, AddEventNest.class);
+                    startActivityForResult(intent, 1);
                     //Open nest page
                 }
                 //MORE DEVICES POSSIBLE
@@ -56,12 +61,12 @@ public class AddEventAccessory extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1){
+        if (data != null && requestCode == 1 ){
             Bundle result = data.getBundleExtra("key");
             Intent returnIntent = new Intent();
             returnIntent.putExtra("key", result);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
-        }
+        }else{}
     }
 }

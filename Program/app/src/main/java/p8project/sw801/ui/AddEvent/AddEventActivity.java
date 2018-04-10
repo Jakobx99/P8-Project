@@ -5,16 +5,19 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.location.Address;
-import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,8 +27,12 @@ import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+
 import p8project.sw801.R;
+import p8project.sw801.ui.AddEvent.AddEventAdapter;
+
 
 public class AddEventActivity extends AppCompatActivity {
     private ListView listview;
@@ -183,7 +190,7 @@ public class AddEventActivity extends AppCompatActivity {
                     AtTime.setEnabled(false);
                     AtTime.setVisibility(View.GONE);
                     //AtClock.setEnabled(false);
-                     //AtClock.setVisibility(View.INVISIBLE);
+                    //AtClock.setVisibility(View.INVISIBLE);
                     textViewBetweenTime.setVisibility(View.GONE);
                     betweenTime.setEnabled(false);
                     betweenTime.setVisibility(View.GONE);
@@ -345,16 +352,11 @@ public class AddEventActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case (0) : {
-                if (resultCode == Activity.RESULT_OK) {
-                    addressBundle = data.getBundleExtra("address");
-                    address = addressBundle.getParcelable("address");
-                    addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
-                }
-                break;
-            }
-        }
+        if (data != null && resultCode == Activity.RESULT_OK) {
+            addressBundle = data.getBundleExtra("address");
+            address = addressBundle.getParcelable("address");
+            addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
+        }else{}
     }
 
     public void refreshData(){

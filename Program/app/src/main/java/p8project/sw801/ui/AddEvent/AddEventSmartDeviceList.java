@@ -2,16 +2,19 @@ package p8project.sw801.ui.AddEvent;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import p8project.sw801.R;
+
 
 public class AddEventSmartDeviceList extends AppCompatActivity {
     private final ArrayList<String> arrayList = new ArrayList<>();
@@ -43,12 +46,12 @@ public class AddEventSmartDeviceList extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1){
+        if (data != null && requestCode == 1){
             Bundle result = data.getBundleExtra("key");
             Intent returnIntent = new Intent();
             returnIntent.putExtra("key", result);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
-        }
+        }else{}
     }
 }
