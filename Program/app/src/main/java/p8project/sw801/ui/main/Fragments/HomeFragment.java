@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.AddEventActivity;
+import p8project.sw801.ui.event.addevent.AddEvent;
 import p8project.sw801.ui.Settings.SettingsActivity;
 import p8project.sw801.ui.main.MainActivity;
 
@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddEventActivity.class);
+                Intent intent = new Intent(getActivity(), AddEvent.class);
 
                 //((MainActivity)getActivity()).mViewPager.setCurrentItem(1);
                 //((MainActivity)getActivity()).mSectionsPagerAdapter.notifyDataSetChanged();

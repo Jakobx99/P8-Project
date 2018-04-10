@@ -3,7 +3,6 @@ package p8project.sw801.ui.main.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.AddEventActivity;
-import p8project.sw801.ui.AddEvent.MyEventAdapter;
+import p8project.sw801.ui.event.addevent.AddEvent;
+import p8project.sw801.ui.event.MyEventAdapter;
 
 public class MyEventsFragment extends Fragment {
     //Implement viewmodel here
@@ -60,7 +59,7 @@ public class MyEventsFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(rootView.getContext(), AddEventActivity.class);
+                Intent intent = new Intent(rootView.getContext(), AddEvent.class);
                 startActivity(intent);
             }
         });

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="p8project.sw801">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".MvvmApp"
         android:allowBackup="true"
@@ -21,6 +23,8 @@
         </activity>
         <activity android:name=".ui.SmartDevice.EditSmartDeviceActivity" />
         <activity android:name=".ui.Settings.Shopping.ShoppingSettingActivity" />
+        <activity android:name=".ui.event.addevent.AddEvent" />
+        <activity android:name=".ui.event.createeventmap.CreateEventMap" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

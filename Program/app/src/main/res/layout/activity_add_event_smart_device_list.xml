@@ -2,13 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="p8project.sw801.ui.AddEvent.AddEventSmartDeviceList">
+    tools:context="p8project.sw801.ui.event.AddEventSmartDeviceList">
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
-            type="p8project.sw801.ui.AddEvent.AddEventViewModel" />
+            type="p8project.sw801.ui.event.addevent.AddEventViewModel" />
     </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

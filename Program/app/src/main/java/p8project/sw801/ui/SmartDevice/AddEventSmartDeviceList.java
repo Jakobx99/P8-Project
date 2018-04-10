@@ -12,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.AddEventAccessory;
+import p8project.sw801.ui.event.AddEventAccessory;
 
 public class AddEventSmartDeviceList extends AppCompatActivity {
     private final ArrayList<String> arrayList = new ArrayList<>();
