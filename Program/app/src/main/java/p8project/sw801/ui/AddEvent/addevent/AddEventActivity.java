@@ -31,9 +31,9 @@ import p8project.sw801.BR;
 import p8project.sw801.R;
 import p8project.sw801.databinding.ActivityAddEventBinding;
 import p8project.sw801.ui.AddEvent.addevent.Adapters.AddEventAdapter;
-import p8project.sw801.ui.AddEvent.CreateEventMapActivity;
-import p8project.sw801.ui.AddEvent.NotificationOrSmartdeviceFragment;
 import p8project.sw801.ui.base.BaseActivity;
+import p8project.sw801.ui.event.NotificationOrSmartdeviceFragment;
+import p8project.sw801.ui.event.createeventmap.CreateEventMap;
 
 public class AddEventActivity extends BaseActivity<ActivityAddEventBinding, AddEventActivityViewModel> implements AddEventActivityNavigator {
     @Inject
@@ -320,7 +320,7 @@ public class AddEventActivity extends BaseActivity<ActivityAddEventBinding, AddE
     }
 
     public void showMapActivity(View v) {
-        Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMapActivity.class);
+        Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMap.class);
         startActivityForResult(mapIntent, 0);
     }
 
