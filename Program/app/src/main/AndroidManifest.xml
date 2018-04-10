@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="p8project.sw801">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -33,6 +34,7 @@
         <activity android:name=".ui.Settings.Location.AddLocationSettingActivity"/>
         <activity android:name=".ui.Settings.Location.EditLocationSettingActivity"/>
         <activity android:name=".ui.Settings.GlobalMute.EditGlobalMuteSettingActivity"/>
+        <activity android:name=".ui.AddEvent.CreateEventMapActivity"></activity>
 
 
 

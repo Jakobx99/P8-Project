@@ -54,7 +54,7 @@ public class EditGlobalMuteSettingActivity extends AppCompatActivity {
             }
         });
 
-        Button confirmButton = findViewById(R.id.button_editGlobalMuteConfirm);
+        Button confirmButton = findViewById(R.id.buttonEditGlobalMuteConfirm);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

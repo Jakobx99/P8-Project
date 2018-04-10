@@ -55,14 +55,6 @@ public class EditLocationSettingActivity extends AppCompatActivity {
             }
         });
 
-        final Button buttonSettings = findViewById(R.id.button_MarkLocation);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(EditLocationSettingActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         Button confirmButton = findViewById(R.id.button_editLocationSettingConfirm);
         confirmButton.setOnClickListener(new View.OnClickListener() {
