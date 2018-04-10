@@ -1,4 +1,4 @@
-package p8project.sw801.ui.AddEvent;
+package p8project.sw801.ui.event;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,32 +8,45 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import p8project.sw801.R;
-import p8project.sw801.ui.AddEvent.addeventaccessory.AddEventAccessory;
 
-public class AddEventSmartDeviceList extends AppCompatActivity {
+public class AddEventAccessory extends AppCompatActivity {
     private final ArrayList<String> arrayList = new ArrayList<>();
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event_smart_device_list);
-        listView = findViewById(R.id.listViewSmartDevice);
+        setContentView(R.layout.activity_add_event_accessory);
+        TextView textView = findViewById(R.id.textViewAccessory);
+        textView.setText(getIntent().getExtras().getString("Name"));
+
+        listView = findViewById(R.id.listViewAccessory);
         populateList();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(AddEventSmartDeviceList.this, AddEventAccessory.class);
-                intent.putExtra("Name", arrayList.get(position));
-                startActivityForResult(intent, 1);
+
+                //TODO REPLACE STRING WITH OBJECT AND REPLACE IF CONDITIONS WITH VALID CONDITIONS!!
+
+                String accessory = arrayList.get(position);
+                if (accessory.equals("Hue - Smart Lights")){
+                    Intent intent = new Intent(AddEventAccessory.this, AddEventHue.class);
+                    startActivityForResult(intent, 1);
+                    //OPEN HUE PAGE
+                }else if(accessory.equals("Nest - Termostat")){
+                    //Open nest page
+                }
+                //MORE DEVICES POSSIBLE
             }
         });
     }
+
     private void populateList(){
         //TODO Change to call to viewmodel
         arrayList.add("Hue - Smart Lights");
@@ -41,7 +54,6 @@ public class AddEventSmartDeviceList extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,R.layout.activity_add_event_list_layout, arrayList);
         listView.setAdapter(adapter);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1){

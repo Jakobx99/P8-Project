@@ -5,13 +5,13 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="p8project.sw801.ui.AddEvent.AddEventViewModel" />
+            type="p8project.sw801.ui.event.addevent.AddEventViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="p8project.sw801.ui.AddEvent.NotificationOrSmartdeviceFragment">
+        tools:context="p8project.sw801.ui.event.NotificationOrSmartdeviceFragment">
 
         <!-- TODO: Update blank fragment layout -->
 

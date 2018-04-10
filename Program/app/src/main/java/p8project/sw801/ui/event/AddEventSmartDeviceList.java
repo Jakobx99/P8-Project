@@ -1,4 +1,4 @@
-package p8project.sw801.ui.SmartDevice;
+package p8project.sw801.ui.event;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,9 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import p8project.sw801.R;
-
-import p8project.sw801.ui.event.AddEventAccessory;
-
+import p8project.sw801.ui.AddEvent.addeventaccessory.AddEventAccessory;
 
 public class AddEventSmartDeviceList extends AppCompatActivity {
     private final ArrayList<String> arrayList = new ArrayList<>();
