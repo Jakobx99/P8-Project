@@ -35,8 +35,10 @@
         <activity android:name=".ui.Settings.Location.EditLocationSettingActivity"/>
         <activity android:name=".ui.Settings.GlobalMute.EditGlobalMuteSettingActivity"/>
         <activity android:name=".ui.AddEvent.CreateEventMapActivity"></activity>
-
-
+        <activity android:name=".ui.AddEvent.AddEventSmartDeviceList"></activity>
+        <activity android:name=".ui.AddEvent.AddEventAccessory"></activity>
+        <activity android:name=".ui.AddEvent.AddEventHue"></activity>
+        <activity android:name=".ui.AddEvent.AddEventNest"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

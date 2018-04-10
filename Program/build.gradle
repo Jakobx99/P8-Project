@@ -47,7 +47,8 @@ ext {
     debugDBVersion = '1.0.3'
     timberVersion = '4.5.1'
     lifecycle = '1.1.0'
-    maps = '11.8.0'
+    maps = '12.0.1'
+    gservices = '12.0.1'
 
     // Test dependencies
     junitVersion = '4.12'

@@ -3,6 +3,7 @@ package p8project.sw801.ui.AddEvent;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -10,11 +11,19 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.PlaceDetectionClient;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -22,6 +31,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,14 +51,19 @@ public class CreateEventMapActivity extends AppCompatActivity implements OnMapRe
     private Button confirmButton;
     private Address a;
     private Location location;
-    private Location mLastLocation;
 
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private boolean mLocationPermissionGranted = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event_map);
+
+
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -84,38 +100,8 @@ public class CreateEventMapActivity extends AppCompatActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gmap = googleMap;
-
         gmap.setMinZoomPreference(8);
-
-        // Get current location
-
-        LocationManager locationManager = (LocationManager)
-                getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-
-        if (location == null){
-            location.setLatitude(57.016959);
-            location.setLongitude(9.991390);
-        }
-
-
-
-        //Set current location on map
-        LatLng currentLoc = new LatLng(location.getLatitude(), location.getLongitude());
-
-        marker = gmap.addMarker(new MarkerOptions().position(currentLoc).title("Current position"));
-        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLoc, 12.0f));
-
-        //Write address in textfield
-        a = convertCoordinateToAddress(currentLoc);
-        editText.setText(a.getAddressLine(0)+ ", " + a.getAddressLine(1) + ", " + a.getAddressLine(2));
-
-        //Current location button on map
-        gmap.setMyLocationEnabled(true);
-        gmap.setOnMyLocationButtonClickListener(this);
-        gmap.setOnMyLocationClickListener(this);
-
+        getLocationPermission();
 
         gmap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -128,10 +114,6 @@ public class CreateEventMapActivity extends AppCompatActivity implements OnMapRe
         });
 
     }
-
-    //TODO Click event on map i.e. set marker and write address in textbox.
-    //TODO Confirm and exit button.
-
 
     private Address convertCoordinateToAddress(LatLng latLng){
         //TODO MAKE DEFAULT ADDRESS TO RETURN TO AVOID NULL
@@ -148,7 +130,31 @@ public class CreateEventMapActivity extends AppCompatActivity implements OnMapRe
         return address;
     }
 
+    private void prepMap(){
+        // Get current location
+        LocationManager locationManager = (LocationManager)
+                getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        if (location == null){
+            location.setLatitude(57.016959);
+            location.setLongitude(9.991390);
+        }
+        //Set current location on map
+        LatLng currentLoc = new LatLng(location.getLatitude(), location.getLongitude());
 
+        marker = gmap.addMarker(new MarkerOptions().position(currentLoc).title("Current position"));
+        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLoc, 12.0f));
+
+        //Write address in textfield
+        a = convertCoordinateToAddress(currentLoc);
+        editText.setText(a.getAddressLine(0)+ ", " + a.getAddressLine(1) + ", " + a.getAddressLine(2));
+
+        //Current location button on map
+        gmap.setMyLocationEnabled(true);
+        gmap.setOnMyLocationButtonClickListener(this);
+        gmap.setOnMyLocationClickListener(this);
+    }
 
     @Override
     public void onMyLocationClick(@NonNull Location location) {
@@ -159,6 +165,47 @@ public class CreateEventMapActivity extends AppCompatActivity implements OnMapRe
     public boolean onMyLocationButtonClick() {
        return false;
     }
+
+    private void getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        mLocationPermissionGranted = false;
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionGranted = true;
+                    prepMap();
+                }
+                else{
+                    Intent resultIntent = new Intent();
+                    setResult(Activity.RESULT_CANCELED, resultIntent);
+                    finish();
+                }
+            }
+        }
+    }
+
+
 
 
 

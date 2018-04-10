@@ -38,11 +38,11 @@ public class AddEventAccessory extends AppCompatActivity {
                 //TODO REPLACE STRING WITH OBJECT AND REPLACE IF CONDITIONS WITH VALID CONDITIONS!!
 
                 String accessory = arrayList.get(position);
-                if (accessory.equals("Hue - Smart Lights")){
+                if (accessory.equals("Light 1")){
                     Intent intent = new Intent(AddEventAccessory.this, AddEventHue.class);
                     startActivityForResult(intent, 1);
                     //OPEN HUE PAGE
-                }else if(accessory.equals("Nest - Termostat")){
+                }else if(accessory.equals("Termostat 1")){
                     Intent intent = new Intent(AddEventAccessory.this, AddEventNest.class);
                     startActivityForResult(intent, 1);
                     //Open nest page
@@ -54,8 +54,8 @@ public class AddEventAccessory extends AppCompatActivity {
 
     private void populateList(){
         //TODO Change to call to viewmodel
-        arrayList.add("Hue - Smart Lights");
-        arrayList.add("Nest - Termostat");
+        arrayList.add("Light 1");
+        arrayList.add("Termostat 1");
         ArrayAdapter adapter = new ArrayAdapter(this,R.layout.activity_add_event_list_layout, arrayList);
         listView.setAdapter(adapter);
     }
