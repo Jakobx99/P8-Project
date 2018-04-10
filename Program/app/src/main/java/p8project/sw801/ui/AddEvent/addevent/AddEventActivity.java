@@ -1,4 +1,4 @@
-package p8project.sw801.ui.AddEvent;
+package p8project.sw801.ui.AddEvent.addevent;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,9 +24,21 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import p8project.sw801.R;
 
-public class AddEventActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+import p8project.sw801.BR;
+import p8project.sw801.R;
+import p8project.sw801.databinding.ActivityAddEventBinding;
+import p8project.sw801.ui.AddEvent.addevent.Adapters.AddEventAdapter;
+import p8project.sw801.ui.AddEvent.CreateEventMapActivity;
+import p8project.sw801.ui.AddEvent.NotificationOrSmartdeviceFragment;
+import p8project.sw801.ui.base.BaseActivity;
+
+public class AddEventActivity extends BaseActivity<ActivityAddEventBinding, AddEventActivityViewModel> implements AddEventActivityNavigator {
+    @Inject
+    AddEventActivityViewModel mAddEventActivityViewModel;
+
     private ListView listview;
     public ArrayList<String> addMyEvents;
     public AddEventAdapter myAdapter;
@@ -44,6 +55,26 @@ public class AddEventActivity extends AppCompatActivity {
     private TextView eventName;
     private ArrayList<Integer> markedButtons;
     private LinearLayout doThis;
+
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_add_event;
+    }
+
+    @Override
+    public AddEventActivityViewModel getViewModel() {
+        return mAddEventActivityViewModel;
+    }
+
+    @Override
+    public void handleError(Throwable throwable) {
+        //TODO: handle error
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +103,7 @@ public class AddEventActivity extends AppCompatActivity {
                 // Showing selected spinner item
                 Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -86,6 +118,7 @@ public class AddEventActivity extends AppCompatActivity {
                 // Showing selected spinner item
                 Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -122,7 +155,7 @@ public class AddEventActivity extends AppCompatActivity {
         betweenTime = findViewById(R.id.editTextTimeBetween);
         addressTextView = findViewById(R.id.addLocation);
         textViewTime = findViewById(R.id.textViewTime);
-        textViewBetweenTime  = findViewById(R.id.textViewBetweenTime);
+        textViewBetweenTime = findViewById(R.id.textViewBetweenTime);
         confirm = findViewById(R.id.buttonCreateEvent);
         eventName = findViewById(R.id.textInputEventName);
         addEvent = findViewById(R.id.addEventTriggerStatic);
@@ -148,7 +181,7 @@ public class AddEventActivity extends AppCompatActivity {
                 ArrayList<Integer> weekdays = markedButtons;
                 Integer locationCondition = spinnerLocation.getSelectedItemPosition();
                 Address confirmAddress = address;
-                Integer timeCondition = spinner.getSelectedItemPosition() ;
+                Integer timeCondition = spinner.getSelectedItemPosition();
                 Long startTime = Long.parseLong(textViewTime.getText().toString());
                 Long endTime = Long.parseLong(textViewBetweenTime.getText().toString());
                 //TODO Connect with ViewModel
@@ -166,7 +199,7 @@ public class AddEventActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position==4) {
+                if (position == 4) {
                     textViewTime.setVisibility(View.VISIBLE);
                     AtTime.setEnabled(true);
                     AtTime.setVisibility(View.VISIBLE);
@@ -177,21 +210,18 @@ public class AddEventActivity extends AppCompatActivity {
                     betweenTime.setVisibility(View.VISIBLE);
                     //betweenClock.setEnabled(true);
                     //betweenClock.setVisibility(View.VISIBLE);
-                }
-                else if(position==0) {
+                } else if (position == 0) {
                     textViewTime.setVisibility(View.GONE);
                     AtTime.setEnabled(false);
                     AtTime.setVisibility(View.GONE);
                     //AtClock.setEnabled(false);
-                     //AtClock.setVisibility(View.INVISIBLE);
+                    //AtClock.setVisibility(View.INVISIBLE);
                     textViewBetweenTime.setVisibility(View.GONE);
                     betweenTime.setEnabled(false);
                     betweenTime.setVisibility(View.GONE);
                     //betweenClock.setEnabled(false);
                     //betweenClock.setVisibility(View.INVISIBLE);
-                }
-                else
-                {
+                } else {
                     textViewTime.setVisibility(View.VISIBLE);
                     AtTime.setEnabled(true);
                     AtTime.setVisibility(View.VISIBLE);
@@ -204,6 +234,7 @@ public class AddEventActivity extends AppCompatActivity {
                     //betweenClock.setVisibility(View.INVISIBLE);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
@@ -213,17 +244,15 @@ public class AddEventActivity extends AppCompatActivity {
         spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position==0) {
+                if (position == 0) {
                     addressTextView.setVisibility(View.GONE);
-                }
-                else if(position ==4)
-                {
+                } else if (position == 4) {
                     //TODO OPEN NEW ACTIVITY/FRAGMENT/SPINNER AND CALL VIEWMODEL TO GET DATA
-                }
-                else{
+                } else {
                     addressTextView.setVisibility(View.VISIBLE);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
@@ -233,11 +262,10 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     public void showTimePickerDialog(View v, int i) {
-        if (i == 1){
+        if (i == 1) {
             DialogFragment newFragment = new TimePickerFragment1();
             newFragment.show(getSupportFragmentManager(), "timePicker");
-        }
-        else{
+        } else {
             DialogFragment newFragment = new TimePickerFragment2();
             newFragment.show(getSupportFragmentManager(), "timePicker");
         }
@@ -286,19 +314,21 @@ public class AddEventActivity extends AppCompatActivity {
         }
     }
 
-    public void showNotificationOrSmartdevice(View v){
+    public void showNotificationOrSmartdevice(View v) {
         DialogFragment newFragment = new NotificationOrSmartdeviceFragment();
         newFragment.show(getSupportFragmentManager(), "notificationOrSmartdevice");
     }
 
-    public void showMapActivity(View v){
+    public void showMapActivity(View v) {
         Intent mapIntent = new Intent(AddEventActivity.this, CreateEventMapActivity.class);
         startActivityForResult(mapIntent, 0);
     }
 
-    public void closeAddEvent(View v){finish();}
+    public void closeAddEvent(View v) {
+        finish();
+    }
 
-    private void markButton(){
+    private void markButton() {
         markedButtons = new ArrayList<Integer>();
 
         //Day buttons
@@ -319,25 +349,25 @@ public class AddEventActivity extends AppCompatActivity {
         tSun = (ToggleButton) findViewById(R.id.tS);
 
         //Check individual items.
-        if(tMon.isChecked()){
+        if (tMon.isChecked()) {
             markedButtons.add(1);
         }
-        if(tThu.isChecked()){
+        if (tThu.isChecked()) {
             markedButtons.add(2);
         }
-        if(tWen.isChecked()){
+        if (tWen.isChecked()) {
             markedButtons.add(3);
         }
-        if(tTue.isChecked()){
+        if (tTue.isChecked()) {
             markedButtons.add(4);
         }
-        if(tFri.isChecked()){
+        if (tFri.isChecked()) {
             markedButtons.add(5);
         }
-        if(tSat.isChecked()){
+        if (tSat.isChecked()) {
             markedButtons.add(6);
         }
-        if(tSun.isChecked()){
+        if (tSun.isChecked()) {
             markedButtons.add(7);
         }
     }
@@ -345,19 +375,19 @@ public class AddEventActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case (0) : {
+        switch (requestCode) {
+            case (0): {
                 if (resultCode == Activity.RESULT_OK) {
                     addressBundle = data.getBundleExtra("address");
                     address = addressBundle.getParcelable("address");
-                    addressTextView.setText(address.getAddressLine(0)+ ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
+                    addressTextView.setText(address.getAddressLine(0) + ", " + address.getAddressLine(1) + ", " + address.getAddressLine(2));
                 }
                 break;
             }
         }
     }
 
-    public void refreshData(){
+    public void refreshData() {
         ArrayList<String> a = new ArrayList<>();
         a.clear();
         a.addAll(addMyEvents);
@@ -373,7 +403,8 @@ public class AddEventActivity extends AppCompatActivity {
         }
 
     }
-    public void deleteItem(int pos){
+
+    public void deleteItem(int pos) {
         addMyEvents.remove(pos);
         refreshData();
     }

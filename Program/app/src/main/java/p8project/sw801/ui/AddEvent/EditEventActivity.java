@@ -2,10 +2,10 @@ package p8project.sw801.ui.AddEvent;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import p8project.sw801.R;
 
 public class EditEventActivity extends AppCompatActivity {
-
 
 
     @Override
