@@ -35,6 +35,7 @@
         <activity android:name=".ui.Settings.Location.EditLocationSettingActivity"/>
         <activity android:name=".ui.Settings.GlobalMute.EditGlobalMuteSettingActivity"/>
         <activity android:name=".ui.SmartDevice.EditSmartDeviceActivity" />
+        <activity android:name=".ui.Settings.Shopping.ShoppingSettingActivity" />
         <activity android:name=".ui.event.addevent.AddEvent" />
         <activity android:name=".ui.event.createeventmap.CreateEventMap" />
 

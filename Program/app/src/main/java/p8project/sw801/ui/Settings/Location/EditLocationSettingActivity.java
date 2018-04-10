@@ -1,8 +1,11 @@
 package p8project.sw801.ui.Settings.Location;
 
 import android.app.Activity;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,14 +14,46 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
+import p8project.sw801.BR;
 import p8project.sw801.R;
+import p8project.sw801.databinding.ActivityEditLocationSettingBinding;
 import p8project.sw801.ui.MapsActivity;
+import p8project.sw801.ui.Settings.SettingsNavigator;
+import p8project.sw801.ui.Settings.SettingsViewModel;
+import p8project.sw801.ui.base.BaseActivity;
 
 /**
  * Created by clubd on 22-03-2018.
  */
 
-public class EditLocationSettingActivity extends AppCompatActivity {
+public class EditLocationSettingActivity extends BaseActivity<ActivityEditLocationSettingBinding,SettingsViewModel> implements SettingsNavigator, HasSupportFragmentInjector {
+    private ActivityEditLocationSettingBinding mActivityEditLocationSettingBinding;
+    private SettingsViewModel mSettingsViewModel;
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+    @Inject
+    ViewModelProvider.Factory mViewModelFactory;
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_edit_location_setting;
+    }
+
+    @Override
+    public SettingsViewModel getViewModel() {
+        mSettingsViewModel = ViewModelProviders.of(this, mViewModelFactory).get(SettingsViewModel.class);
+        return mSettingsViewModel;
+    }
 
     private String locationSettingName;
 
@@ -26,6 +61,9 @@ public class EditLocationSettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_location_setting);
+        mSettingsViewModel.setNavigator(this);
+        mActivityEditLocationSettingBinding = getViewDataBinding();
+
         Intent i = getIntent();
         locationSettingName = i.getStringExtra(locationSettingName);
 
@@ -67,6 +105,16 @@ public class EditLocationSettingActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
+
+    @Override
+    public void handleError(Throwable throwable) {
 
     }
 }

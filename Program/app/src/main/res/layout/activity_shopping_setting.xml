@@ -2,13 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     tools:context="p8project.sw801.ui.Settings.Shopping.ShoppingSettingActivity">
     <data>
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="p8project.sw801.ui.Settings.SettingsViewModel" />
+            type="p8project.sw801.ui.Settings.SettingsViewModel"/>
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,8 +32,6 @@
             android:layout_height="wrap_content"
             android:queryHint="Search Here"
             android:iconifiedByDefault="false"
-            android:layout_alignParentTop="true"
-            />
-
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 </layout>
