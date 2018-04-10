@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-
-    tools:context="p8project.sw801.ui.main.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View" />
         <variable
@@ -13,8 +11,8 @@
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mysmartdeviceactivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        tools:context="p8project.sw801.ui.main.MainActivity">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,8 +47,21 @@
                 android:layout_marginStart="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView_mysmartdevices"
+                app:layout_constraintTop_toBottomOf="@+id/navigation"
                 app:srcCompat="@drawable/ic_add_black_18dp" />
         </android.support.constraint.ConstraintLayout>
 
+        <!--Burger menu -->
+        <android.support.design.widget.NavigationView
+            android:id="@+id/burgermenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            app:headerLayout="@layout/burgerheader"
+            app:itemIconTint="@android:color/black"
+            app:itemTextColor="@android:color/black"
+            app:menu="@menu/drawermenu">
+        </android.support.design.widget.NavigationView>
     </android.support.v4.widget.DrawerLayout>
 </layout>

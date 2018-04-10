@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="p8project.sw801">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".MvvmApp"
         android:allowBackup="true"
@@ -19,6 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.AddEvent.AddEventActivity"/>
+        <activity android:name=".ui.Settings.SettingsActivity"/>
+        <activity android:name=".ui.AddEvent.EditEventActivity"/>
+        <activity android:name=".ui.SmartDevice.AddSmartDeviceActivity"/>
+        <activity android:name=".ui.SmartDevice.EditSmartDeviceActivity"/>
+        <activity android:name=".ui.Settings.GlobalMute.GlobalMuteSettingActivity"/>
+        <activity android:name=".ui.Settings.Location.LocationSettingActivity"/>
+        <activity android:name=".ui.Settings.Shopping.ShoppingSettingActivity"/>
+        <activity android:name=".ui.Settings.GlobalMute.AddGlobalMuteSettingActivity"/>
+        <activity android:name=".ui.Settings.Location.AddLocationSettingActivity"/>
+        <activity android:name=".ui.Settings.Location.EditLocationSettingActivity"/>
+        <activity android:name=".ui.Settings.GlobalMute.EditGlobalMuteSettingActivity"/>
+        <activity android:name=".ui.AddEvent.CreateEventMapActivity"></activity>
+
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

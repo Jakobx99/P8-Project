@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="p8project.sw801.ui.AddEvent.CreateEventMapActivity">
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="p8project.sw801.ui.SmartDevice.AddSmartDeviceViewModel" />
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="sw801.remindersystem.ActivityView.Activity.CreateEventMapActivity">
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/editText_createEventMapAddressbar"
@@ -61,3 +70,4 @@
         app:layout_constraintStart_toEndOf="@+id/button_createEventMapCancel"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 </android.support.constraint.ConstraintLayout>
+</layout>

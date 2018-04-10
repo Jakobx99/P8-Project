@@ -22,7 +22,7 @@ public class AddLocationSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_location_setting);
         setTitle("Notify me - Add predefined location");
 
-        final Button buttonSettings = findViewById(R.id.button_MarkLocation);
+        final Button buttonSettings = findViewById(R.id.button_savePredefinedLocation);
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
